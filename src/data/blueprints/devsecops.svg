@@ -1,0 +1,144 @@
+<svg class="bp-svg" viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+          <rect x="20" y="60" width="940" height="240" rx="14" fill="rgba(22,163,74,.03)" stroke="#16a34a" stroke-width="1.8"/>
+          <text x="490" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="#16a34a">CI/CD Pipeline</text>
+          <g class="an" data-tip="Developer — Writes code, unit tests, and pipeline definitions. Commits trigger the pipeline. Pre-commit hooks run linting and secret detection locally.">
+            <rect x="34" y="100" width="120" height="60" rx="10" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="94" y="123" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">Developer</text>
+            <text x="94" y="138" text-anchor="middle" font-size="8" fill="#7b7669">Code · Commit</text>
+            <text x="94" y="150" text-anchor="middle" font-size="8" fill="#7b7669">Pre-commit hooks</text>
+          </g>
+          <g class="an" data-tip="Gitea / GitLab — Self-hosted Git repository with merge request workflows, protected branches, and required reviews. Webhooks trigger Jenkins on push/MR.">
+            <rect x="174" y="100" width="120" height="60" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="234" y="123" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Gitea / GitLab</text>
+            <text x="234" y="138" text-anchor="middle" font-size="8" fill="#7b7669">Merge requests</text>
+            <text x="234" y="150" text-anchor="middle" font-size="8" fill="#7b7669">Protected branches</text>
+          </g>
+          <g class="an" data-tip="Jenkins — Orchestrates the pipeline. Declarative Jenkinsfile with stages for build, scan, test, deploy. Parallel stages for speed.">
+            <rect x="314" y="100" width="120" height="60" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="374" y="123" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Jenkins</text>
+            <text x="374" y="138" text-anchor="middle" font-size="8" fill="#7b7669">Jenkinsfile · Stages</text>
+            <text x="374" y="150" text-anchor="middle" font-size="8" fill="#7b7669">Parallel builds</text>
+          </g>
+          <g class="an" data-tip="SonarQube — Static analysis for bugs, vulnerabilities, code smells. Quality gate blocks merges with new issues. Technical debt tracking.">
+            <rect x="454" y="100" width="120" height="60" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="514" y="120" text-anchor="middle" font-size="10" font-weight="700" fill="#b45309">SonarQube</text>
+            <text x="514" y="135" text-anchor="middle" font-size="8" fill="#7b7669">SAST · Code quality</text>
+            <text x="514" y="148" text-anchor="middle" font-size="8" fill="#7b7669">Quality gate</text>
+          </g>
+          <g class="an" data-tip="Trivy — Container and IaC vulnerability scanner. Scans OS packages, language dependencies, and secrets in images. Blocks pipeline on CRITICAL CVEs.">
+            <rect x="594" y="100" width="120" height="60" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="654" y="120" text-anchor="middle" font-size="10" font-weight="700" fill="#b45309">Trivy</text>
+            <text x="654" y="135" text-anchor="middle" font-size="8" fill="#7b7669">CVE scanner</text>
+            <text x="654" y="148" text-anchor="middle" font-size="8" fill="#7b7669">Images · IaC · Secrets</text>
+          </g>
+          <g class="an" data-tip="Testing — JUnit / pytest / Jest runs. Coverage gate enforces minimum %. Integration tests spin up ephemeral test environments via Docker Compose.">
+            <rect x="734" y="100" width="120" height="60" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="794" y="120" text-anchor="middle" font-size="10" font-weight="700" fill="#b45309">Testing</text>
+            <text x="794" y="135" text-anchor="middle" font-size="8" fill="#7b7669">Unit · Integration</text>
+            <text x="794" y="148" text-anchor="middle" font-size="8" fill="#7b7669">Coverage gate</text>
+          </g>
+          <g class="an" data-tip="Nexus / Artifactory — Artifact repository for Docker images, Maven/Gradle/npm/pypi packages. Role-based access. Retention policies.">
+            <rect x="174" y="200" width="120" height="56" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="234" y="222" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Nexus Repo</text>
+            <text x="234" y="236" text-anchor="middle" font-size="8" fill="#7b7669">Docker · Maven · npm</text>
+            <text x="234" y="248" text-anchor="middle" font-size="8" fill="#7b7669">Retention policies</text>
+          </g>
+          <g class="an" data-tip="Tuleap / Approval Gate — Manual approval required for production deploys. Integrates with change management (CAB). Audit log of every approval.">
+            <rect x="314" y="200" width="120" height="56" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="374" y="222" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Tuleap ALM</text>
+            <text x="374" y="236" text-anchor="middle" font-size="8" fill="#7b7669">Approval gate · CAB</text>
+            <text x="374" y="248" text-anchor="middle" font-size="8" fill="#7b7669">Audit log</text>
+          </g>
+          <g class="an" data-tip="Ansible / Terraform — Infrastructure-as-code. Ansible playbooks for app deploys; Terraform for cloud infra. State in S3 with DynamoDB locking.">
+            <rect x="454" y="200" width="120" height="56" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="514" y="222" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Ansible / TF</text>
+            <text x="514" y="236" text-anchor="middle" font-size="8" fill="#7b7669">IaC · Playbooks</text>
+            <text x="514" y="248" text-anchor="middle" font-size="8" fill="#7b7669">Remote state</text>
+          </g>
+          <g class="an" data-tip="DEV → UAT → PROD — Automated promotion to DEV/UAT, manual gate for PROD. Rollback via previous artifact version in under 5 minutes.">
+            <rect x="594" y="200" width="260" height="56" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="724" y="222" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">DEV → UAT → PROD</text>
+            <text x="724" y="236" text-anchor="middle" font-size="8" fill="#7b7669">Blue/Green · Canary rollouts</text>
+            <text x="724" y="248" text-anchor="middle" font-size="8" fill="#7b7669">Auto rollback &lt; 5 min</text>
+          </g>
+          <line x1="154" y1="130" x2="174" y2="130" stroke="#6d28d9" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="294" y1="130" x2="314" y2="130" stroke="#16a34a" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="434" y1="130" x2="454" y2="130" stroke="#16a34a" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="574" y1="130" x2="594" y2="130" stroke="#b45309" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="714" y1="130" x2="734" y2="130" stroke="#b45309" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="294" y1="228" x2="314" y2="228" stroke="#0891b2" stroke-width="1.4" opacity=".5" class="fl"/>
+          <line x1="434" y1="228" x2="454" y2="228" stroke="#0891b2" stroke-width="1.4" opacity=".5" class="fl"/>
+          <line x1="574" y1="228" x2="594" y2="228" stroke="#0891b2" stroke-width="1.4" opacity=".5" class="fl"/>
+          <rect x="20" y="320" width="940" height="220" rx="14" fill="rgba(8,145,178,.03)" stroke="#0891b2" stroke-width="1.5"/>
+          <text x="490" y="342" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0891b2">Supporting Systems</text>
+          <g class="an" data-tip="LDAP / SSO — Centralized identity. OpenLDAP or FreeIPA with SAML/OIDC to Gitea, Jenkins, Nexus, Grafana. Groups map to RBAC roles.">
+            <rect x="34" y="360" width="140" height="72" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.2"/>
+            <text x="104" y="382" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0891b2">LDAP / SSO</text>
+            <text x="104" y="396" text-anchor="middle" font-size="8" fill="#7b7669">OpenLDAP / FreeIPA</text>
+            <text x="104" y="408" text-anchor="middle" font-size="8" fill="#7b7669">SAML / OIDC</text>
+            <text x="104" y="420" text-anchor="middle" font-size="8" fill="#7b7669">Group-based RBAC</text>
+          </g>
+          <g class="an" data-tip="HashiCorp Vault — Secrets management for DB credentials, API keys, and certificates. Dynamic secrets with short TTLs. Jenkins integration.">
+            <rect x="184" y="360" width="140" height="72" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.2"/>
+            <text x="254" y="382" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0891b2">Vault</text>
+            <text x="254" y="396" text-anchor="middle" font-size="8" fill="#7b7669">Secrets · Certs</text>
+            <text x="254" y="408" text-anchor="middle" font-size="8" fill="#7b7669">Dynamic · TTL</text>
+            <text x="254" y="420" text-anchor="middle" font-size="8" fill="#7b7669">Pipeline injection</text>
+          </g>
+          <g class="an" data-tip="EFK Stack — Elasticsearch + Fluentd + Kibana for centralized logging. All pipeline logs, app logs, and audit events indexed.">
+            <rect x="334" y="360" width="140" height="72" rx="10" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="404" y="382" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">EFK Stack</text>
+            <text x="404" y="396" text-anchor="middle" font-size="8" fill="#7b7669">Elastic + Fluentd</text>
+            <text x="404" y="408" text-anchor="middle" font-size="8" fill="#7b7669">+ Kibana</text>
+            <text x="404" y="420" text-anchor="middle" font-size="8" fill="#7b7669">Centralized logs</text>
+          </g>
+          <g class="an" data-tip="Prometheus + Grafana — Metric collection via exporters. Grafana dashboards for pipeline duration, failure rates, and deploy frequency.">
+            <rect x="484" y="360" width="140" height="72" rx="10" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="554" y="382" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Prometheus</text>
+            <text x="554" y="396" text-anchor="middle" font-size="8" fill="#7b7669">+ Grafana</text>
+            <text x="554" y="408" text-anchor="middle" font-size="8" fill="#7b7669">DORA metrics</text>
+            <text x="554" y="420" text-anchor="middle" font-size="8" fill="#7b7669">Pipeline metrics</text>
+          </g>
+          <g class="an" data-tip="PagerDuty — On-call rotations and escalation policies. Alerts from Prometheus, CI failures, and security incidents. Runbook links in alerts.">
+            <rect x="634" y="360" width="140" height="72" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+            <text x="704" y="382" text-anchor="middle" font-size="9.5" font-weight="700" fill="#dc2626">PagerDuty</text>
+            <text x="704" y="396" text-anchor="middle" font-size="8" fill="#7b7669">On-call · Escalation</text>
+            <text x="704" y="408" text-anchor="middle" font-size="8" fill="#7b7669">Runbook links</text>
+            <text x="704" y="420" text-anchor="middle" font-size="8" fill="#7b7669">Incident response</text>
+          </g>
+          <g class="an" data-tip="SIEM — Splunk / Elastic Security / Wazuh. Aggregates audit logs, AuthN failures, and security events. Required for SOC2/ISO 27001.">
+            <rect x="784" y="360" width="150" height="72" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+            <text x="859" y="382" text-anchor="middle" font-size="9.5" font-weight="700" fill="#dc2626">SIEM</text>
+            <text x="859" y="396" text-anchor="middle" font-size="8" fill="#7b7669">Splunk / Wazuh</text>
+            <text x="859" y="408" text-anchor="middle" font-size="8" fill="#7b7669">Audit · Policy alerts</text>
+            <text x="859" y="420" text-anchor="middle" font-size="8" fill="#7b7669">SOC2 / ISO 27001</text>
+          </g>
+          <g class="an" data-tip="SBOM / Signing — CycloneDX / SPDX SBOMs generated per build. Compliance evidence for SOC2, ISO 27001, PCI. Signed attestations.">
+            <rect x="34" y="448" width="210" height="72" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="139" y="470" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">SBOM · Signing</text>
+            <text x="139" y="484" text-anchor="middle" font-size="8" fill="#7b7669">CycloneDX / SPDX</text>
+            <text x="139" y="496" text-anchor="middle" font-size="8" fill="#7b7669">Sigstore · in-toto</text>
+            <text x="139" y="508" text-anchor="middle" font-size="8" fill="#7b7669">SOC2 / ISO evidence</text>
+          </g>
+          <g class="an" data-tip="Chaos Engineering — Litmus / Chaos Mesh periodically injects failures (pod kills, network latency) in staging. Game-days run quarterly.">
+            <rect x="254" y="448" width="210" height="72" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="359" y="470" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">Chaos Engineering</text>
+            <text x="359" y="484" text-anchor="middle" font-size="8" fill="#7b7669">Litmus · Chaos Mesh</text>
+            <text x="359" y="496" text-anchor="middle" font-size="8" fill="#7b7669">Fault injection</text>
+            <text x="359" y="508" text-anchor="middle" font-size="8" fill="#7b7669">Quarterly game-days</text>
+          </g>
+          <g class="an" data-tip="Policy-as-Code — OPA / Conftest enforce policies on IaC (no public S3 buckets, all resources tagged). Pipeline fails on violations.">
+            <rect x="474" y="448" width="210" height="72" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="579" y="470" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">Policy-as-Code</text>
+            <text x="579" y="484" text-anchor="middle" font-size="8" fill="#7b7669">OPA / Conftest</text>
+            <text x="579" y="496" text-anchor="middle" font-size="8" fill="#7b7669">IaC policy gates</text>
+            <text x="579" y="508" text-anchor="middle" font-size="8" fill="#7b7669">Automated reviews</text>
+          </g>
+          <g class="an" data-tip="DAST / Pen Test — OWASP ZAP / Burp run against staging. Quarterly external pen tests. Findings tracked as bugs with SLAs by severity.">
+            <rect x="694" y="448" width="240" height="72" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="814" y="470" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">DAST · Pen Testing</text>
+            <text x="814" y="484" text-anchor="middle" font-size="8" fill="#7b7669">OWASP ZAP · Burp</text>
+            <text x="814" y="496" text-anchor="middle" font-size="8" fill="#7b7669">External pen tests</text>
+            <text x="814" y="508" text-anchor="middle" font-size="8" fill="#7b7669">Severity-based SLAs</text>
+          </g>
+        </svg>

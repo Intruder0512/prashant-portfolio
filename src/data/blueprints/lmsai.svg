@@ -1,0 +1,125 @@
+<svg class="bp-svg" viewBox="0 0 980 620" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+          <defs>
+            <marker id="laArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b7669"/></marker>
+            <marker id="laArrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker>
+            <marker id="laArrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+            <marker id="laArrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b45309"/></marker>
+          </defs>
+          <rect x="20" y="20" width="940" height="66" rx="10" fill="rgba(22,163,74,.05)" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="490" y="38" text-anchor="middle" font-size="10.5" font-weight="700" fill="#16a34a">Layer 1 — Existing LMS Core (Unchanged) · Multi-Tenant Kubernetes on Nutanix HCI</text>
+          <g class="an" data-tip="LMS Core — Multi-tenant Kubernetes. Each university in its own namespace. REST APIs for content, progress, assessments. Keycloak JWT tenant context propagated to all AI calls. No changes to LMS core — AI added as a separate layer.">
+            <rect x="34" y="46" width="160" height="30" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="114" y="65" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">Moodle LMS Core</text>
+          </g>
+          <g class="an" data-tip="Keycloak JWT — Tenant context (university_id, role, course_id) propagated to every AI microservice call. Per-tenant data isolation enforced at every layer.">
+            <rect x="208" y="46" width="160" height="30" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="288" y="65" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">Keycloak JWT · Tenant Context</text>
+          </g>
+          <g class="an" data-tip="76 Universities · 1M+ Learners — Each university namespace-isolated. Single Glue Data Catalog with tenant_id-based row-level isolation. Custom domain + branded landing per tenant. Shared AI infrastructure, isolated data.">
+            <rect x="382" y="46" width="220" height="30" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="492" y="65" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">76 Universities · 1M+ Learners · Multi-Tenant</text>
+          </g>
+          <g class="an" data-tip="REST APIs — Content upload, progress tracking, assessment submission. Existing APIs unchanged. New AI microservices subscribe to events via SQS/EventBridge without modifying LMS code.">
+            <rect x="616" y="46" width="180" height="30" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="706" y="65" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">REST APIs · Course / Progress</text>
+          </g>
+          <g class="an" data-tip="Jenkins CI/CD + AIMS/ISO 42001 — Every AI model invocation logged with: model version, cost, reviewer action, tenant_id. Full audit trail for compliance. Human-in-loop decisions logged as structured events.">
+            <rect x="810" y="46" width="138" height="30" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="879" y="65" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">CI/CD · AIMS/ISO 42001</text>
+          </g>
+          <rect x="20" y="100" width="940" height="100" rx="10" fill="rgba(109,40,217,.05)" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="490" y="118" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6d28d9">Layer 2 — AI Service Mesh (ai-services namespace) · 7 Independent Microservices · Each HPA-scaled</text>
+          <g class="an" data-tip="Content Gen Orchestrator → Bedrock Claude 3 — Generates course summaries, quiz questions, learning objectives, and module descriptions from faculty-provided materials. Bedrock Guardrails: prompt injection + PII screening.">
+            <rect x="34" y="126" width="124" height="64" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="96" y="146" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6d28d9">Content Gen</text>
+            <text x="96" y="160" text-anchor="middle" font-size="7.5" fill="#7b7669">Orchestrator</text>
+            <text x="96" y="173" text-anchor="middle" font-size="7.5" fill="#6d28d9">→ Bedrock</text>
+            <text x="96" y="184" text-anchor="middle" font-size="7.5" fill="#7b7669">Claude 3</text>
+          </g>
+          <g class="an" data-tip="Audio Synthesis → Amazon Polly Neural TTS — Converts text content to MP3 audio in 8 Indian languages: en-IN, hi-IN, ta-IN, te-IN, bn-IN, mr-IN, kn-IN, gu-IN. SSML for pronunciation and prosody. Audio stored in S3 with Standard→IA→Glacier lifecycle. Accessibility for visually-impaired learners and mobile/offline study.">
+            <rect x="170" y="126" width="124" height="64" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="232" y="146" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6d28d9">Audio Synthesis</text>
+            <text x="232" y="160" text-anchor="middle" font-size="7.5" fill="#7b7669">Polly Neural</text>
+            <text x="232" y="173" text-anchor="middle" font-size="7.5" fill="#6d28d9">8 Indian langs</text>
+            <text x="232" y="184" text-anchor="middle" font-size="7.5" fill="#7b7669">MP3 · SSML</text>
+          </g>
+          <g class="an" data-tip="Video Transcription → Transcribe + Step Functions — Async transcription job: StartTranscriptionJob with Indian language support and speaker diarization. Step Functions video enrichment pipeline: Rekognition moderation → Transcribe → WebVTT captions → chunk → embed → index → SNS notify faculty.">
+            <rect x="306" y="126" width="124" height="64" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="368" y="146" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6d28d9">Video Transcription</text>
+            <text x="368" y="160" text-anchor="middle" font-size="7.5" fill="#7b7669">Transcribe</text>
+            <text x="368" y="173" text-anchor="middle" font-size="7.5" fill="#6d28d9">Step Functions</text>
+            <text x="368" y="184" text-anchor="middle" font-size="7.5" fill="#7b7669">WebVTT · Diarize</text>
+          </g>
+          <g class="an" data-tip="Translation → Translate + Custom Terminology — AWS Translate with Custom Terminology CSV. Domain terms (ICAR agricultural vocabulary, regional university names, course codes) that must NOT be translated are protected. Batch translation via S3. Human-in-loop review before publication for translated content.">
+            <rect x="442" y="126" width="124" height="64" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="504" y="146" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6d28d9">Translation</text>
+            <text x="504" y="160" text-anchor="middle" font-size="7.5" fill="#7b7669">AWS Translate</text>
+            <text x="504" y="173" text-anchor="middle" font-size="7.5" fill="#6d28d9">Custom Terminology</text>
+            <text x="504" y="184" text-anchor="middle" font-size="7.5" fill="#7b7669">8 regional langs</text>
+          </g>
+          <g class="an" data-tip="Recommendation Engine → SageMaker — Personalised learning path model trained on learner engagement signals. Deployed as SageMaker managed Endpoint. A/B tested with Shadow Variants. Clarify for bias detection. Drift monitoring on prediction confidence.">
+            <rect x="578" y="126" width="124" height="64" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="640" y="146" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6d28d9">Recommendation</text>
+            <text x="640" y="160" text-anchor="middle" font-size="7.5" fill="#7b7669">SageMaker</text>
+            <text x="640" y="173" text-anchor="middle" font-size="7.5" fill="#6d28d9">Shadow Variants</text>
+            <text x="640" y="184" text-anchor="middle" font-size="7.5" fill="#7b7669">A/B · Clarify</text>
+          </g>
+          <g class="an" data-tip="Video Moderation → Rekognition — StartContentModeration at 80% confidence threshold. Pre-publication screening for violence, explicit content, and unsafe imagery. Every moderation result logged for AIMS/ISO 42001 audit. Faculty SNS notification on flag. Configurable threshold per tenant.">
+            <rect x="714" y="126" width="124" height="64" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="776" y="146" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6d28d9">Video Moderation</text>
+            <text x="776" y="160" text-anchor="middle" font-size="7.5" fill="#7b7669">Rekognition</text>
+            <text x="776" y="173" text-anchor="middle" font-size="7.5" fill="#6d28d9">80% threshold</text>
+            <text x="776" y="184" text-anchor="middle" font-size="7.5" fill="#7b7669">Pre-publication</text>
+          </g>
+          <g class="an" data-tip="RAG Gateway → Bedrock KB + OpenSearch Serverless — Powers &quot;Ask My Course&quot; feature. Chunks with video timestamps enable jump-to-moment citations. Bedrock Knowledge Bases API. OpenSearch Serverless HNSW + BM25 hybrid. Tenant-scoped retrieval via Keycloak JWT.">
+            <rect x="850" y="126" width="98" height="64" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.5"/>
+            <text x="899" y="146" text-anchor="middle" font-size="8.5" font-weight="700" fill="#6d28d9">RAG Gateway</text>
+            <text x="899" y="160" text-anchor="middle" font-size="7.5" fill="#7b7669">Bedrock KB</text>
+            <text x="899" y="173" text-anchor="middle" font-size="7.5" fill="#6d28d9">OpenSearch</text>
+            <text x="899" y="184" text-anchor="middle" font-size="7.5" fill="#7b7669">Serverless</text>
+          </g>
+          <rect x="20" y="216" width="940" height="80" rx="10" fill="rgba(180,83,9,.05)" stroke="#b45309" stroke-width="1.4" stroke-dasharray="6 4"/>
+          <text x="490" y="234" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b45309">Layer 3 — Step Functions Video Enrichment Pipeline</text>
+          <g class="an" data-tip="Step 1: S3 Upload → EventBridge → Step Function starts. Video in raw zone, status=PENDING."><rect x="34" y="242" width="130" height="46" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/><text x="99" y="262" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">① S3 Upload</text><text x="99" y="276" text-anchor="middle" font-size="8" fill="#7b7669">EventBridge → SF start</text></g>
+          <g class="an" data-tip="Step 2: Rekognition StartContentModeration — 80% confidence. Pass → continue; Flag → SNS to faculty review queue."><rect x="176" y="242" width="130" height="46" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/><text x="241" y="262" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">② Rekognition</text><text x="241" y="276" text-anchor="middle" font-size="8" fill="#7b7669">Content moderation</text></g>
+          <g class="an" data-tip="Step 3: Transcribe StartTranscriptionJob — Indian lang + speaker diarization. Timestamped JSON → s3://lms-processed/"><rect x="318" y="242" width="130" height="46" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/><text x="383" y="262" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">③ Transcribe</text><text x="383" y="276" text-anchor="middle" font-size="8" fill="#7b7669">Timestamped + diarize</text></g>
+          <g class="an" data-tip="Step 4: Lambda generates WebVTT captions from transcript. Attaches to LMS video via REST API. status=CAPTIONED."><rect x="460" y="242" width="130" height="46" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/><text x="525" y="262" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">④ WebVTT Captions</text><text x="525" y="276" text-anchor="middle" font-size="8" fill="#7b7669">Lambda → LMS REST</text></g>
+          <g class="an" data-tip="Step 5: Transcript chunked 300–500 tokens with course_id + timestamp_range metadata. Enables &quot;jump to moment&quot; citations in RAG responses."><rect x="602" y="242" width="130" height="46" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/><text x="667" y="262" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">⑤ Chunk + Metadata</text><text x="667" y="276" text-anchor="middle" font-size="8" fill="#7b7669">Timestamp_range tag</text></g>
+          <g class="an" data-tip="Step 6: Titan Embeddings v2 vectorises chunks. Bulk-indexed to OpenSearch Serverless via Bedrock KB API. Video semantically searchable by meaning + timestamp."><rect x="744" y="242" width="130" height="46" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/><text x="809" y="262" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">⑥ Embed + Index</text><text x="809" y="276" text-anchor="middle" font-size="8" fill="#7b7669">Bedrock KB · OpenSearch</text></g>
+          <g class="an" data-tip="Step 7: SNS notifies faculty — captioned, transcribed, indexed. LMS status=PUBLISHED. Video live with captions and semantic search."><rect x="886" y="242" width="62" height="46" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/><text x="917" y="262" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">⑦ SNS</text><text x="917" y="276" text-anchor="middle" font-size="8" fill="#7b7669">Faculty notify</text></g>
+          <line x1="164" y1="265" x2="176" y2="265" stroke="#b45309" stroke-width="1.4" opacity=".6" marker-end="url(#laArrA)" class="fl"/>
+          <line x1="306" y1="265" x2="318" y2="265" stroke="#b45309" stroke-width="1.4" opacity=".6" marker-end="url(#laArrA)" class="fl"/>
+          <line x1="448" y1="265" x2="460" y2="265" stroke="#b45309" stroke-width="1.4" opacity=".6" marker-end="url(#laArrA)" class="fl"/>
+          <line x1="590" y1="265" x2="602" y2="265" stroke="#b45309" stroke-width="1.4" opacity=".6" marker-end="url(#laArrA)" class="fl"/>
+          <line x1="732" y1="265" x2="744" y2="265" stroke="#b45309" stroke-width="1.4" opacity=".6" marker-end="url(#laArrA)" class="fl"/>
+          <line x1="874" y1="265" x2="886" y2="265" stroke="#b45309" stroke-width="1.4" opacity=".6" marker-end="url(#laArrA)" class="fl"/>
+          <rect x="20" y="310" width="940" height="80" rx="10" fill="rgba(22,163,74,.05)" stroke="#16a34a" stroke-width="1.4" stroke-dasharray="6 4"/>
+          <text x="490" y="328" text-anchor="middle" font-size="10.5" font-weight="700" fill="#16a34a">Layer 4 — Async Backbone + S3 Multi-Zone Storage</text>
+          <g class="an" data-tip="Amazon SQS — Human-in-loop review queue. All AI-generated quizzes, summaries, and translated content queued for faculty approval before publication. FIFO for ordered review. DLQ for failed review items."><rect x="34" y="336" width="180" height="46" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/><text x="124" y="356" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">SQS · Human-in-Loop</text><text x="124" y="370" text-anchor="middle" font-size="8" fill="#7b7669">Faculty review queue · FIFO · DLQ</text></g>
+          <g class="an" data-tip="S3 Multi-Zone — lms-raw (original uploads), lms-processed (transcripts, Parquet, Textract JSON), lms-curated (AI content pending review), lms-audio (MP3: Standard→IA→Glacier lifecycle). CloudFront CDN signed URL delivery. Per-tenant KMS CMK encryption."><rect x="226" y="336" width="280" height="46" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/><text x="366" y="356" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">S3 Multi-Zone · CloudFront CDN</text><text x="366" y="370" text-anchor="middle" font-size="8" fill="#7b7669">lms-raw · lms-processed · lms-curated · lms-audio (lifecycle)</text></g>
+          <g class="an" data-tip="Amazon SNS — Faculty notifications: task completion (transcribed/translated/captioned), moderation flags, budget alerts. SES email notifications for course enrollment events."><rect x="518" y="336" width="180" height="46" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/><text x="608" y="356" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">SNS · Faculty Notifications</text><text x="608" y="370" text-anchor="middle" font-size="8" fill="#7b7669">Completion · Moderation flags · Budget alerts</text></g>
+          <g class="an" data-tip="Amazon EventBridge — Routes S3 upload events to Step Functions. Starts AI pipelines on course content events. Central event bus coordinating all async AI workflows."><rect x="710" y="336" width="238" height="46" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/><text x="829" y="356" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">EventBridge · S3 → Step Functions</text><text x="829" y="370" text-anchor="middle" font-size="8" fill="#7b7669">Upload events · AI pipeline triggers</text></g>
+          <rect x="20" y="404" width="940" height="80" rx="10" fill="rgba(220,38,38,.05)" stroke="#dc2626" stroke-width="1.4"/>
+          <text x="490" y="422" text-anchor="middle" font-size="10.5" font-weight="700" fill="#dc2626">Layer 5 — Observability + Governance + Security</text>
+          <g class="an" data-tip="CloudWatch Custom Dimensions — tenant_id + course_id on every AI invocation. X-Ray distributed tracing. Grafana per-university dashboards. AWS Budgets per-tenant caps."><rect x="34" y="430" width="200" height="46" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/><text x="134" y="450" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">CloudWatch + X-Ray + Grafana</text><text x="134" y="464" text-anchor="middle" font-size="8" fill="#7b7669">tenant_id + course_id dimensions · Per-tenant budgets</text></g>
+          <g class="an" data-tip="Bedrock Guardrails — Prompt injection detection and PII output screening on all AI calls. Applied before and after generation. Configurable per use case and tenant."><rect x="246" y="430" width="200" height="46" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/><text x="346" y="450" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">Bedrock Guardrails</text><text x="346" y="464" text-anchor="middle" font-size="8" fill="#7b7669">Prompt injection · PII output screening</text></g>
+          <g class="an" data-tip="IAM Tenant-Scoped Roles + KMS CMKs — Each university has its own IAM role and KMS CMK. Cross-tenant data access structurally impossible. VPC PrivateLink: no public internet exposure for any AWS service."><rect x="458" y="430" width="240" height="46" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/><text x="578" y="450" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">IAM Tenant Roles · KMS CMKs · PrivateLink</text><text x="578" y="464" text-anchor="middle" font-size="8" fill="#7b7669">Per-tenant encryption · VPC PrivateLink (no public internet)</text></g>
+          <g class="an" data-tip="AIMS/ISO 42001 Audit Trail — Every AI invocation logged: model version, cost, reviewer action (approved/rejected/modified), tenant_id, correlation_id. Human-in-loop decisions are structured audit events. Required for national LMS compliance."><rect x="710" y="430" width="238" height="46" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/><text x="829" y="450" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">AIMS/ISO 42001 Audit Trail</text><text x="829" y="464" text-anchor="middle" font-size="8" fill="#7b7669">Model version · Cost · Reviewer action · Correlation ID</text></g>
+          <rect x="20" y="496" width="940" height="36" rx="8" fill="rgba(109,40,217,.07)" stroke="#6d28d9" stroke-width="1.2"/>
+          <text x="118" y="517" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">1M+ Learners</text>
+          <text x="118" y="527" text-anchor="middle" font-size="7.5" fill="#7b7669">Active on platform</text>
+          <text x="270" y="517" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">76 Universities</text>
+          <text x="270" y="527" text-anchor="middle" font-size="7.5" fill="#7b7669">Namespace-isolated</text>
+          <text x="420" y="517" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">40–60% Authoring ↓</text>
+          <text x="420" y="527" text-anchor="middle" font-size="7.5" fill="#7b7669">Content generation reduction</text>
+          <text x="570" y="517" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">8 Indian Languages</text>
+          <text x="570" y="527" text-anchor="middle" font-size="7.5" fill="#7b7669">Polly Neural TTS</text>
+          <text x="720" y="517" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">95% Caption Coverage</text>
+          <text x="720" y="527" text-anchor="middle" font-size="7.5" fill="#7b7669">WebVTT · Transcribe</text>
+          <text x="885" y="517" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Human-in-Loop</text>
+          <text x="885" y="527" text-anchor="middle" font-size="7.5" fill="#7b7669">All AI content reviewed</text>
+          <line x1="490" y1="86" x2="490" y2="100" stroke="#6d28d9" stroke-width="1.6" opacity=".6" marker-end="url(#laArr)" class="fl"/>
+          <line x1="490" y1="200" x2="490" y2="216" stroke="#b45309" stroke-width="1.6" opacity=".6" marker-end="url(#laArrA)" class="fl"/>
+          <line x1="490" y1="296" x2="490" y2="310" stroke="#16a34a" stroke-width="1.6" opacity=".6" marker-end="url(#laArrG)" class="fl"/>
+          <line x1="490" y1="390" x2="490" y2="404" stroke="#dc2626" stroke-width="1.5" opacity=".6" marker-end="url(#laArr)" class="fl"/>
+        </svg>

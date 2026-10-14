@@ -1,0 +1,139 @@
+<svg class="bp-svg" viewBox="0 0 980 580" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+          <rect x="20" y="20" width="940" height="110" rx="14" fill="rgba(29,78,216,.05)" stroke="#1d4ed8" stroke-width="1.8"/>
+          <text x="490" y="42" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d4ed8">Control Plane</text>
+          <g class="an" data-tip="kube-apiserver — Front door for all REST API requests. Horizontally scalable. TLS termination; authenticates via certs or OIDC. Audit logs to SIEM.">
+            <rect x="34" y="62" width="140" height="58" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <text x="104" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">API Server</text>
+            <text x="104" y="98" text-anchor="middle" font-size="8" fill="#7b7669">REST gateway</text>
+            <text x="104" y="110" text-anchor="middle" font-size="8" fill="#7b7669">TLS · OIDC</text>
+          </g>
+          <g class="an" data-tip="etcd — Distributed key-value store for all cluster state. Raft consensus. Snapshots to S3 every 30 min for DR. 3 or 5 node cluster for HA.">
+            <rect x="184" y="62" width="140" height="58" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <text x="254" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">etcd</text>
+            <text x="254" y="98" text-anchor="middle" font-size="8" fill="#7b7669">Cluster state · Raft</text>
+            <text x="254" y="110" text-anchor="middle" font-size="8" fill="#7b7669">30-min snapshots</text>
+          </g>
+          <g class="an" data-tip="Scheduler — Assigns pods to nodes based on resource requests, affinity rules, taints/tolerations, and topology spread constraints.">
+            <rect x="334" y="62" width="140" height="58" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <text x="404" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">Scheduler</text>
+            <text x="404" y="98" text-anchor="middle" font-size="8" fill="#7b7669">Pod placement</text>
+            <text x="404" y="110" text-anchor="middle" font-size="8" fill="#7b7669">Affinity · Taints</text>
+          </g>
+          <g class="an" data-tip="Controller Manager — Runs built-in controllers: ReplicaSet, Deployment, Node, Service, Endpoints. Watches API and reconciles state.">
+            <rect x="484" y="62" width="140" height="58" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <text x="554" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">Controller Mgr</text>
+            <text x="554" y="98" text-anchor="middle" font-size="8" fill="#7b7669">Reconciliation</text>
+            <text x="554" y="110" text-anchor="middle" font-size="8" fill="#7b7669">Built-in controllers</text>
+          </g>
+          <g class="an" data-tip="HPA / VPA / KEDA — Horizontal Pod Autoscaler on CPU/memory/custom metrics. KEDA for event-driven autoscaling. VPA recommends right-sizing.">
+            <rect x="634" y="62" width="160" height="58" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <text x="714" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">HPA · VPA · KEDA</text>
+            <text x="714" y="98" text-anchor="middle" font-size="8" fill="#7b7669">Autoscaling</text>
+            <text x="714" y="110" text-anchor="middle" font-size="8" fill="#7b7669">Event-driven</text>
+          </g>
+          <g class="an" data-tip="Velero — Backup and restore for cluster resources and persistent volumes. Scheduled backups to S3. Disaster recovery across clusters/regions.">
+            <rect x="804" y="62" width="140" height="58" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <text x="874" y="84" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">Velero</text>
+            <text x="874" y="98" text-anchor="middle" font-size="8" fill="#7b7669">Backup · DR</text>
+            <text x="874" y="110" text-anchor="middle" font-size="8" fill="#7b7669">PV snapshots</text>
+          </g>
+          <rect x="20" y="142" width="940" height="220" rx="14" fill="rgba(22,163,74,.04)" stroke="#16a34a" stroke-width="1.8"/>
+          <text x="490" y="164" text-anchor="middle" font-size="11.5" font-weight="700" fill="#16a34a">Worker Nodes · Namespaces · Service Mesh</text>
+          <g class="an" data-tip="Istio Service Mesh — Envoy sidecars per pod provide mTLS, traffic shifting (canary), retries, circuit breaking, and observability.">
+            <rect x="34" y="182" width="160" height="76" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="114" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Istio (Mesh)</text>
+            <text x="114" y="220" text-anchor="middle" font-size="8" fill="#7b7669">Envoy sidecars</text>
+            <text x="114" y="232" text-anchor="middle" font-size="8" fill="#7b7669">mTLS · Traffic shift</text>
+            <text x="114" y="244" text-anchor="middle" font-size="8" fill="#7b7669">Circuit breaking</text>
+          </g>
+          <g class="an" data-tip="OPA Gatekeeper — Policy engine enforcing admission rules: required labels, image registry whitelist, resource limits, non-root containers.">
+            <rect x="204" y="182" width="160" height="76" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="284" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">OPA Gatekeeper</text>
+            <text x="284" y="220" text-anchor="middle" font-size="8" fill="#7b7669">Admission control</text>
+            <text x="284" y="232" text-anchor="middle" font-size="8" fill="#7b7669">Policy-as-Code</text>
+            <text x="284" y="244" text-anchor="middle" font-size="8" fill="#7b7669">Image whitelist</text>
+          </g>
+          <g class="an" data-tip="Calico / Cilium CNI — Pod networking + NetworkPolicies. Cilium adds eBPF for observability and L7 policy. Egress control to external services.">
+            <rect x="374" y="182" width="160" height="76" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="454" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Calico / Cilium</text>
+            <text x="454" y="220" text-anchor="middle" font-size="8" fill="#7b7669">CNI + Policies</text>
+            <text x="454" y="232" text-anchor="middle" font-size="8" fill="#7b7669">eBPF observability</text>
+            <text x="454" y="244" text-anchor="middle" font-size="8" fill="#7b7669">Egress control</text>
+          </g>
+          <g class="an" data-tip="ArgoCD GitOps — Cluster state defined in Git. ArgoCD continuously reconciles. App-of-apps pattern. Automatic sync + self-heal.">
+            <rect x="544" y="182" width="160" height="76" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="624" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">ArgoCD GitOps</text>
+            <text x="624" y="220" text-anchor="middle" font-size="8" fill="#7b7669">Git = source of truth</text>
+            <text x="624" y="232" text-anchor="middle" font-size="8" fill="#7b7669">Auto sync + heal</text>
+            <text x="624" y="244" text-anchor="middle" font-size="8" fill="#7b7669">App-of-apps</text>
+          </g>
+          <g class="an" data-tip="cert-manager + External Secrets — Automated TLS certificate issuance from Let&apos;s Encrypt or Vault. Auto-renewal. External Secrets syncs from Vault/AWS SM.">
+            <rect x="714" y="182" width="230" height="76" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="829" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">cert-manager + External Secrets</text>
+            <text x="829" y="220" text-anchor="middle" font-size="8" fill="#7b7669">Let&apos;s Encrypt · Vault CA</text>
+            <text x="829" y="232" text-anchor="middle" font-size="8" fill="#7b7669">Auto-renewal</text>
+            <text x="829" y="244" text-anchor="middle" font-size="8" fill="#7b7669">Sync secrets from Vault/AWS SM</text>
+          </g>
+          <g class="an" data-tip="Namespaces — Logical isolation for teams/apps/envs. ResourceQuotas cap CPU/memory. NetworkPolicies restrict pod-to-pod traffic by namespace.">
+            <rect x="34" y="276" width="440" height="68" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="254" y="298" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Namespaces (team-a · team-b · shared · infra)</text>
+            <text x="254" y="314" text-anchor="middle" font-size="8" fill="#7b7669">ResourceQuotas · LimitRanges · NetworkPolicies</text>
+            <text x="254" y="328" text-anchor="middle" font-size="8" fill="#7b7669">RBAC RoleBindings · PodSecurityStandards</text>
+          </g>
+          <g class="an" data-tip="Persistent Volumes — StorageClasses (SSD/HDD/NFS). Dynamic PV provisioning via CSI drivers (EBS, Ceph, Portworx). Volume snapshots.">
+            <rect x="484" y="276" width="220" height="68" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="594" y="298" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Persistent Volumes</text>
+            <text x="594" y="314" text-anchor="middle" font-size="8" fill="#7b7669">CSI drivers · StorageClasses</text>
+            <text x="594" y="328" text-anchor="middle" font-size="8" fill="#7b7669">Snapshots · Clones</text>
+          </g>
+          <g class="an" data-tip="Ingress Controller — NGINX / Traefik / HAProxy with TLS termination. External-DNS auto-creates DNS records. Rate limiting at ingress.">
+            <rect x="714" y="276" width="230" height="68" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="829" y="298" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Ingress Controller</text>
+            <text x="829" y="314" text-anchor="middle" font-size="8" fill="#7b7669">NGINX / Traefik · TLS</text>
+            <text x="829" y="328" text-anchor="middle" font-size="8" fill="#7b7669">External-DNS · WAF</text>
+          </g>
+          <rect x="20" y="374" width="940" height="96" rx="14" fill="rgba(109,40,217,.04)" stroke="#6d28d9" stroke-width="1.8"/>
+          <text x="490" y="394" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">Observability Stack</text>
+          <g class="an" data-tip="Prometheus — Metrics via pull model. ServiceMonitor CRDs. Alertmanager routes alerts to Slack/PagerDuty. Thanos/Cortex for long-term.">
+            <rect x="34" y="410" width="140" height="50" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="104" y="430" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Prometheus</text>
+            <text x="104" y="444" text-anchor="middle" font-size="8" fill="#7b7669">Metrics · Alertmanager</text>
+            <text x="104" y="456" text-anchor="middle" font-size="8" fill="#7b7669">Thanos long-term</text>
+          </g>
+          <g class="an" data-tip="Grafana — Unified dashboards across metrics, logs (Loki), and traces (Jaeger/Tempo). Golden signals dashboards per service.">
+            <rect x="184" y="410" width="140" height="50" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="254" y="430" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Grafana</text>
+            <text x="254" y="444" text-anchor="middle" font-size="8" fill="#7b7669">Unified dashboards</text>
+            <text x="254" y="456" text-anchor="middle" font-size="8" fill="#7b7669">SLO / Error budgets</text>
+          </g>
+          <g class="an" data-tip="Loki — Log aggregation with Prometheus-like labels. Efficient storage with chunks in S3. Integrated with Grafana for log-metric correlation.">
+            <rect x="334" y="410" width="140" height="50" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="404" y="430" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Loki</text>
+            <text x="404" y="444" text-anchor="middle" font-size="8" fill="#7b7669">Log aggregation</text>
+            <text x="404" y="456" text-anchor="middle" font-size="8" fill="#7b7669">S3 backend</text>
+          </g>
+          <g class="an" data-tip="Jaeger / Tempo — Distributed tracing via OpenTelemetry. End-to-end request traces across microservices. Root cause analysis.">
+            <rect x="484" y="410" width="140" height="50" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="554" y="430" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Jaeger / Tempo</text>
+            <text x="554" y="444" text-anchor="middle" font-size="8" fill="#7b7669">Distributed tracing</text>
+            <text x="554" y="456" text-anchor="middle" font-size="8" fill="#7b7669">OpenTelemetry</text>
+          </g>
+          <g class="an" data-tip="Falco — Runtime security via eBPF. Detects suspicious behavior: shell in container, sensitive file reads, unexpected network calls.">
+            <rect x="634" y="410" width="140" height="50" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="704" y="430" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Falco</text>
+            <text x="704" y="444" text-anchor="middle" font-size="8" fill="#7b7669">Runtime security</text>
+            <text x="704" y="456" text-anchor="middle" font-size="8" fill="#7b7669">eBPF · SIEM alerts</text>
+          </g>
+          <g class="an" data-tip="Kiali — Istio service mesh visualization. Shows traffic topology, health, and mTLS status. Integrates with Grafana/Jaeger.">
+            <rect x="784" y="410" width="160" height="50" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="864" y="430" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Kiali</text>
+            <text x="864" y="444" text-anchor="middle" font-size="8" fill="#7b7669">Mesh topology</text>
+            <text x="864" y="456" text-anchor="middle" font-size="8" fill="#7b7669">mTLS status</text>
+          </g>
+          <rect x="20" y="484" width="940" height="76" rx="14" fill="rgba(180,83,9,.04)" stroke="#b45309" stroke-width="1.5"/>
+          <text x="490" y="504" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">Infrastructure Foundation</text>
+          <g class="an" data-tip="Infrastructure — Runs on Nutanix HCI, VMware, bare metal, or cloud (EKS/GKE/AKS). HCI provides compute + storage + network. Hybrid deployments common.">
+            <rect x="34" y="518" width="910" height="30" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="490" y="538" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">Nutanix HCI · VMware · Bare Metal · EKS / GKE / AKS (hybrid-ready)</text>
+          </g>
+        </svg>

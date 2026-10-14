@@ -1,0 +1,231 @@
+<svg class="bp-svg" viewBox="0 0 980 780" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+          <rect x="20" y="20" width="590" height="88" rx="12" fill="rgba(29,78,216,.05)" stroke="#1d4ed8" stroke-width="1.8"/>
+          <text x="315" y="40" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">Edge Security &amp; Delivery</text>
+          <g class="an" data-tip="Cloudflare / AWS WAF — DDoS protection with rate limiting, bot mitigation, and geo-blocking. AWS WAF rules protecting the LMS API from OWASP Top 10 attacks. Cloudflare handles DNS with anycast routing for global low-latency.">
+            <rect x="32" y="50" width="166" height="48" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.4"/>
+            <text x="115" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#1d4ed8">Cloudflare / AWS WAF</text>
+            <text x="115" y="80" text-anchor="middle" font-size="8" fill="#7b7669">DDoS · Rate Limiting</text>
+            <text x="115" y="91" text-anchor="middle" font-size="8" fill="#7b7669">Bot Protection</text>
+          </g>
+          <g class="an" data-tip="AWS CloudFront CDN — Global edge caching for LMS static assets, video thumbnails, and SCORM packages. Origin Shield reduces load on application layer. Custom cache policies per content type.">
+            <rect x="212" y="50" width="166" height="48" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.4"/>
+            <text x="295" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#1d4ed8">AWS CloudFront CDN</text>
+            <text x="295" y="80" text-anchor="middle" font-size="8" fill="#7b7669">Global edge caching</text>
+            <text x="295" y="91" text-anchor="middle" font-size="8" fill="#7b7669">Origin Shield</text>
+          </g>
+          <g class="an" data-tip="SSL/TLS Termination — Custom domain with HTTPS enforced. cert-manager on Kubernetes auto-renews Let's Encrypt certificates. HSTS headers and TLS 1.3 minimum enforced.">
+            <rect x="392" y="50" width="166" height="48" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.4"/>
+            <text x="475" y="68" text-anchor="middle" font-size="9" font-weight="700" fill="#0891b2">SSL / TLS</text>
+            <text x="475" y="80" text-anchor="middle" font-size="8" fill="#7b7669">Custom domain HTTPS</text>
+            <text x="475" y="91" text-anchor="middle" font-size="8" fill="#7b7669">cert-manager auto-renew</text>
+          </g>
+          <rect x="660" y="20" width="300" height="88" rx="12" fill="rgba(8,145,178,.05)" stroke="#0891b2" stroke-width="1.5"/>
+          <text x="810" y="40" text-anchor="middle" font-size="11" font-weight="700" fill="#0891b2">User Access</text>
+          <g class="an" data-tip="Admin / Super Admins — University administrators managing course catalogs, user provisioning, and compliance reports. Access via Keycloak SSO with MFA enforced.">
+            <rect x="668" y="48" width="80" height="52" rx="6" fill="#ecfeff" stroke="#0891b2" stroke-width="1"/>
+            <text x="708" y="68" text-anchor="middle" font-size="9" font-weight="600" fill="#0891b2">Admin /</text>
+            <text x="708" y="80" text-anchor="middle" font-size="9" font-weight="600" fill="#0891b2">Super Admins</text>
+          </g>
+          <g class="an" data-tip="Instructors — Faculty members uploading course content (video, SCORM, PDFs), creating MCQ assessments, and monitoring learner progress dashboards.">
+            <rect x="758" y="48" width="80" height="52" rx="6" fill="#ecfeff" stroke="#0891b2" stroke-width="1"/>
+            <text x="798" y="72" text-anchor="middle" font-size="9" font-weight="600" fill="#0891b2">Instructors</text>
+          </g>
+          <g class="an" data-tip="Trainees / Learners — 1M+ registered learners across 76 universities accessing courses, assessments, video lectures, and certificates. Mobile-responsive web interface with offline SCORM support.">
+            <rect x="848" y="48" width="100" height="52" rx="6" fill="#ecfeff" stroke="#0891b2" stroke-width="1"/>
+            <text x="898" y="72" text-anchor="middle" font-size="9" font-weight="600" fill="#0891b2">Trainees</text>
+          </g>
+          <rect x="20" y="128" width="590" height="298" rx="14" fill="rgba(22,163,74,.03)" stroke="#16a34a" stroke-width="2"/>
+          <text x="315" y="148" text-anchor="middle" font-size="11.5" font-weight="700" fill="#16a34a">Kubernetes Application Layer</text>
+          <g class="an" data-tip="NGINX Ingress Controller — Manages external HTTP/HTTPS traffic routing into the cluster. Path-based routing: /api → API Gateway, /media → Video Streaming, /lms → LMS Core. Rate limiting and connection throttling configured per namespace.">
+            <rect x="34" y="158" width="166" height="58" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+            <text x="117" y="178" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">NGINX Ingress Controller</text>
+            <text x="117" y="191" text-anchor="middle" font-size="8" fill="#7b7669">Load balancing · Routing</text>
+            <text x="117" y="203" text-anchor="middle" font-size="8" fill="#7b7669">Rate limiting · SSL offload</text>
+          </g>
+          <g class="an" data-tip="Keycloak SSO — Identity provider supporting SAML 2.0, OIDC, and OAuth2. Integrates with university LDAP/AD directories. 2FA enforced for admin roles. Audit logs for all authentication events. RBAC groups map to LMS roles.">
+            <rect x="224" y="158" width="174" height="58" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+            <text x="311" y="178" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">Keycloak SSO</text>
+            <text x="311" y="191" text-anchor="middle" font-size="8" fill="#7b7669">SAML/OIDC · RBAC · 2FA</text>
+            <text x="311" y="203" text-anchor="middle" font-size="8" fill="#7b7669">LDAP sync · Audit logs</text>
+          </g>
+          <g class="an" data-tip="API Gateway — Central routing layer within the Kubernetes cluster. Applies JWT validation (via Keycloak), request rate limiting, and OpenAPI schema validation before forwarding to microservices. Istio sidecar provides mTLS between gateway and backends.">
+            <rect x="118" y="238" width="300" height="44" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+            <text x="268" y="256" text-anchor="middle" font-size="10" font-weight="700" fill="#b45309">API Gateway</text>
+            <text x="268" y="270" text-anchor="middle" font-size="8" fill="#7b7669">JWT validation · Rate limiting · mTLS · Schema validation</text>
+          </g>
+          <g class="an" data-tip="LMS Core — Moodle-based LMS managing course catalog, enrollment, progress tracking, and discussion forums. Single-DB multi-tenant architecture: all 76 universities share one PostgreSQL database, with tenant_id based row-level isolation. Each tenant resolves to its own custom domain and branded landing page with its own logo, while data remains logically separated per tenant. Horizontal scaling via HPA on CPU and session count metrics.">
+            <rect x="32" y="302" width="128" height="58" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="96" y="320" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">LMS Core</text>
+            <text x="96" y="333" text-anchor="middle" font-size="8" fill="#7b7669">Courses + paths</text>
+            <text x="96" y="345" text-anchor="middle" font-size="8" fill="#7b7669">Single-DB MT</text>
+          </g>
+          <g class="an" data-tip="Assessment Service — MCQ engine with auto-grading, randomised question banks, and proctoring integration. Generates per-learner result PDFs. Prevents cheating via answer shuffling and time limits stored in Redis.">
+            <rect x="170" y="302" width="128" height="58" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="234" y="320" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">Assessment</text>
+            <text x="234" y="333" text-anchor="middle" font-size="8" fill="#7b7669">MCQ + Grading</text>
+            <text x="234" y="345" text-anchor="middle" font-size="8" fill="#7b7669">Question banks</text>
+          </g>
+          <g class="an" data-tip="Certification Service — Auto-generates PDF certificates on course completion. Digital signatures via AWS KMS. QR code verification endpoint. Bulk issuance for cohort completions. Certificates stored in S3 with pre-signed URLs.">
+            <rect x="308" y="302" width="128" height="58" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="372" y="320" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">Certification</text>
+            <text x="372" y="333" text-anchor="middle" font-size="8" fill="#7b7669">Auto-generated</text>
+            <text x="372" y="345" text-anchor="middle" font-size="8" fill="#7b7669">KMS signed PDF</text>
+          </g>
+          <g class="an" data-tip="Analytics API — Real-time learner engagement metrics: time-on-task, video watch percentage, assessment attempts, and cohort progress. Powers Grafana dashboards for university administrators and ICAR central reporting.">
+            <rect x="446" y="302" width="150" height="58" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="521" y="320" text-anchor="middle" font-size="9" font-weight="700" fill="#16a34a">Analytics API</text>
+            <text x="521" y="333" text-anchor="middle" font-size="8" fill="#7b7669">Reports + Dashboard</text>
+            <text x="521" y="345" text-anchor="middle" font-size="8" fill="#7b7669">DORA · Engagement</text>
+          </g>
+          <g class="an" data-tip="Jenkins CI/CD + Security Scans — Automated pipeline: build Docker image → SonarQube SAST → Trivy CVE scan → push to ECR → deploy to Kubernetes DEV → UAT → PROD namespaces with approval gates.">
+            <rect x="32" y="380" width="178" height="36" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="121" y="396" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b45309">Jenkins CI/CD + Security Scans</text>
+            <text x="121" y="408" text-anchor="middle" font-size="7.5" fill="#7b7669">Trivy · SonarQube · Gates</text>
+          </g>
+          <g class="an" data-tip="Notification Service — Email alerts (AWS SES) and SMS notifications (AWS SNS) for: assignment due dates, new course enrolment, certificate issuance, system maintenance windows, and assessment result publication.">
+            <rect x="224" y="380" width="148" height="36" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="298" y="396" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b45309">Notification Svc</text>
+            <text x="298" y="408" text-anchor="middle" font-size="7.5" fill="#7b7669">Email + SMS Alerts</text>
+          </g>
+          <g class="an" data-tip="Video Streaming Service — Adaptive bitrate (HLS) video delivery with DRM (Widevine/FairPlay). AWS MediaConvert for transcoding uploads. Cloudfront signed URLs for access control. Playback analytics tracking watch time and drop-off points.">
+            <rect x="386" y="380" width="210" height="36" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="491" y="396" text-anchor="middle" font-size="8.5" font-weight="700" fill="#b45309">Video Streaming Svc</text>
+            <text x="491" y="408" text-anchor="middle" font-size="7.5" fill="#7b7669">DRM · HLS · Playback analytics</text>
+          </g>
+          <rect x="660" y="128" width="300" height="178" rx="12" fill="rgba(109,40,217,.04)" stroke="#6d28d9" stroke-width="1.5"/>
+          <text x="810" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#6d28d9">Enterprise Integrations</text>
+          <g class="an" data-tip="Zoho CRM — Learner and lead management integration. Moodle enrolment events sync to Zoho/Salesforce for tracking corporate training pipelines and renewal reminders.">
+            <rect x="668" y="158" width="128" height="48" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1"/>
+            <text x="732" y="177" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Zoho CRM</text>
+            <text x="732" y="190" text-anchor="middle" font-size="8" fill="#7b7669">SF · Learner sync</text>
+          </g>
+          <g class="an" data-tip="HRMS / Active Directory — User provisioning: new employee records in HRMS automatically create Moodle accounts via Keycloak SCIM. Deprovisioning on termination ensures access revocation within minutes.">
+            <rect x="810" y="158" width="138" height="48" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1"/>
+            <text x="879" y="177" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">HRMS / AD</text>
+            <text x="879" y="190" text-anchor="middle" font-size="8" fill="#7b7669">User provisioning</text>
+          </g>
+          <g class="an" data-tip="Zoom / MS Teams — Live virtual classroom integration. Moodle activity module launches Zoom sessions directly. Meeting links auto-provisioned per course schedule. Attendance sync back to LMS gradebook.">
+            <rect x="668" y="218" width="128" height="48" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1"/>
+            <text x="732" y="237" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Zoom / Teams</text>
+            <text x="732" y="250" text-anchor="middle" font-size="8" fill="#7b7669">Live sessions</text>
+          </g>
+          <g class="an" data-tip="Government SSO Portal — SAML 2.0 federation with National Academic Depository (NAD) and Government identity portals. Allows trainees to use eSign-based government credentials for certificate verification.">
+            <rect x="810" y="218" width="138" height="48" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1"/>
+            <text x="879" y="237" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Gov't SSO Portal</text>
+            <text x="879" y="250" text-anchor="middle" font-size="8" fill="#7b7669">SAML federation</text>
+          </g>
+          <text x="730" y="285" text-anchor="middle" font-size="8" fill="#7b7669" opacity=".6">REST API / SAML / SCIM</text>
+          <rect x="660" y="318" width="300" height="108" rx="12" fill="rgba(8,145,178,.04)" stroke="#0891b2" stroke-width="1.5"/>
+          <text x="810" y="338" text-anchor="middle" font-size="11" font-weight="700" fill="#0891b2">DevSecOps &amp; Infrastructure</text>
+          <g class="an" data-tip="Kubernetes Cluster (EKS) — Multi-AZ EKS cluster with Worker Nodes (m5.2xlarge × 12), Master nodes (managed), and ALB Ingress. HPA + Cluster Autoscaler handles traffic spikes during exam seasons.">
+            <rect x="668" y="348" width="96" height="68" rx="7" fill="#ecfeff" stroke="#0891b2" stroke-width="1"/>
+            <text x="716" y="368" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0891b2">Kubernetes</text>
+            <text x="716" y="380" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0891b2">Cluster</text>
+            <text x="716" y="393" text-anchor="middle" font-size="7.5" fill="#7b7669">EKS · Workers</text>
+            <text x="716" y="405" text-anchor="middle" font-size="7.5" fill="#7b7669">Masters · ALB</text>
+          </g>
+          <g class="an" data-tip="Monitoring — Prometheus scraping pod and node metrics. Grafana dashboards for course enrollment rates, video buffering events, API error rates, and database connection pool usage. Alerts to PagerDuty for SLA breaches.">
+            <rect x="776" y="348" width="96" height="68" rx="7" fill="#ecfeff" stroke="#0891b2" stroke-width="1"/>
+            <text x="824" y="368" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0891b2">Monitoring</text>
+            <text x="824" y="382" text-anchor="middle" font-size="7.5" fill="#7b7669">Prometheus</text>
+            <text x="824" y="394" text-anchor="middle" font-size="7.5" fill="#7b7669">+ Grafana</text>
+          </g>
+          <g class="an" data-tip="Backup & DR — Velero cluster backups to S3 every 6 hours. PostgreSQL continuous WAL archiving to S3. RTO: 2 hours, RPO: 30 minutes. Cross-region replication for critical data. Quarterly DR drills documented.">
+            <rect x="884" y="348" width="68" height="68" rx="7" fill="#ecfeff" stroke="#0891b2" stroke-width="1"/>
+            <text x="918" y="375" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0891b2">Backup</text>
+            <text x="918" y="388" text-anchor="middle" font-size="7.5" fill="#7b7669">&amp; DR</text>
+            <text x="918" y="401" text-anchor="middle" font-size="7" fill="#7b7669">Velero+S3</text>
+          </g>
+          <rect x="20" y="446" width="590" height="148" rx="14" fill="rgba(180,83,9,.03)" stroke="#b45309" stroke-width="2"/>
+          <text x="315" y="466" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">Data &amp; Media Layer</text>
+          <g class="an" data-tip="PostgreSQL — Primary relational database for all LMS data: users, courses, enrollments, grades, and certificates. Single shared database with row-level tenant isolation via tenant_id column on every table. Row Level Security (RLS) policies enforce per-tenant query scoping so data stays logically separated across all 76 universities. Read replicas for analytics queries. Encrypted at rest with AWS KMS.">
+            <rect x="32" y="476" width="128" height="100" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+            <text x="96" y="494" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">PostgreSQL</text>
+            <text x="96" y="507" text-anchor="middle" font-size="8" fill="#7b7669">Single shared DB</text>
+            <text x="96" y="520" text-anchor="middle" font-size="8" fill="#7b7669">Row-level (tenant_id)</text>
+            <text x="96" y="533" text-anchor="middle" font-size="8" fill="#7b7669">RLS · KMS encrypted</text>
+          </g>
+          <g class="an" data-tip="Redis Cache — In-memory cache for session tokens, quiz timer state, course navigation state, and frequently accessed course metadata. Cluster mode with 3 shards. TTL configured per data type. Reduces PostgreSQL load by ~70%.">
+            <rect x="174" y="476" width="128" height="100" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+            <text x="238" y="494" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">Redis Cache</text>
+            <text x="238" y="507" text-anchor="middle" font-size="8" fill="#7b7669">Session · Queue</text>
+            <text x="238" y="520" text-anchor="middle" font-size="8" fill="#7b7669">Cluster mode</text>
+            <text x="238" y="533" text-anchor="middle" font-size="8" fill="#7b7669">3 shards · TTL</text>
+          </g>
+          <g class="an" data-tip="Object Storage — S3 buckets for SCORM packages, uploaded PDFs, assignment submissions, and certificate files. Lifecycle policies tier to Glacier after 90 days. Pre-signed URLs for secure learner access. ClamAV scans on upload.">
+            <rect x="316" y="476" width="128" height="100" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+            <text x="380" y="494" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">Object Storage</text>
+            <text x="380" y="507" text-anchor="middle" font-size="8" fill="#7b7669">Content · SCORM</text>
+            <text x="380" y="520" text-anchor="middle" font-size="8" fill="#7b7669">Pre-signed URLs</text>
+            <text x="380" y="533" text-anchor="middle" font-size="8" fill="#7b7669">Glacier tiering</text>
+          </g>
+          <g class="an" data-tip="Enterprise Media Platform — AWS MediaConvert + MediaPackage for video transcoding (1080p → 360p adaptive). DRM (Widevine/FairPlay/PlayReady) for protected playback. CloudFront streaming with signed cookies. Analytics on watch completion rates.">
+            <rect x="458" y="476" width="140" height="100" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+            <text x="528" y="494" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">Enterprise Media</text>
+            <text x="528" y="506" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">Platform</text>
+            <text x="528" y="520" text-anchor="middle" font-size="8" fill="#7b7669">Video · DRM</text>
+            <text x="528" y="532" text-anchor="middle" font-size="8" fill="#7b7669">HLS · Delivery</text>
+            <text x="528" y="544" text-anchor="middle" font-size="8" fill="#7b7669">MediaConvert</text>
+          </g>
+          <line x1="315" y1="108" x2="315" y2="128" stroke="#16a34a" stroke-width="1.5" opacity=".4" class="fl"/>
+          <line x1="660" y1="64" x2="610" y2="64" stroke="#0891b2" stroke-width="1.5" opacity=".4" class="fl"/>
+          <line x1="117" y1="216" x2="180" y2="238" stroke="#16a34a" stroke-width="1.4" opacity=".4" class="fl"/>
+          <line x1="311" y1="216" x2="295" y2="238" stroke="#16a34a" stroke-width="1.4" opacity=".4" class="fl"/>
+          <line x1="176" y1="282" x2="176" y2="302" stroke="#b45309" stroke-width="1.4" opacity=".4" class="fl"/>
+          <line x1="268" y1="282" x2="268" y2="302" stroke="#b45309" stroke-width="1.4" opacity=".4" class="fl"/>
+          <line x1="360" y1="282" x2="360" y2="302" stroke="#b45309" stroke-width="1.4" opacity=".4" class="fl"/>
+          <line x1="96" y1="360" x2="96" y2="446" stroke="#b45309" stroke-width="1.4" opacity=".4" class="fl"/>
+          <line x1="234" y1="360" x2="200" y2="446" stroke="#b45309" stroke-width="1.4" opacity=".35" class="fl"/>
+          <line x1="491" y1="416" x2="491" y2="446" stroke="#b45309" stroke-width="1.4" opacity=".4" class="fl"/>
+          <line x1="660" y1="178" x2="610" y2="280" stroke="#6d28d9" stroke-width="1.2" opacity=".35" class="fl2"/>
+          <line x1="121" y1="380" x2="810" y2="348" stroke="#b45309" stroke-width="1.2" opacity=".3" class="fl2"/>
+          <rect x="20" y="614" width="940" height="156" rx="14" fill="rgba(109,40,217,.04)" stroke="#6d28d9" stroke-width="2"/>
+          <text x="490" y="634" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">Tenant Layer — 76 Universities · Single-DB Multi-Tenant · Per-Tenant Domain + Logo</text>
+          <g class="an" data-tip="North Zone — 20 universities across Delhi, Punjab, Haryana, Uttar Pradesh, Uttarakhand, Himachal Pradesh, and J&amp;K. Each university resolves to its own custom domain (e.g. lms.university.ac.in) with its own branded landing page and logo. Data stays logically separated via tenant_id row-level isolation in the shared PostgreSQL database.">
+            <rect x="34" y="648" width="222" height="110" rx="10" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.4"/>
+            <rect x="34" y="648" width="222" height="4" rx="2" fill="#1d4ed8"/>
+            <text x="48" y="670" font-size="9.5" font-weight="700" fill="#1d4ed8">NORTH</text>
+            <text x="245" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#1d4ed8" font-family="Fraunces,Georgia,serif">20</text>
+            <text x="48" y="686" font-size="8" fill="#7b7669">Universities</text>
+            <text x="48" y="705" font-size="8" fill="#3a3830">Delhi · Punjab · Haryana</text>
+            <text x="48" y="717" font-size="8" fill="#3a3830">UP · Uttarakhand · HP · J&amp;K</text>
+            <text x="48" y="737" font-size="7.5" fill="#6d28d9" font-style="italic">own domain · own logo</text>
+            <text x="48" y="749" font-size="7.5" fill="#6d28d9" font-style="italic">logical separation (tenant_id)</text>
+          </g>
+          <g class="an" data-tip="East Zone — 18 universities across West Bengal, Bihar, Jharkhand, Odisha, Assam, and North-Eastern states. Each university resolves to its own custom domain with its own branded landing page and logo. Data stays logically separated via tenant_id row-level isolation in the shared PostgreSQL database.">
+            <rect x="266" y="648" width="222" height="110" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.4"/>
+            <rect x="266" y="648" width="222" height="4" rx="2" fill="#0891b2"/>
+            <text x="280" y="670" font-size="9.5" font-weight="700" fill="#0891b2">EAST</text>
+            <text x="477" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#0891b2" font-family="Fraunces,Georgia,serif">18</text>
+            <text x="280" y="686" font-size="8" fill="#7b7669">Universities</text>
+            <text x="280" y="705" font-size="8" fill="#3a3830">West Bengal · Bihar</text>
+            <text x="280" y="717" font-size="8" fill="#3a3830">Jharkhand · Odisha · Assam · NE</text>
+            <text x="280" y="737" font-size="7.5" fill="#6d28d9" font-style="italic">own domain · own logo</text>
+            <text x="280" y="749" font-size="7.5" fill="#6d28d9" font-style="italic">logical separation (tenant_id)</text>
+          </g>
+          <g class="an" data-tip="West Zone — 19 universities across Maharashtra, Gujarat, Rajasthan, Madhya Pradesh, and Goa. Each university resolves to its own custom domain with its own branded landing page and logo. Data stays logically separated via tenant_id row-level isolation in the shared PostgreSQL database.">
+            <rect x="498" y="648" width="222" height="110" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
+            <rect x="498" y="648" width="222" height="4" rx="2" fill="#b45309"/>
+            <text x="512" y="670" font-size="9.5" font-weight="700" fill="#b45309">WEST</text>
+            <text x="709" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#b45309" font-family="Fraunces,Georgia,serif">19</text>
+            <text x="512" y="686" font-size="8" fill="#7b7669">Universities</text>
+            <text x="512" y="705" font-size="8" fill="#3a3830">Maharashtra · Gujarat</text>
+            <text x="512" y="717" font-size="8" fill="#3a3830">Rajasthan · MP · Goa</text>
+            <text x="512" y="737" font-size="7.5" fill="#6d28d9" font-style="italic">own domain · own logo</text>
+            <text x="512" y="749" font-size="7.5" fill="#6d28d9" font-style="italic">logical separation (tenant_id)</text>
+          </g>
+          <g class="an" data-tip="South Zone — 19 universities across Karnataka, Tamil Nadu, Kerala, Andhra Pradesh, and Telangana. Each university resolves to its own custom domain with its own branded landing page and logo. Data stays logically separated via tenant_id row-level isolation in the shared PostgreSQL database.">
+            <rect x="730" y="648" width="216" height="110" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+            <rect x="730" y="648" width="216" height="4" rx="2" fill="#16a34a"/>
+            <text x="744" y="670" font-size="9.5" font-weight="700" fill="#16a34a">SOUTH</text>
+            <text x="935" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#16a34a" font-family="Fraunces,Georgia,serif">19</text>
+            <text x="744" y="686" font-size="8" fill="#7b7669">Universities</text>
+            <text x="744" y="705" font-size="8" fill="#3a3830">Karnataka · Tamil Nadu</text>
+            <text x="744" y="717" font-size="8" fill="#3a3830">Kerala · Andhra · Telangana</text>
+            <text x="744" y="737" font-size="7.5" fill="#6d28d9" font-style="italic">own domain · own logo</text>
+            <text x="744" y="749" font-size="7.5" fill="#6d28d9" font-style="italic">logical separation (tenant_id)</text>
+          </g>
+          <line x1="96" y1="576" x2="96" y2="648" stroke="#6d28d9" stroke-width="1.3" opacity=".35" class="fl2"/>
+          <line x1="380" y1="576" x2="380" y2="648" stroke="#6d28d9" stroke-width="1.3" opacity=".35" class="fl2"/>
+          <line x1="610" y1="576" x2="610" y2="648" stroke="#6d28d9" stroke-width="1.3" opacity=".35" class="fl2"/>
+        </svg>

@@ -1,0 +1,94 @@
+<svg class="bp-svg" viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+          <defs>
+            <marker id="hrArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b7669"/></marker>
+            <marker id="hrArrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker>
+            <marker id="hrArrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+            <marker id="hrArrV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6d28d9"/></marker>
+          </defs>
+          <line x1="490" y1="20" x2="490" y2="530" stroke="#e2dfd7" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="245" y="36" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">INGESTION PIPELINE</text>
+          <text x="735" y="36" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">QUERY PIPELINE</text>
+          <g class="an" data-tip="HR Document Upload (S3) — Versioned S3 bucket. S3 PUT fires EventBridge → Lambda. Every version retained (never deleted). Old versions flagged inactive in DynamoDB for audit — historical policy retrievable by effective date.">
+            <rect x="30" y="50" width="420" height="56" rx="10" fill="rgba(180,83,9,.07)" stroke="#b45309" stroke-width="1.4"/>
+            <text x="240" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#b45309">① HR Document Upload (S3 Versioned)</text>
+            <text x="240" y="88" text-anchor="middle" font-size="8.5" fill="#7b7669">S3 PUT → EventBridge → Lambda · Every version retained · DynamoDB audit log</text>
+            <text x="240" y="100" text-anchor="middle" font-size="7.5" fill="#b45309" font-weight="600">PDF policies · SOPs · Leave rules · Benefits guides</text>
+          </g>
+          <g class="an" data-tip="Amazon Textract (Async) — StartDocumentAnalysis. Extracts text, tables, section headings, key-value pairs from native PDFs and scanned images. SNS completion triggers result Lambda. Confidence scores logged to DynamoDB. AWS equivalent of Azure Document Intelligence.">
+            <rect x="30" y="120" width="420" height="56" rx="10" fill="rgba(8,145,178,.07)" stroke="#0891b2" stroke-width="1.4"/>
+            <text x="240" y="142" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">② Amazon Textract (Async + SNS)</text>
+            <text x="240" y="158" text-anchor="middle" font-size="8.5" fill="#7b7669">Text · Tables · Section headings · Key-value pairs</text>
+            <text x="240" y="170" text-anchor="middle" font-size="7.5" fill="#0891b2" font-weight="600">Confidence scores → DynamoDB · Native PDFs + scanned</text>
+          </g>
+          <g class="an" data-tip="Structure-Aware Chunking — Headers/footers removed. Splits at section boundaries (not arbitrary token counts). 300–500 tokens per chunk, 50–80 token overlap. Prevents a policy rule being separated from its exception or condition.">
+            <rect x="30" y="190" width="420" height="56" rx="10" fill="rgba(22,163,74,.07)" stroke="#16a34a" stroke-width="1.4"/>
+            <text x="240" y="212" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">③ Clean &amp; Structure-Aware Chunk</text>
+            <text x="240" y="228" text-anchor="middle" font-size="8.5" fill="#7b7669">Section boundary splits · 300–500 tokens · 50–80 overlap</text>
+            <text x="240" y="240" text-anchor="middle" font-size="7.5" fill="#16a34a" font-weight="600">Rule never separated from its exception</text>
+          </g>
+          <g class="an" data-tip="Metadata Enrichment — Each chunk tagged: policy name, section title, effective date, access_classification, department, page number, chunk index. Metadata drives filtered retrieval and version audit. access_classification is the security trimming key.">
+            <rect x="30" y="260" width="420" height="56" rx="10" fill="rgba(180,83,9,.07)" stroke="#b45309" stroke-width="1.4"/>
+            <text x="240" y="282" text-anchor="middle" font-size="10" font-weight="700" fill="#b45309">④ Metadata Enrichment</text>
+            <text x="240" y="298" text-anchor="middle" font-size="8.5" fill="#7b7669">policy_name · section · effective_date · access_classification · dept</text>
+            <text x="240" y="310" text-anchor="middle" font-size="7.5" fill="#b45309" font-weight="600">access_classification = security trimming key</text>
+          </g>
+          <g class="an" data-tip="Titan Embeddings v2 (1536-dim) → OpenSearch HNSW + BM25. Same model for BOTH ingestion and query (critical for vector space alignment). HNSW k-NN indexed in parallel with BM25 keyword fields. DynamoDB version control: old policy versions flagged inactive (never deleted).">
+            <rect x="30" y="330" width="420" height="70" rx="10" fill="rgba(109,40,217,.07)" stroke="#6d28d9" stroke-width="1.4"/>
+            <text x="240" y="352" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">⑤ Titan Embeddings v2 → OpenSearch Index</text>
+            <text x="240" y="368" text-anchor="middle" font-size="8.5" fill="#7b7669">1536-dim vectors · Same model as query (alignment critical)</text>
+            <text x="240" y="383" text-anchor="middle" font-size="8.5" fill="#7b7669">HNSW k-NN + BM25 keyword fields indexed in parallel</text>
+            <text x="240" y="393" text-anchor="middle" font-size="7.5" fill="#6d28d9" font-weight="600">DynamoDB version control · Old versions flagged inactive</text>
+          </g>
+          <g class="an" data-tip="IAM Identity Center (SSO) — Employee authenticates. JWT contains: user_id, access_level, department. Group memberships resolve access_classification. API Gateway validates JWT on every request. No JWT = request rejected before touching any data.">
+            <rect x="510" y="50" width="440" height="56" rx="10" fill="rgba(29,78,216,.07)" stroke="#1d4ed8" stroke-width="1.4"/>
+            <text x="730" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8">① Authenticate — IAM Identity Center (SSO)</text>
+            <text x="730" y="88" text-anchor="middle" font-size="8.5" fill="#7b7669">JWT: user_id · access_level · department · group memberships</text>
+            <text x="730" y="100" text-anchor="middle" font-size="7.5" fill="#1d4ed8" font-weight="600">API Gateway validates JWT on every request</text>
+          </g>
+          <g class="an" data-tip="Normalise → Embed — Lambda normalises query (expands abbreviations, resolves pronouns). Same Titan Embeddings v2 produces 1536-dim query vector in identical semantic space as the document index. Mismatched models would produce meaningless similarity scores.">
+            <rect x="510" y="120" width="440" height="56" rx="10" fill="rgba(8,145,178,.07)" stroke="#0891b2" stroke-width="1.4"/>
+            <text x="730" y="142" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">② Normalise → ③ Embed (Titan Embeddings v2)</text>
+            <text x="730" y="158" text-anchor="middle" font-size="8.5" fill="#7b7669">Abbreviation expansion · Pronoun resolution · 1536-dim query vector</text>
+            <text x="730" y="170" text-anchor="middle" font-size="7.5" fill="#0891b2" font-weight="600">Identical semantic space to document index</text>
+          </g>
+          <g class="an" data-tip="Hybrid Retrieval — OpenSearch BM25 + HNSW k-NN simultaneously. BM25 handles exact terms (leave codes, policy IDs). Vector handles semantic intent. Semantic reranker reorders top-20 candidates by true query intent alignment. More accurate than either alone.">
+            <rect x="510" y="190" width="440" height="56" rx="10" fill="rgba(22,163,74,.07)" stroke="#16a34a" stroke-width="1.4"/>
+            <text x="730" y="212" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">④ Hybrid Retrieval — OpenSearch BM25 + HNSW k-NN</text>
+            <text x="730" y="228" text-anchor="middle" font-size="8.5" fill="#7b7669">BM25 exact terms + semantic k-NN simultaneously</text>
+            <text x="730" y="240" text-anchor="middle" font-size="7.5" fill="#16a34a" font-weight="600">Semantic reranker reorders top-20 by true intent</text>
+          </g>
+          <g class="an" data-tip="Security Trimming — OpenSearch field-level security applied DURING retrieval — not post-retrieval. Unauthorised content NEVER enters the LLM context window. Implemented via OpenSearch field-level security + IAM-scoped roles. HR executives see executive-level policies; junior staff see only their access tier.">
+            <rect x="510" y="260" width="440" height="56" rx="10" fill="rgba(220,38,38,.08)" stroke="#dc2626" stroke-width="1.4"/>
+            <text x="730" y="282" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">⑤ Security Trimming — Field-Level Security DURING Retrieval</text>
+            <text x="730" y="298" text-anchor="middle" font-size="8.5" fill="#7b7669">Unauthorised chunks NEVER enter LLM context · OpenSearch FLS</text>
+            <text x="730" y="310" text-anchor="middle" font-size="7.5" fill="#dc2626" font-weight="600">Not post-retrieval filtering — applied at query time</text>
+          </g>
+          <g class="an" data-tip="Bedrock Claude 3 Sonnet (temperature 0.1) — Generates cited, grounded answer. Every factual claim requires a citation (policy name + section). Relevance threshold fallback: if top chunks score below threshold → fallback response (prevents hallucination on low-evidence queries). CloudWatch logs full interaction with correlation ID.">
+            <rect x="510" y="330" width="440" height="70" rx="10" fill="rgba(109,40,217,.07)" stroke="#6d28d9" stroke-width="1.5"/>
+            <text x="730" y="352" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">⑥ Threshold Check → ⑦ Bedrock Claude 3 Sonnet</text>
+            <text x="730" y="368" text-anchor="middle" font-size="8.5" fill="#7b7669">Temperature 0.1 · Citation required per factual claim</text>
+            <text x="730" y="383" text-anchor="middle" font-size="8.5" fill="#7b7669">Relevance threshold fallback → no hallucination on weak evidence</text>
+            <text x="730" y="393" text-anchor="middle" font-size="7.5" fill="#6d28d9" font-weight="600">CloudWatch: full interaction log with correlation ID</text>
+          </g>
+          <rect x="30" y="420" width="920" height="40" rx="8" fill="rgba(109,40,217,.05)" stroke="#6d28d9" stroke-width="1.2"/>
+          <text x="118" y="442" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Target: &lt;5% Hallucination</text>
+          <text x="118" y="453" text-anchor="middle" font-size="7.5" fill="#7b7669">Ground-truth eval sets</text>
+          <text x="295" y="442" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Temperature 0.1</text>
+          <text x="295" y="453" text-anchor="middle" font-size="7.5" fill="#7b7669">Factual · Consistent · Cited</text>
+          <text x="490" y="442" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">1536-dim Vectors</text>
+          <text x="490" y="453" text-anchor="middle" font-size="7.5" fill="#7b7669">Titan Embeddings v2 · Both sides</text>
+          <text x="685" y="442" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Security Trim @ Query</text>
+          <text x="685" y="453" text-anchor="middle" font-size="7.5" fill="#7b7669">Never post-retrieval</text>
+          <text x="866" y="442" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Version Audit</text>
+          <text x="866" y="453" text-anchor="middle" font-size="7.5" fill="#7b7669">Effective date retrievable</text>
+          <line x1="240" y1="106" x2="240" y2="120" stroke="#b45309" stroke-width="1.6" opacity=".7" marker-end="url(#hrArr)" class="fl"/>
+          <line x1="240" y1="176" x2="240" y2="190" stroke="#16a34a" stroke-width="1.6" opacity=".7" marker-end="url(#hrArrG)" class="fl"/>
+          <line x1="240" y1="246" x2="240" y2="260" stroke="#b45309" stroke-width="1.6" opacity=".7" marker-end="url(#hrArr)" class="fl"/>
+          <line x1="240" y1="316" x2="240" y2="330" stroke="#6d28d9" stroke-width="1.6" opacity=".7" marker-end="url(#hrArrV)" class="fl"/>
+          <line x1="730" y1="106" x2="730" y2="120" stroke="#1d4ed8" stroke-width="1.6" opacity=".7" marker-end="url(#hrArrB)" class="fl"/>
+          <line x1="730" y1="176" x2="730" y2="190" stroke="#0891b2" stroke-width="1.6" opacity=".7" marker-end="url(#hrArr)" class="fl"/>
+          <line x1="730" y1="246" x2="730" y2="260" stroke="#16a34a" stroke-width="1.6" opacity=".7" marker-end="url(#hrArrG)" class="fl"/>
+          <line x1="730" y1="316" x2="730" y2="330" stroke="#dc2626" stroke-width="1.6" opacity=".7" marker-end="url(#hrArr)" class="fl"/>
+          <line x1="450" y1="365" x2="510" y2="218" stroke="#6d28d9" stroke-width="1.4" opacity=".45" stroke-dasharray="5 3" marker-end="url(#hrArrV)"/>
+          <text x="475" y="298" text-anchor="middle" font-size="8" fill="#6d28d9" transform="rotate(-40,475,298)">Shared Index</text>
+        </svg>

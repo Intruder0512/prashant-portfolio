@@ -1,0 +1,142 @@
+<svg class="bp-svg" viewBox="0 0 980 580" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+          <rect x="20" y="20" width="220" height="540" rx="14" fill="rgba(22,163,74,.04)" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="130" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#16a34a">1 · Field Layer</text>
+          <g class="an" data-tip="ARM Cameras — Edge vision devices (Cortex-A + NPU) capturing RGB / IR video at 30fps. ONNX or TFLite model runs on-device for real-time inference.">
+            <rect x="36" y="60" width="188" height="70" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="130" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">ARM Cameras</text>
+            <text x="130" y="98" text-anchor="middle" font-size="8" fill="#7b7669">RGB / IR · 30fps</text>
+            <text x="130" y="112" text-anchor="middle" font-size="8" fill="#7b7669">On-device inference</text>
+            <text x="130" y="124" text-anchor="middle" font-size="8" fill="#7b7669">Cortex-A + NPU</text>
+          </g>
+          <g class="an" data-tip="MCU Sensors — Low-power microcontrollers (ESP32, STM32, nRF52) sampling temp, humidity, soil moisture, motion, GPS. Battery-powered with LoRa/BLE uplink.">
+            <rect x="36" y="146" width="188" height="70" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="130" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">MCU Sensors</text>
+            <text x="130" y="184" text-anchor="middle" font-size="8" fill="#7b7669">ESP32 · STM32 · nRF52</text>
+            <text x="130" y="198" text-anchor="middle" font-size="8" fill="#7b7669">Temp · Humidity · GPS</text>
+            <text x="130" y="210" text-anchor="middle" font-size="8" fill="#7b7669">LoRa · BLE · Battery</text>
+          </g>
+          <g class="an" data-tip="Actuators — Relays, motors, pumps, valves controlled by edge decisions. Closed-loop with sensor feedback; fail-safe defaults on network loss.">
+            <rect x="36" y="232" width="188" height="64" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="130" y="254" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Actuators</text>
+            <text x="130" y="270" text-anchor="middle" font-size="8" fill="#7b7669">Relays · Motors · Pumps</text>
+            <text x="130" y="282" text-anchor="middle" font-size="8" fill="#7b7669">Fail-safe defaults</text>
+          </g>
+          <g class="an" data-tip="Connectivity — 4G/5G for bandwidth, LoRa for long-range low-power, Wi-Fi for indoor. Automatic failover between links.">
+            <rect x="36" y="312" width="188" height="64" rx="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+            <text x="130" y="334" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Connectivity</text>
+            <text x="130" y="350" text-anchor="middle" font-size="8" fill="#7b7669">4G/5G · LoRa · Wi-Fi</text>
+            <text x="130" y="362" text-anchor="middle" font-size="8" fill="#7b7669">Multi-link failover</text>
+          </g>
+          <rect x="260" y="20" width="220" height="540" rx="14" fill="rgba(8,145,178,.04)" stroke="#0891b2" stroke-width="1.5"/>
+          <text x="370" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#0891b2">2 · Edge Layer</text>
+          <g class="an" data-tip="Edge Gateway — Industrial gateway (Jetson, Pi CM4, i.MX8) aggregating MCU sensor and camera data. Runs local inference and orchestration.">
+            <rect x="276" y="60" width="188" height="66" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="370" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Edge Gateway</text>
+            <text x="370" y="98" text-anchor="middle" font-size="8" fill="#7b7669">Jetson · Pi CM4 · i.MX8</text>
+            <text x="370" y="110" text-anchor="middle" font-size="8" fill="#7b7669">Aggregation · orchestration</text>
+            <text x="370" y="122" text-anchor="middle" font-size="8" fill="#7b7669">Local storage buffer</text>
+          </g>
+          <g class="an" data-tip="TFLite / ONNX Runtime — Quantized YOLO / MobileNet models running on NPU or GPU. INT8 quantization reduces model size ~4x. Sub-100ms inference.">
+            <rect x="276" y="142" width="188" height="70" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="370" y="164" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">TFLite / ONNX</text>
+            <text x="370" y="180" text-anchor="middle" font-size="8" fill="#7b7669">YOLO · MobileNet</text>
+            <text x="370" y="194" text-anchor="middle" font-size="8" fill="#7b7669">INT8 quantized</text>
+            <text x="370" y="206" text-anchor="middle" font-size="8" fill="#7b7669">NPU / GPU accelerated</text>
+          </g>
+          <g class="an" data-tip="Mosquitto MQTT Broker — Local MQTT broker on the gateway. Enables pub/sub between MCUs, cameras, and cloud. Persistent queues survive intermittent connectivity.">
+            <rect x="276" y="228" width="188" height="62" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="370" y="250" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Mosquitto MQTT</text>
+            <text x="370" y="266" text-anchor="middle" font-size="8" fill="#7b7669">Local pub/sub broker</text>
+            <text x="370" y="278" text-anchor="middle" font-size="8" fill="#7b7669">Persistent queues</text>
+          </g>
+          <g class="an" data-tip="Greengrass / IoT SiteWise Edge — Local runtime for Lambda functions and stream processing at the edge. Data buffered offline.">
+            <rect x="276" y="306" width="188" height="70" rx="9" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="370" y="328" text-anchor="middle" font-size="10" font-weight="700" fill="#0891b2">Greengrass / SiteWise</text>
+            <text x="370" y="344" text-anchor="middle" font-size="8" fill="#7b7669">Local Lambda runtime</text>
+            <text x="370" y="358" text-anchor="middle" font-size="8" fill="#7b7669">Offline buffering</text>
+            <text x="370" y="370" text-anchor="middle" font-size="8" fill="#7b7669">Stream processing</text>
+          </g>
+          <rect x="500" y="20" width="220" height="540" rx="14" fill="rgba(29,78,216,.04)" stroke="#1d4ed8" stroke-width="1.5"/>
+          <text x="610" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">3 · Cloud Layer</text>
+          <g class="an" data-tip="AWS IoT Core — Managed MQTT broker. Device registry, X.509 cert-based authentication, and rules engine to route telemetry to Kinesis, DynamoDB, or Lambda.">
+            <rect x="516" y="60" width="188" height="66" rx="9" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
+            <text x="610" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8">AWS IoT Core</text>
+            <text x="610" y="98" text-anchor="middle" font-size="8" fill="#7b7669">MQTT broker · X.509 auth</text>
+            <text x="610" y="110" text-anchor="middle" font-size="8" fill="#7b7669">Device registry</text>
+            <text x="610" y="122" text-anchor="middle" font-size="8" fill="#7b7669">Rules engine</text>
+          </g>
+          <g class="an" data-tip="Kinesis Data Streams — Real-time ingestion of telemetry. Partition by device_id. 7-day retention. Consumers: Lambda, Firehose, custom KCL apps.">
+            <rect x="516" y="142" width="188" height="62" rx="9" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
+            <text x="610" y="164" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8">Kinesis Streams</text>
+            <text x="610" y="180" text-anchor="middle" font-size="8" fill="#7b7669">Real-time ingestion</text>
+            <text x="610" y="192" text-anchor="middle" font-size="8" fill="#7b7669">Partition by device_id</text>
+          </g>
+          <g class="an" data-tip="Lambda Stream Processor — Consumes Kinesis stream. Runs anomaly detection, aggregations, and enrichments. Writes to DynamoDB and S3.">
+            <rect x="516" y="220" width="188" height="56" rx="9" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
+            <text x="610" y="242" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8">Lambda Processor</text>
+            <text x="610" y="258" text-anchor="middle" font-size="8" fill="#7b7669">Anomaly detection</text>
+            <text x="610" y="270" text-anchor="middle" font-size="8" fill="#7b7669">Enrichment · aggregation</text>
+          </g>
+          <g class="an" data-tip="S3 Data Lake — Raw telemetry and image payloads partitioned by year/month/day/device. Parquet format for analytics. Lifecycle to Glacier after 90 days.">
+            <rect x="516" y="292" width="188" height="56" rx="9" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
+            <text x="610" y="314" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8">S3 Data Lake</text>
+            <text x="610" y="330" text-anchor="middle" font-size="8" fill="#7b7669">Parquet · Partitioned</text>
+            <text x="610" y="342" text-anchor="middle" font-size="8" fill="#7b7669">Glacier tiering</text>
+          </g>
+          <g class="an" data-tip="DynamoDB / DocumentDB — Device state and time-series metadata. Hot path for dashboards. DynamoDB for low-latency lookups.">
+            <rect x="516" y="364" width="188" height="56" rx="9" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
+            <text x="610" y="386" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8">DynamoDB / DocDB</text>
+            <text x="610" y="402" text-anchor="middle" font-size="8" fill="#7b7669">Device state</text>
+            <text x="610" y="414" text-anchor="middle" font-size="8" fill="#7b7669">Hot-path reads</text>
+          </g>
+          <g class="an" data-tip="IoT Device Management — OTA firmware updates with staged rollout (canary → 10% → 100%). Jobs API to orchestrate fleet operations.">
+            <rect x="516" y="436" width="188" height="56" rx="9" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
+            <text x="610" y="458" text-anchor="middle" font-size="10" font-weight="700" fill="#1d4ed8">Device Management</text>
+            <text x="610" y="474" text-anchor="middle" font-size="8" fill="#7b7669">OTA firmware</text>
+            <text x="610" y="486" text-anchor="middle" font-size="8" fill="#7b7669">Device shadow</text>
+          </g>
+          <rect x="740" y="20" width="220" height="540" rx="14" fill="rgba(109,40,217,.04)" stroke="#6d28d9" stroke-width="1.5"/>
+          <text x="850" y="42" text-anchor="middle" font-size="11" font-weight="700" fill="#6d28d9">4 · Analytics Layer</text>
+          <g class="an" data-tip="SageMaker Training — Batch training on aggregated S3 data. Distributed training on ml.p4d instances for large models. Model registry tracks versions.">
+            <rect x="756" y="60" width="188" height="66" rx="9" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="850" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">SageMaker Training</text>
+            <text x="850" y="98" text-anchor="middle" font-size="8" fill="#7b7669">Batch training jobs</text>
+            <text x="850" y="110" text-anchor="middle" font-size="8" fill="#7b7669">Model registry</text>
+            <text x="850" y="122" text-anchor="middle" font-size="8" fill="#7b7669">Distributed GPU</text>
+          </g>
+          <g class="an" data-tip="Model Deployment — New models deployed to edge via IoT Jobs (OTA) and cloud endpoints simultaneously. A/B testing via SageMaker multi-model endpoints.">
+            <rect x="756" y="142" width="188" height="62" rx="9" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="850" y="164" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">Model Deployment</text>
+            <text x="850" y="180" text-anchor="middle" font-size="8" fill="#7b7669">OTA to edge · Endpoints</text>
+            <text x="850" y="192" text-anchor="middle" font-size="8" fill="#7b7669">A/B · Canary rollout</text>
+          </g>
+          <g class="an" data-tip="MongoDB / Time-Series DB — Long-term storage of processed telemetry and event histories. Time-series collections for efficient range queries.">
+            <rect x="756" y="220" width="188" height="62" rx="9" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="850" y="242" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">MongoDB / TimeSeries</text>
+            <text x="850" y="258" text-anchor="middle" font-size="8" fill="#7b7669">Long-term storage</text>
+            <text x="850" y="270" text-anchor="middle" font-size="8" fill="#7b7669">Aggregation pipelines</text>
+          </g>
+          <g class="an" data-tip="Grafana + QuickSight — Real-time dashboards for operations and BI dashboards for business (daily/weekly trends, SLA reports).">
+            <rect x="756" y="298" width="188" height="62" rx="9" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="850" y="320" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">Grafana + QuickSight</text>
+            <text x="850" y="336" text-anchor="middle" font-size="8" fill="#7b7669">Real-time + BI</text>
+            <text x="850" y="348" text-anchor="middle" font-size="8" fill="#7b7669">Ops + Business views</text>
+          </g>
+          <g class="an" data-tip="Alerting — Alarms on anomalies, device offline, model drift. PagerDuty / Slack / SMS notifications. Escalation policies for on-call rotations.">
+            <rect x="756" y="376" width="188" height="62" rx="9" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="850" y="398" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">Alerting</text>
+            <text x="850" y="414" text-anchor="middle" font-size="8" fill="#7b7669">PagerDuty · Slack · SMS</text>
+            <text x="850" y="426" text-anchor="middle" font-size="8" fill="#7b7669">Escalation policies</text>
+          </g>
+          <g class="an" data-tip="API / Apps — External REST/GraphQL API consumed by web dashboards and mobile apps. WebSocket for live device state.">
+            <rect x="756" y="454" width="188" height="62" rx="9" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="850" y="476" text-anchor="middle" font-size="10" font-weight="700" fill="#6d28d9">API / Web + Mobile</text>
+            <text x="850" y="492" text-anchor="middle" font-size="8" fill="#7b7669">REST · GraphQL</text>
+            <text x="850" y="504" text-anchor="middle" font-size="8" fill="#7b7669">WebSocket live state</text>
+          </g>
+          <line x1="240" y1="100" x2="260" y2="100" stroke="#16a34a" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="240" y1="180" x2="260" y2="180" stroke="#16a34a" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="480" y1="260" x2="500" y2="260" stroke="#0891b2" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="704" y1="260" x2="740" y2="260" stroke="#1d4ed8" stroke-width="1.5" opacity=".5" class="fl"/>
+          <line x1="704" y1="320" x2="740" y2="320" stroke="#1d4ed8" stroke-width="1.4" opacity=".35" class="fl"/>
+        </svg>

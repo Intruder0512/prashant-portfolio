@@ -1,0 +1,738 @@
+{
+ "blueprints": [
+  {
+   "id": "lms",
+   "label": "Enterprise LMS · Kubernetes Platform",
+   "group": "Real-world",
+   "badges": [
+    "Enterprise LMS · Single-DB Multi-Tenant",
+    "Kubernetes on AWS EKS · 1M+ Users · 76 Universities",
+    "Zones: North · East · West · South",
+    "Per-Tenant Domain · Logo · Logical Data Separation"
+   ],
+   "legend": [
+    {
+     "color": "#1d4ed8",
+     "label": "Edge Security / CDN"
+    },
+    {
+     "color": "#16a34a",
+     "label": "Kubernetes Layer"
+    },
+    {
+     "color": "#b45309",
+     "label": "Data / Media"
+    },
+    {
+     "color": "#6d28d9",
+     "label": "Tenants (76 Universities · N/E/W/S)"
+    },
+    {
+     "color": "#0891b2",
+     "label": "Users / DevSecOps"
+    }
+   ],
+   "tips": 31
+  },
+  {
+   "id": "databridge",
+   "label": "Data Bridge · AWS Data Fusion + RAG",
+   "group": "Real-world",
+   "badges": [
+    "Data Bridge Platform · Real-World",
+    "S3 Medallion · Glue PySpark · Textract · OpenSearch · Bedrock RAG",
+    "Finance & Staffing Intelligence · 5+ Systems Unified"
+   ],
+   "legend": [
+    {
+     "color": "#7b7669",
+     "label": "Source Systems"
+    },
+    {
+     "color": "#b45309",
+     "label": "Ingestion / ELT"
+    },
+    {
+     "color": "#0891b2",
+     "label": "Textract"
+    },
+    {
+     "color": "#16a34a",
+     "label": "S3 Medallion (Bronze/Silver/Gold)"
+    },
+    {
+     "color": "#6d28d9",
+     "label": "RAG / Bedrock"
+    },
+    {
+     "color": "#1d4ed8",
+     "label": "Redshift / QuickSight"
+    },
+    {
+     "color": "#dc2626",
+     "label": "Security & Governance"
+    }
+   ],
+   "tips": 27
+  },
+  {
+   "id": "hrrag",
+   "label": "HR Policy RAG · Amazon Bedrock",
+   "group": "Real-world",
+   "badges": [
+    "HR Policy RAG Assistant · Real-World",
+    "Amazon Bedrock · Titan Embeddings v2 · OpenSearch · Textract",
+    "Ingestion Pipeline + Query Pipeline · Security Trimming · Temperature 0.1"
+   ],
+   "legend": [
+    {
+     "color": "#b45309",
+     "label": "Ingestion Pipeline"
+    },
+    {
+     "color": "#0891b2",
+     "label": "Textract · Normalise"
+    },
+    {
+     "color": "#16a34a",
+     "label": "Chunking · Retrieval"
+    },
+    {
+     "color": "#6d28d9",
+     "label": "Embeddings · Bedrock"
+    },
+    {
+     "color": "#1d4ed8",
+     "label": "Auth / IAM"
+    },
+    {
+     "color": "#dc2626",
+     "label": "Security Trimming"
+    }
+   ],
+   "tips": 10
+  },
+  {
+   "id": "lmsai",
+   "label": "LMS AI · Bedrock + Polly + Transcribe",
+   "group": "Real-world",
+   "badges": [
+    "LMS AI Content Generation · Real-World",
+    "1M+ Learners · 76 Universities · Bedrock · Polly · Transcribe · SageMaker · Rekognition",
+    "7 AI Microservices · Step Functions · AIMS/ISO 42001 · Human-in-Loop"
+   ],
+   "legend": [
+    {
+     "color": "#16a34a",
+     "label": "LMS Core / Storage / Async"
+    },
+    {
+     "color": "#6d28d9",
+     "label": "AI Service Mesh (7 microservices)"
+    },
+    {
+     "color": "#b45309",
+     "label": "Step Functions Video Pipeline"
+    },
+    {
+     "color": "#dc2626",
+     "label": "Observability / Governance / AIMS"
+    },
+    {
+     "color": "#1d4ed8",
+     "label": "Bedrock / Titan / OpenSearch"
+    }
+   ],
+   "tips": 27
+  },
+  {
+   "id": "aws",
+   "label": "AWS Cloud Architecture",
+   "group": "Reference",
+   "badges": [
+    "Generic Reference",
+    "AWS · Multi-AZ · VPC · EKS · RDS · S3",
+    "Route 53 · CloudFront · ALB · Lambda · SageMaker"
+   ],
+   "legend": [
+    {
+     "color": "#1d4ed8",
+     "label": "Edge / DNS"
+    },
+    {
+     "color": "#0891b2",
+     "label": "Network / Storage"
+    },
+    {
+     "color": "#16a34a",
+     "label": "Compute"
+    },
+    {
+     "color": "#b45309",
+     "label": "Data Layer"
+    },
+    {
+     "color": "#6d28d9",
+     "label": "Observability / Security"
+    }
+   ],
+   "tips": 29
+  },
+  {
+   "id": "edgeai",
+   "label": "Edge AI / IoT Pipeline",
+   "group": "Reference",
+   "badges": [
+    "Generic Reference",
+    "Field → Edge → Cloud → Analytics",
+    "ARM · TFLite · MQTT · IoT Core · Kinesis · SageMaker"
+   ],
+   "legend": [
+    {
+     "color": "#16a34a",
+     "label": "Field"
+    },
+    {
+     "color": "#0891b2",
+     "label": "Edge"
+    },
+    {
+     "color": "#1d4ed8",
+     "label": "Cloud"
+    },
+    {
+     "color": "#6d28d9",
+     "label": "Analytics"
+    }
+   ],
+   "tips": 20
+  },
+  {
+   "id": "devsecops",
+   "label": "DevSecOps CI/CD",
+   "group": "Reference",
+   "badges": [
+    "Generic Reference",
+    "Gitea · Jenkins · SonarQube · Trivy · Nexus · Ansible",
+    "LDAP · Vault · EFK · Prometheus · PagerDuty"
+   ],
+   "legend": [
+    {
+     "color": "#6d28d9",
+     "label": "Developer"
+    },
+    {
+     "color": "#16a34a",
+     "label": "Pipeline Core"
+    },
+    {
+     "color": "#b45309",
+     "label": "Security / Quality"
+    },
+    {
+     "color": "#0891b2",
+     "label": "Identity / Ops"
+    },
+    {
+     "color": "#dc2626",
+     "label": "Incident / SIEM"
+    }
+   ],
+   "tips": 20
+  },
+  {
+   "id": "k8s",
+   "label": "Kubernetes Platform",
+   "group": "Reference",
+   "badges": [
+    "Generic Reference",
+    "Control Plane · Worker Nodes · Istio · ArgoCD",
+    "Prometheus · Grafana · Loki · Jaeger · OPA"
+   ],
+   "legend": [
+    {
+     "color": "#1d4ed8",
+     "label": "Control Plane"
+    },
+    {
+     "color": "#16a34a",
+     "label": "Mesh / GitOps"
+    },
+    {
+     "color": "#0891b2",
+     "label": "Namespaces / Ingress"
+    },
+    {
+     "color": "#6d28d9",
+     "label": "Observability"
+    },
+    {
+     "color": "#b45309",
+     "label": "Infrastructure"
+    }
+   ],
+   "tips": 21
+  },
+  {
+   "id": "automotive",
+   "label": "Automotive / Digital Twin",
+   "group": "Reference",
+   "badges": [
+    "Generic Reference",
+    "CARLA · ROS2 · ARM Virtual Hardware · HIL",
+    "EKS · SageMaker · ISO 26262"
+   ],
+   "legend": [
+    {
+     "color": "#1d4ed8",
+     "label": "Simulation"
+    },
+    {
+     "color": "#16a34a",
+     "label": "Compute"
+    },
+    {
+     "color": "#dc2626",
+     "label": "Safety"
+    },
+    {
+     "color": "#6d28d9",
+     "label": "ML Pipeline"
+    },
+    {
+     "color": "#0891b2",
+     "label": "Fleet Feedback"
+    }
+   ],
+   "tips": 17
+  }
+ ],
+ "interview": [
+  {
+   "category": "Data Fusion & Lakehouse",
+   "title": "ELT, Medallion Architecture & Data Governance",
+   "items": [
+    {
+     "q": "ETL vs ELT?",
+     "a": "ETL transforms before loading — rigid, schema-on-write. ELT loads raw to S3 first, transforms inside the platform — flexible, enables schema evolution and raw reprocessing."
+    },
+    {
+     "q": "What is a Medallion architecture?",
+     "a": "Bronze (raw, immutable), Silver (cleaned Parquet), Gold (curated business entities with KPIs). Each zone serves different consumers with increasing data quality."
+    },
+    {
+     "q": "Why Parquet?",
+     "a": "Columnar format — 10× faster analytics queries vs CSV, better compression, schema evolution. Standard for Silver/Gold S3 zones."
+    },
+    {
+     "q": "How do you handle schema evolution?",
+     "a": "AWS Glue Data Catalog schema versioning. Apache Iceberg / Delta Lake for backward-compatible column additions. Crawlers auto-update the catalog on each run."
+    },
+    {
+     "q": "What is CDC and why use it?",
+     "a": "Change Data Capture via AWS DMS — tracks row-level changes, propagates only changed records. Eliminates full-table scans, enables near-real-time downstream freshness."
+    },
+    {
+     "q": "How do you implement data governance?",
+     "a": "AWS Lake Formation for column/row-level access on Glue Catalog tables. IAM Identity Center for SSO. CloudTrail for immutable API audit. KMS CMK per tenant. PII masking before any AI call."
+    }
+   ]
+  },
+  {
+   "category": "GenAI & RAG",
+   "title": "Retrieval-Augmented Generation, Embeddings & Production RAG",
+   "items": [
+    {
+     "q": "What is RAG and why use it over fine-tuning?",
+     "a": "RAG grounds LLM answers in retrieved enterprise data — two pipelines: Ingestion (chunk→embed→index) and Query (embed→retrieve→generate). Policies change frequently; RAG updates by reindexing — zero retraining cost."
+    },
+    {
+     "q": "What is an embedding?",
+     "a": "A 1536-dim numerical vector (Titan Embeddings v2) representing semantic meaning. Similar content is geometrically close — enables similarity search beyond keyword matching. Same model MUST be used for both ingestion and query."
+    },
+    {
+     "q": "What is hybrid search?",
+     "a": "BM25 keyword scoring + HNSW k-NN vector similarity in one OpenSearch query. BM25 handles exact terms (invoice numbers, policy codes); vector handles semantic meaning. More accurate than either alone."
+    },
+    {
+     "q": "How do you prevent hallucination?",
+     "a": "Context-grounded prompts, relevance threshold fallback (no answer if evidence insufficient), citation enforcement per factual claim, Bedrock Guardrails output screening, continuous ground-truth eval (target <5% hallucination)."
+    },
+    {
+     "q": "What is security trimming in RAG?",
+     "a": "Filtering retrieval results by user access permissions DURING the OpenSearch query — not post-retrieval. Unauthorised content never enters the LLM context window. Implemented via OpenSearch field-level security."
+    },
+    {
+     "q": "Why structure-aware chunking?",
+     "a": "Splits at section boundaries (not arbitrary token counts). 300–500 tokens, 50–80 overlap. Prevents a policy rule being separated from its exception. Metadata: policy name, section, effective date, access_classification."
+    }
+   ]
+  },
+  {
+   "category": "Agentic AI",
+   "title": "Multi-Agent Architecture, ReAct, Tool Calling & Human-in-Loop",
+   "items": [
+    {
+     "q": "Chatbot vs agent?",
+     "a": "Chatbot responds to single turns. Agent plans, selects tools (Lambda functions), executes multi-step tasks, evaluates intermediate results, and continues dynamically until a goal is achieved — ReAct loop (Reason→Act→Observe)."
+    },
+    {
+     "q": "What is the ReAct pattern?",
+     "a": "Reasoning + Acting. Agent alternates: Thought (reason about current state) → Action (invoke tool) → Observation (tool result) → next Thought. Amazon Bedrock Agents implements this as a managed service."
+    },
+    {
+     "q": "How do you handle retry storms in agentic systems?",
+     "a": "Queue isolation per agent type via SQS, circuit breakers with half-open state, exponential backoff with jitter, dead-letter queues for failed tasks, graceful degradation to partial answers."
+    },
+    {
+     "q": "When do you add Human-in-Loop (HITL)?",
+     "a": "Before AI output is published (LMS quizzes/translations), before an agent takes an irreversible action, when confidence score falls below threshold, and for all regulated AI decisions requiring human accountability."
+    },
+    {
+     "q": "How do you evaluate an agentic system?",
+     "a": "Task completion rate, citation accuracy, hallucination rate on ground-truth test sets, tool call correctness, latency per agent hop, cost per successful completion, and human reviewer override rate."
+    },
+    {
+     "q": "What are Bedrock Guardrails?",
+     "a": "Safety layer for Bedrock API. Input: prompt injection detection, topic blocking, jailbreak detection. Output: PII detection, toxic content screening. Configurable per tenant and use case. Applied before and after generation."
+    }
+   ]
+  },
+  {
+   "category": "AWS Architecture",
+   "title": "Core AWS Services, Equivalents & Design Decisions",
+   "items": [
+    {
+     "q": "Azure Data Factory equivalent?",
+     "a": "AWS Glue for ETL jobs, Data Catalog, and Crawlers. Amazon EventBridge for event-driven triggers. Glue Job Bookmarks = ADF incremental load. Glue Data Quality = ADF validation activities. AWS DMS for CDC."
+    },
+    {
+     "q": "Azure Document Intelligence equivalent?",
+     "a": "Amazon Textract. Both extract text, tables, key-value pairs from PDFs/scans. Textract: AnalyzeDocument (sync) and StartDocumentAnalysis (async + SNS completion). Confidence scores logged to DynamoDB."
+    },
+    {
+     "q": "Azure AI Search equivalent?",
+     "a": "Amazon OpenSearch Service. Both support BM25 keyword + HNSW k-NN vector + semantic search. Both support metadata filtering and field-level security. OpenSearch integrates with Bedrock; Azure AI Search with Azure OpenAI."
+    },
+    {
+     "q": "When to use Step Functions vs SQS?",
+     "a": "Step Functions for multi-step workflows with branching, retries, error handling, and state (e.g. video enrichment pipeline). SQS for simple point-to-point task queues, decoupling producers and consumers (e.g. AI review queues)."
+    },
+    {
+     "q": "What is AWS Lake Formation?",
+     "a": "Fine-grained column, row, and tag-based access control on Glue Data Catalog tables. Works with Athena, Redshift Spectrum, Glue ETL. Replaces bucket-level S3 RBAC for data-level security — finance managers can't access HR PII columns even in the same Gold table."
+    },
+    {
+     "q": "How do you design for multi-tenancy?",
+     "a": "IAM tenant-scoped roles, tenant_id in every JWT and AI invocation, OpenSearch field-level security trimming by tenant_id, per-tenant KMS CMKs, CloudWatch per-tenant budget caps with API Gateway throttling on breach."
+    }
+   ]
+  },
+  {
+   "category": "Security & Governance",
+   "title": "IAM, Encryption, Compliance & AI Governance",
+   "items": [
+    {
+     "q": "How do you handle data residency for government clients?",
+     "a": "All AI invocations from ap-south-1 (Mumbai) and ap-south-2 (Hyderabad) only. PII masked before any AI call. VPC PrivateLink for all services — data never traverses public internet. Contractual data residency clause in MSA."
+    },
+    {
+     "q": "Azure Key Vault equivalent on AWS?",
+     "a": "AWS splits it: Secrets Manager for credentials (API keys, DB passwords) with 30-day auto-rotation. KMS for CMK encryption keys. K8s External Secrets Operator syncs Secrets Manager secrets into Kubernetes Secret objects."
+    },
+    {
+     "q": "What is AIMS/ISO 42001?",
+     "a": "AI Management System standard governing AI lifecycle: risk assessment, model versioning, audit trails, human oversight, incident handling. Every AI invocation logged: model version, cost, reviewer action, correlation ID."
+    },
+    {
+     "q": "How do you prevent prompt injection?",
+     "a": "Bedrock Guardrails input screening, Lambda pre-processing sanitisation, least privilege tool scoping (agents only have access to tools they need), and structured output schemas to prevent instruction-following exploits."
+    },
+    {
+     "q": "What is VPC PrivateLink?",
+     "a": "Assigns a private IP to a managed service inside a VPC — eliminating public internet exposure. Supports S3, Bedrock, OpenSearch, Glue, Textract, Transcribe, and 100+ AWS services. All three projects use PrivateLink exclusively."
+    },
+    {
+     "q": "How do you implement audit trails for AI?",
+     "a": "CloudTrail for all AWS API calls (immutable). CloudWatch logs every AI invocation with tenant_id, model version, prompt hash, cost, latency. DynamoDB for quality evaluation tables and policy version tracking. Required for AIMS/ISO 42001."
+    }
+   ]
+  },
+  {
+   "category": "System Design & Trade-offs",
+   "title": "Architecture Decisions, Scalability & Production Patterns",
+   "items": [
+    {
+     "q": "How do you scale RAG to millions of documents?",
+     "a": "OpenSearch Serverless auto-scales capacity units. HNSW ef_construction tunes index quality vs build speed. Batch vectorisation with Titan Embeddings API. Separate ingestion and query clusters for workload isolation."
+    },
+    {
+     "q": "When do you fine-tune vs use RAG?",
+     "a": "RAG for frequently changing enterprise knowledge (policies, documents) — zero retraining cost. Fine-tuning for output format, tone, and style adaptation. Use both: RAG for knowledge, fine-tuning for style consistency."
+    },
+    {
+     "q": "How do you handle long-context documents?",
+     "a": "Structure-aware chunking at section boundaries. Metadata-rich chunks for filtered retrieval. Context budget allocation: reserve tokens for system prompt, top-3 chunks, and response. Bedrock Claude 3 Sonnet: 200K context window."
+    },
+    {
+     "q": "How do you design for zero-downtime deployments?",
+     "a": "Blue-green Kubernetes namespaces (DEV/UAT/PROD). Istio canary traffic shifting. Helm chart versioning. Feature flags for gradual AI feature rollout. Step Functions wait states for human approval before PROD promotion."
+    },
+    {
+     "q": "What is entity resolution and when do you need it?",
+     "a": "Matching records referring to the same real-world entity across multiple systems (same employee with different IDs in HR vs CRM). Implemented in PySpark on Glue using deterministic key matching. Essential for cross-system data fusion."
+    },
+    {
+     "q": "How do you design for zero-downtime deployments?",
+     "a": "Blue-green Kubernetes namespaces (DEV/UAT/PROD). Istio canary traffic shifting. Helm chart versioning. Feature flags for gradual AI feature rollout. Step Functions wait states for human approval before PROD promotion."
+    }
+   ]
+  },
+  {
+   "category": "Kubernetes Architecture",
+   "title": "Cluster Components, Scheduling, Probes & Enterprise Patterns",
+   "items": [
+    {
+     "q": "When would you NOT choose Kubernetes?",
+     "a": "For a small application with low change frequency, a managed app service or serverless platform may be cheaper and simpler. Kubernetes provides flexibility, but that flexibility introduces operational complexity — don't choose it just because it's popular."
+    },
+    {
+     "q": "Deployment vs StatefulSet vs DaemonSet?",
+     "a": "Deployment for stateless replicas with rolling updates. StatefulSet for stable identities and persistent volumes (databases). DaemonSet for one pod per node — logging agents, security agents, storage drivers. Prefer managed databases outside the cluster for critical enterprise data."
+    },
+    {
+     "q": "Resource requests vs limits?",
+     "a": "Request = CPU/memory Kubernetes reserves for scheduling. Limit = maximum allowed. CPU over limit is throttled; memory over limit causes OOM kill. Setting all requests equal to high limits wastes capacity; setting too low causes overcommitment and node pressure. Base requests on observed usage."
+    },
+    {
+     "q": "Liveness vs readiness vs startup probes?",
+     "a": "Readiness removes pod from Service endpoints (no restart). Liveness restarts a stuck container. Startup protects slow-starting apps from premature liveness failures. A liveness check should only fire when restart actually helps — don't make it dependency-heavy or you get cascading restarts."
+    },
+    {
+     "q": "How do you structure namespaces in enterprise?",
+     "a": "Separate by environment, product, tenant, or ownership. Each namespace gets ResourceQuota, LimitRange, NetworkPolicy, RBAC, PodSecurity, cost labels. For strong regulatory isolation, use separate clusters — namespaces are a logical, not security, boundary."
+    },
+    {
+     "q": "Helm vs Kustomize?",
+     "a": "Helm for reusable charts with configurable values and dependency management. Kustomize for environment-specific overlays on plain manifests without a template language. Practical: Helm for third-party charts, Kustomize for org-specific environment config."
+    }
+   ]
+  },
+  {
+   "category": "Kubernetes HA & Resilience",
+   "title": "Control Plane, etcd, Rolling Updates & Failure Patterns",
+   "items": [
+    {
+     "q": "What does K8s HA actually require?",
+     "a": "More than just multiple replicas. Full HA covers: control-plane redundancy, etcd quorum, worker node redundancy, replica distribution across zones, LB redundancy, storage HA, DNS resilience, autoscaling, PodDisruptionBudgets, observability, and tested recovery procedures — all measured against business SLOs and RPO/RTO."
+    },
+    {
+     "q": "Why does etcd require an odd number of members?",
+     "a": "etcd uses Raft consensus requiring majority quorum. 3 members tolerate 1 failure; 5 tolerate 2. 4 members still only tolerate 1 — the extra member adds cost without increasing fault tolerance. High disk/network latency or co-locating a majority in one zone undermines the design regardless of count."
+    },
+    {
+     "q": "What is a PodDisruptionBudget?",
+     "a": "Limits replicas that may be voluntarily unavailable during node drain, upgrade, or autoscaler consolidation. For 3 replicas: minAvailable: 2. PDBs don't protect against involuntary failures (node crash) and can't help with single-replica workloads or insufficient cluster capacity."
+    },
+    {
+     "q": "A deployment causes downtime despite 3 replicas — what's wrong?",
+     "a": "maxUnavailable too high; pods marked ready before truly usable; all replicas on one node/zone; slow LB target registration; non-graceful shutdown; incompatible DB migration; no capacity for surge pods; session state stored locally; new version failed under real traffic."
+    },
+    {
+     "q": "HPA adds pods but performance worsens — why?",
+     "a": "More pods can overload a constrained dependency: database connection limits, external API throttling, cache misses, lock contention, or NAT Gateway saturation. Check end-to-end saturation. Sometimes the answer is backpressure, caching, or a hard maxReplicas — not unlimited pod creation."
+    },
+    {
+     "q": "How do you handle DB schema changes in zero-downtime deploys?",
+     "a": "Expand-and-contract: first add backward-compatible schema changes; deploy code that works with both versions; migrate/backfill data; switch reads/writes; only delete old columns after all old app versions are gone. Long migrations separate from pod startup. Monitor locks, replication lag, and transaction impact."
+    }
+   ]
+  },
+  {
+   "category": "Ingress & Load Balancing",
+   "title": "AWS ALB/NLB, NGINX, TLS, Service Mesh & Troubleshooting",
+   "items": [
+    {
+     "q": "Layer 4 vs Layer 7 load balancing?",
+     "a": "L4 routes TCP/UDP by IP+port — fast, protocol-agnostic, preserves end-to-end protocol. L7 understands HTTP/HTTPS, routes by host/path/header, can terminate TLS, integrate WAF, and do content-aware routing. Choose based on protocol, routing complexity, static IP needs, and security controls."
+    },
+    {
+     "q": "AWS ALB vs NLB vs Gateway LB?",
+     "a": "ALB: L7 HTTP/HTTPS, host/path routing, OIDC auth, WAF integration. NLB: L4 TCP/UDP/TLS, static IPs, source-IP preservation, high-throughput/low-latency. Gateway LB: inserts virtual network appliances (firewalls, IPS, DPI) into traffic paths transparently."
+    },
+    {
+     "q": "Ingress vs Gateway API?",
+     "a": "Ingress: basic HTTP routing, limited extensibility, controller-specific annotations. Gateway API: explicit GatewayClass/HTTPRoute/TCPRoute resources, separates infrastructure-owner vs app-team responsibilities, richer routing, better portability. For new enterprise platforms, evaluate Gateway API first."
+    },
+    {
+     "q": "NGINX Ingress vs cloud-native controller?",
+     "a": "NGINX when you need consistent behavior across clouds/on-prem or detailed proxy config. Cloud-native when deep integration with managed LB, WAF, certificates, and target registration reduces ops effort. Trade-off: portability vs provider integration."
+    },
+    {
+     "q": "Troubleshoot a 502/503 from ingress?",
+     "a": "Trace layer by layer: DNS + cert validity → LB listener/routing rule → target health + security rules → ingress controller logs → Service selector + endpoint list → pod readiness + app logs → port/protocol alignment → timeout + connection limits → NetworkPolicy. 502 = invalid upstream response; 503 = no healthy backend."
+    },
+    {
+     "q": "Does a service mesh replace an ingress controller?",
+     "a": "No. A mesh manages service-to-service traffic inside the cluster (mTLS, retries, traffic splitting, telemetry). An ingress controller manages traffic entering the cluster from outside. A mesh ingress gateway can play both roles, but doesn't eliminate the need for edge protection. Introduce mesh only when its value justifies operational complexity."
+    }
+   ]
+  },
+  {
+   "category": "Cloud Architecture",
+   "title": "Well-Architected, Landing Zones, Multi-Tenancy & Cost",
+   "items": [
+    {
+     "q": "How do you approach a new cloud architecture?",
+     "a": "Start with business outcomes, user patterns, integrations, data classification, compliance, availability, latency, RTO/RPO, and budget. Build a current-state view. Design covers identity, network, compute, data, security, observability, deployment, resilience, and cost governance. Validate risky assumptions with focused PoCs before committing."
+    },
+    {
+     "q": "What are the well-architected pillars?",
+     "a": "Operational excellence, Security, Reliability, Performance efficiency, Cost optimization, Sustainability. I also explicitly include Governance, Data management, Compliance, and Organizational readiness. Maximizing one dimension — like availability — without considering cost and operational capability produces an impractical design."
+    },
+    {
+     "q": "Hub-and-spoke vs mesh networking?",
+     "a": "Hub-and-spoke centralizes shared connectivity, inspection, DNS, egress, and hybrid links — simplifies governance, my default for most enterprises. Full mesh provides direct connectivity but becomes unmanageable at scale. At scale: AWS Transit Gateway, Azure Virtual WAN, or GCP Network Connectivity Center. Don't make the hub a throughput bottleneck."
+    },
+    {
+     "q": "How do you design a multi-tenant cloud platform?",
+     "a": "Identify isolation level: shared app+DB with tenant keys → separate schemas → separate DBs → separate namespaces → separate accounts. Propagate tenant identity through auth, authz, data access, caches, queues, logs, encryption, and billing. Include noisy-neighbor controls, tenant quotas, and automated onboarding/offboarding."
+    },
+    {
+     "q": "How do you optimize cloud cost?",
+     "a": "Establish ownership first (accounts, tags, budgets, showback). Then: rightsizing, autoscaling, commitment discounts for stable demand, spot/preemptible for tolerant workloads, storage lifecycle, managed service tier selection, data-transfer paths, log retention, non-prod scheduling. Assess cost per business transaction — not just the monthly bill."
+    },
+    {
+     "q": "Cloud bill doubles after moving to K8s — what do you examine?",
+     "a": "Overprovisioned node groups, inflated pod requests, low utilization due to scheduling constraints, unused LBs and public IPs, NAT Gateway egress charges, cross-zone traffic, excessive logging, orphaned volumes and snapshots, non-prod clusters running continuously, idle GPU nodes, missing autoscaler consolidation."
+    }
+   ]
+  },
+  {
+   "category": "Solution & Enterprise Architecture",
+   "title": "Architecture Decisions, API Design, Event-Driven & Trade-offs",
+   "items": [
+    {
+     "q": "What is the role of a Solution Architect?",
+     "a": "Converts business objectives into an implementable end-to-end design spanning application, data, integration, security, infrastructure, operations, cost, and delivery constraints. The role isn't just diagrams — it includes validating assumptions, resolving design risks, and ensuring delivered solutions meet both functional and non-functional requirements."
+    },
+    {
+     "q": "Functional vs non-functional requirements?",
+     "a": "Functional = what the system must do (search policies, generate invoices, enrol students). Non-functional = how well and under what constraints (availability, latency SLO, scale, security, auditability, recoverability). Many failed systems meet functional requirements but fail in production because NFRs weren't quantified or tested."
+    },
+    {
+     "q": "How do you make architecture decisions?",
+     "a": "Architecture Decision Records: context, decision drivers, considered options, selected option, rationale, consequences, assumptions, review date. Evaluate against business value, risk, security, reliability, cost, delivery time, operational skills, portability, and future change. Creates traceability — prevents reopening decisions without new evidence."
+    },
+    {
+     "q": "Synchronous vs asynchronous integration?",
+     "a": "Synchronous when caller needs immediate result and dependency can meet latency + availability. Asynchronous for long-running work, workload buffering, event distribution, loose coupling, and decoupled scaling. Anti-pattern: long chain of synchronous services where one slow dependency causes end-to-end outage. Async requires idempotency, DLQ, and correlation IDs."
+    },
+    {
+     "q": "How do you prevent microservices becoming a distributed monolith?",
+     "a": "Services around business capabilities with clear data ownership. Communicate through explicit contracts. Independent deployment, no shared databases, no chatty synchronous chains, no coordinated releases. Also recognize when a modular monolith is the right starting point — microservices aren't automatically better."
+    },
+    {
+     "q": "How do you measure whether architecture succeeded?",
+     "a": "Link to measurable indicators: availability and latency SLO attainment, deployment frequency, change failure rate, recovery time, security findings, cost per transaction/user, capacity behavior, user adoption. Architecture is successful when it enables business outcomes sustainably — not just when implementation matches the original diagram."
+    }
+   ]
+  },
+  {
+   "category": "Scenario-Based",
+   "title": "Live Debugging, Zone Failures, Capacity & Architecture Trade-offs",
+   "items": [
+    {
+     "q": "App has intermittent 503s — how do you investigate?",
+     "a": "Check: healthy target count on LB → ingress controller error logs → K8s Service endpoints → readiness probe failures → pod restarts/CPU throttling/OOM → HPA scaling delay → node pressure or zone imbalance → application connection pools → DB connection limits → timeout/keep-alive settings → NetworkPolicy errors. Intermittent 503s often = readiness instability or capacity saturation."
+    },
+    {
+     "q": "One availability zone fails — what should happen?",
+     "a": "Traffic routing stops sending to unhealthy targets. Replicas in other zones continue. Failed pods recreate where capacity allows. Autoscaler adds replacement capacity. Data tier stays available via multi-zone replication. Monitoring fires a meaningful alert. System operates with reduced redundancy — avoid risky changes until zone recovers. This must be tested; distributing nodes doesn't prove survival."
+    },
+    {
+     "q": "How would you expose a private EKS app to corporate users only?",
+     "a": "Options: internal NLB/ALB with VPC peering or Transit Gateway; AWS PrivateLink; VPN or Direct Connect with internal DNS; Cognito + OIDC with IP allowlisting; or Zscaler/Netskope ZTNA overlay. Choice depends on whether users are on-prem, remote, or cloud-native, and whether clientless browser access or full network connectivity is required."
+    },
+    {
+     "q": "Pods stuck in Pending state — how do you diagnose?",
+     "a": "Inspect pod events and scheduler messages. Typical causes: insufficient CPU/memory, node selector/affinity mismatch, untolerated taint, unbound PersistentVolume, zone restriction, GPU unavailable, PodDisruptionBudget constraints, max pod density or IP exhaustion, ResourceQuota violation. Fix the underlying constraint — don't force placement manually."
+    },
+    {
+     "q": "How do you balance ideal architecture and delivery deadlines?",
+     "a": "Identify which controls are mandatory (safety, compliance, data integrity, operability) vs which can be phased. Define a minimum viable architecture with a credible path to target state. Don't trade away critical security, backup, audit, or recoverability for a date. Document technical debt with owners and deadlines — controlled evolution, not perfection or reckless shortcuts."
+    },
+    {
+     "q": "Build vs buy decision framework?",
+     "a": "Compare: strategic differentiation, functional fit, integration, customization, data control, security, compliance, scalability, vendor viability, licensing, implementation effort, operational cost, and exit strategy. Buy commodity capability when a mature service fits. Build what differentiates the business or requires specialized control. Use total lifecycle cost and risk — not just initial price."
+    }
+   ]
+  }
+ ],
+ "flows": [
+  {
+   "title": "How a modern data architecture works",
+   "sub": "A hybrid lakehouse moves data from raw sources to business value through five stages — each governed, observable, and replayable. Click the architecture diagram below for the full component view.",
+   "steps": [
+    {
+     "title": "Ingest from anywhere",
+     "desc": "Pull data from databases, SaaS APIs, IoT devices, file drops, and partner streams. Batch jobs run on schedule or on-event; streaming jobs ingest in seconds.",
+     "tech": "Glue · Lambda · NiFi · Kafka · Kinesis · MQTT"
+    },
+    {
+     "title": "Land in S3 — Raw zone",
+     "desc": "Every record stored immutably in source format, partitioned by ingest date. The audit trail. Reprocessing always starts here, so nothing is ever truly lost.",
+     "tech": "S3 · Bronze layer · JSON / Parquet / Avro"
+    },
+    {
+     "title": "Clean & standardize — Silver",
+     "desc": "Glue jobs validate, dedupe, conform schemas, and enforce data contracts. Bad records are routed to a DLQ — surfaced, never silently dropped.",
+     "tech": "Glue Spark · Schema Registry · DLQ"
+    },
+    {
+     "title": "Curate for business — Gold",
+     "desc": "Build facts, dimensions, marts, and ML feature tables that data product teams own with SLAs on freshness and completeness.",
+     "tech": "Star schema · Feature tables · Owned datasets"
+    },
+    {
+     "title": "Serve to humans & models",
+     "desc": "The same Curated layer feeds Redshift dashboards, Athena ad-hoc queries, embedded BI, and ML / AI workloads — one governed source of truth for both analytics and AI.",
+     "tech": "Redshift · Athena · QuickSight · SageMaker · Bedrock"
+    }
+   ],
+   "takeaway": "Separating Raw → Silver → Gold lets the business move fast on the curated layer while data engineers still have the raw history to backfill and re-process. Governance — IAM, lineage, PII masking, and audit — is enforced across all three layers from a single Glue Data Catalog, so analytics and AI share the same trust model."
+  },
+  {
+   "title": "How Agentic AI & RAG actually work",
+   "sub": "Instead of one large model trying to do everything, multiple specialized agents collaborate — grounded by retrieval, bounded by guardrails, and observable end-to-end.",
+   "steps": [
+    {
+     "title": "User asks a question",
+     "desc": "A request enters through web, mobile, Slack, Teams, or an internal API. Auth, tenant context, and PII / prompt-injection guardrails run before any LLM is called.",
+     "tech": "API Gateway · WAF · OIDC · Input Guardrails"
+    },
+    {
+     "title": "Orchestrator plans the work",
+     "desc": "A lightweight planning agent classifies intent and decides which specialized agents to invoke, in what order. Step Functions / Lambda manage state, retries, and failures.",
+     "tech": "Step Functions · Lambda · SQS · Circuit breakers"
+    },
+    {
+     "title": "Retrieve grounded context (RAG)",
+     "desc": "The Retrieval Agent embeds the query, searches a tenant-scoped vector database, and re-ranks the top chunks. The model gets your facts, not its imagination.",
+     "tech": "Embeddings · OpenSearch / Pinecone / FAISS · Re-rank"
+    },
+    {
+     "title": "Specialized agents collaborate",
+     "desc": "Summarization compresses long context, Tool-Use calls SQL or APIs, Compliance checks policy and citations, then the Response Agent composes the final answer.",
+     "tech": "Bedrock / Azure OpenAI · Function calling · Multi-agent"
+    },
+    {
+     "title": "Guard, log, and learn",
+     "desc": "Output guardrails check for PII or leakage, high-risk responses route to a human reviewer, and every step is logged for audit, eval, and cost tracking.",
+     "tech": "Output Guardrails · HITL · Audit · Eval Harness"
+    }
+   ],
+   "takeaway": "Agentic AI is not one giant prompt — it's a graph of small, replaceable agents with clear contracts. RAG keeps answers grounded in your documents instead of the model's training data. And the governance layer — prompt registry, eval harness, drift monitoring, audit log — is what turns a clever demo into a production system that survives retry storms, partial failures, and real scale ."
+  }
+ ]
+}

@@ -1,0 +1,154 @@
+<svg class="bp-svg" viewBox="0 0 980 640" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+          <defs>
+            <marker id="dbArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b7669"/></marker>
+            <marker id="dbArrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker>
+            <marker id="dbArrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker>
+            <marker id="dbArrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b45309"/></marker>
+            <marker id="dbArrV" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6d28d9"/></marker>
+          </defs>
+          <text x="10" y="56" font-size="8.5" font-weight="700" fill="#7b7669" writing-mode="vertical-lr" transform="rotate(180,10,56)" style="letter-spacing:.12em">L1 SOURCES</text>
+          <text x="10" y="166" font-size="8.5" font-weight="700" fill="#b45309" writing-mode="vertical-lr" transform="rotate(180,10,166)" style="letter-spacing:.12em">L2–3 INGEST</text>
+          <text x="10" y="286" font-size="8.5" font-weight="700" fill="#16a34a" writing-mode="vertical-lr" transform="rotate(180,10,286)" style="letter-spacing:.12em">L4 S3 LAKE</text>
+          <text x="10" y="396" font-size="8.5" font-weight="700" fill="#b45309" writing-mode="vertical-lr" transform="rotate(180,10,396)" style="letter-spacing:.12em">L5 ELT</text>
+          <text x="10" y="496" font-size="8.5" font-weight="700" fill="#6d28d9" writing-mode="vertical-lr" transform="rotate(180,10,496)" style="letter-spacing:.12em">L6 RAG</text>
+          <text x="10" y="596" font-size="8.5" font-weight="700" fill="#1d4ed8" writing-mode="vertical-lr" transform="rotate(180,10,596)" style="letter-spacing:.12em">L7–8</text>
+          <rect x="24" y="20" width="936" height="76" rx="10" fill="rgba(123,118,105,.05)" stroke="#7b7669" stroke-width="1.3" stroke-dasharray="5 3"/>
+          <text x="492" y="38" text-anchor="middle" font-size="10.5" font-weight="700" fill="#3a3830">Layer 1 — Source Systems</text>
+          <g class="an" data-tip="Amazon RDS (PostgreSQL/MySQL) — Staffing, HR, timesheet, payroll, CRM. AWS DMS CDC streams only changed rows downstream — no full reloads. Watermark columns track incremental position.">
+            <rect x="36" y="46" width="158" height="40" rx="7" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <text x="115" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#1d4ed8">Amazon RDS</text>
+            <text x="115" y="76" text-anchor="middle" font-size="8" fill="#7b7669">PostgreSQL · MySQL · CRM</text>
+          </g>
+          <g class="an" data-tip="S3 Landing Zone — PDF invoices, POs, and contracts dropped to S3. S3 event notifications trigger Lambda for document processing immediately on upload.">
+            <rect x="206" y="46" width="158" height="40" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="285" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">S3 Landing Zone</text>
+            <text x="285" y="76" text-anchor="middle" font-size="8" fill="#7b7669">PDF Invoices · POs · Contracts</text>
+          </g>
+          <g class="an" data-tip="Semi-Structured Sources — Approval emails and Excel trackers. Lambda parses, normalises, and writes to S3 raw zone for Glue processing.">
+            <rect x="376" y="46" width="158" height="40" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.2"/>
+            <text x="455" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#b45309">Approval Emails · Excel</text>
+            <text x="455" y="76" text-anchor="middle" font-size="8" fill="#7b7669">Semi-structured sources</text>
+          </g>
+          <g class="an" data-tip="Timesheet &amp; Payroll — Dedicated HR/payroll systems. CDC via AWS DMS captures row-level changes. Finance and billing data reconciled downstream in Glue PySpark.">
+            <rect x="546" y="46" width="158" height="40" rx="7" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.2"/>
+            <text x="625" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#1d4ed8">Timesheet · Payroll</text>
+            <text x="625" y="76" text-anchor="middle" font-size="8" fill="#7b7669">CDC via AWS DMS</text>
+          </g>
+          <g class="an" data-tip="Approval Portals — Approval workflows and vendor portals. API pulls via Lambda on schedule. Documents stored to S3 landing zone with source metadata tags.">
+            <rect x="716" y="46" width="232" height="40" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.2"/>
+            <text x="832" y="62" text-anchor="middle" font-size="9" font-weight="700" fill="#6d28d9">Approval Portals · Vendor APIs</text>
+            <text x="832" y="76" text-anchor="middle" font-size="8" fill="#7b7669">Lambda scheduled pull</text>
+          </g>
+          <rect x="24" y="106" width="936" height="90" rx="10" fill="rgba(180,83,9,.05)" stroke="#b45309" stroke-width="1.3" stroke-dasharray="5 3"/>
+          <text x="492" y="124" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b45309">Layer 2 — Ingestion (Glue + EventBridge + DMS) &amp; Layer 3 — Document Processing (Textract)</text>
+          <g class="an" data-tip="AWS Glue ETL — Parameterised Glue jobs with Glue Job Bookmarks (prevent duplicate ingestion). Watermark columns for incremental load from RDS. Crawlers auto-update Data Catalog schema on each run.">
+            <rect x="36" y="132" width="180" height="54" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="126" y="152" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">AWS Glue ETL + Bookmarks</text>
+            <text x="126" y="167" text-anchor="middle" font-size="8" fill="#7b7669">Incremental · Watermark · Crawlers</text>
+            <text x="126" y="179" text-anchor="middle" font-size="7.5" fill="#b45309" font-weight="600">Job Bookmarks → No Duplicates</text>
+          </g>
+          <g class="an" data-tip="AWS DMS Change Data Capture — Replicates only changed rows from RDS sources. Propagates inserts, updates, and deletes to S3 in near-real-time. CDC pattern avoids full-table scans.">
+            <rect x="228" y="132" width="170" height="54" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="313" y="152" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">AWS DMS · CDC</text>
+            <text x="313" y="167" text-anchor="middle" font-size="8" fill="#7b7669">Row-level change capture</text>
+            <text x="313" y="179" text-anchor="middle" font-size="7.5" fill="#b45309" font-weight="600">Only changed rows propagate</text>
+          </g>
+          <g class="an" data-tip="Amazon Textract (Async) — StartDocumentAnalysis via SNS completion notification. Extracts invoice fields, PO numbers, contract dates, key-value pairs with confidence scores from PDFs and scanned images. Results logged to DynamoDB.">
+            <rect x="410" y="132" width="200" height="54" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.3"/>
+            <text x="510" y="152" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0891b2">Amazon Textract (Async)</text>
+            <text x="510" y="167" text-anchor="middle" font-size="8" fill="#7b7669">Invoice fields · PO numbers · Dates</text>
+            <text x="510" y="179" text-anchor="middle" font-size="7.5" fill="#0891b2" font-weight="600">SNS completion → result Lambda</text>
+          </g>
+          <g class="an" data-tip="Amazon EventBridge — S3 event notifications trigger Lambda for document sources. EventBridge rules start Glue jobs for scheduled ingestion. Central event bus coordinating all ingestion pipelines.">
+            <rect x="622" y="132" width="160" height="54" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.3"/>
+            <text x="702" y="152" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">Amazon EventBridge</text>
+            <text x="702" y="167" text-anchor="middle" font-size="8" fill="#7b7669">S3 events · Glue triggers</text>
+            <text x="702" y="179" text-anchor="middle" font-size="7.5" fill="#16a34a" font-weight="600">Central event-driven trigger</text>
+          </g>
+          <g class="an" data-tip="AWS Lambda — Invoked by S3 events for document sources. Calls Textract async API. Result Lambda processes SNS completion and writes JSON to S3 processed zone. DynamoDB records confidence scores and extraction metadata.">
+            <rect x="794" y="132" width="154" height="54" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="871" y="152" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">AWS Lambda</text>
+            <text x="871" y="167" text-anchor="middle" font-size="8" fill="#7b7669">S3 trigger → Textract</text>
+            <text x="871" y="179" text-anchor="middle" font-size="7.5" fill="#b45309" font-weight="600">DynamoDB confidence log</text>
+          </g>
+          <rect x="24" y="206" width="936" height="82" rx="10" fill="rgba(22,163,74,.05)" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="492" y="224" text-anchor="middle" font-size="10.5" font-weight="700" fill="#16a34a">Layer 4 — S3 Medallion Storage</text>
+          <g class="an" data-tip="Bronze Layer (Raw) — Full fidelity, source-format snapshots. KMS CMK encrypted. S3 Object Lock (immutable). Audit trail — reprocessing always starts here. Partitioned by ingest_date.">
+            <rect x="36" y="232" width="290" height="46" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+            <text x="181" y="250" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Bronze · Raw Layer</text>
+            <text x="181" y="265" text-anchor="middle" font-size="8" fill="#7b7669">KMS encrypted · S3 Object Lock · Full fidelity · Append-only</text>
+          </g>
+          <g class="an" data-tip="Silver Layer (Processed) — Cleaned Parquet. Deduplicated, conformed schemas, validated records. Athena-queryable. Glue Data Catalog schema updated on each write.">
+            <rect x="342" y="232" width="290" height="46" rx="8" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.4"/>
+            <text x="487" y="250" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Silver · Processed Layer</text>
+            <text x="487" y="265" text-anchor="middle" font-size="8" fill="#7b7669">Cleaned Parquet · Deduped · Schema-conformed · Athena-queryable</text>
+          </g>
+          <g class="an" data-tip="Gold Layer (Curated) — Business entities: Invoice, Project, Employee, PO, Timesheet. Calculated KPIs: billing margin, approval lag, PO balance. Delta Lake format. Served to RAG + QuickSight.">
+            <rect x="648" y="232" width="300" height="46" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="798" y="250" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Gold · Curated Layer</text>
+            <text x="798" y="265" text-anchor="middle" font-size="8" fill="#7b7669">Invoice · Project · Employee · PO · Timesheet KPIs · Delta Lake</text>
+          </g>
+          <rect x="24" y="296" width="936" height="82" rx="10" fill="rgba(180,83,9,.06)" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="492" y="314" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b45309">Layer 5 — Transformation (AWS Glue PySpark ELT)</text>
+          <g class="an" data-tip="Entity Resolution — PySpark deterministic key matching identifies the same client or employee across HR, CRM, and payroll systems. Deduplication produces single authoritative record per entity.">
+            <rect x="36" y="320" width="220" height="48" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="146" y="340" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">Entity Resolution (PySpark)</text>
+            <text x="146" y="356" text-anchor="middle" font-size="8" fill="#7b7669">Deterministic keys · Cross-system dedup</text>
+          </g>
+          <g class="an" data-tip="Glue Data Quality — Completeness checks (no null invoice IDs), uniqueness constraints, referential integrity (employee exists in HR before timesheet). Quality log written to DynamoDB; CloudWatch alarm on failure.">
+            <rect x="268" y="320" width="220" height="48" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="378" y="340" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">Glue Data Quality</text>
+            <text x="378" y="356" text-anchor="middle" font-size="8" fill="#7b7669">Completeness · Uniqueness · Referential integrity</text>
+          </g>
+          <g class="an" data-tip="KPI Calculation — Billing margin = (invoiced − cost) / invoiced. Approval lag = approval_timestamp − submission_timestamp. PO balance = committed − consumed. All calculated in PySpark and written to Gold layer.">
+            <rect x="500" y="320" width="220" height="48" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.3"/>
+            <text x="610" y="340" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">KPI Calculation</text>
+            <text x="610" y="356" text-anchor="middle" font-size="8" fill="#7b7669">Billing margin · Approval lag · PO balance</text>
+          </g>
+          <g class="an" data-tip="Amazon Redshift — Curated layer feeds star schema in Redshift for SQL reporting. Redshift Spectrum queries S3 Gold directly for ad-hoc analysis without loading. SPICE feeds QuickSight dashboards.">
+            <rect x="732" y="320" width="216" height="48" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
+            <text x="840" y="340" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">Amazon Redshift</text>
+            <text x="840" y="356" text-anchor="middle" font-size="8" fill="#7b7669">Star schema · Spectrum · SPICE feeds</text>
+          </g>
+          <rect x="24" y="386" width="936" height="88" rx="10" fill="rgba(109,40,217,.05)" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="492" y="404" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6d28d9">Layer 6 — Intelligence: OpenSearch Hybrid RAG + Amazon Bedrock</text>
+          <g class="an" data-tip="Titan Embeddings v2 — 1536-dim vectors. Batch vectorises curated content. CRITICAL: same model used for ingestion AND query-time embedding. Mismatched models produce meaningless similarity scores.">
+            <rect x="36" y="412" width="220" height="52" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="146" y="432" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Titan Embeddings v2</text>
+            <text x="146" y="448" text-anchor="middle" font-size="8" fill="#7b7669">1536-dim · Same model ingest + query</text>
+            <text x="146" y="460" text-anchor="middle" font-size="7.5" fill="#6d28d9" font-weight="600">Semantic alignment guaranteed</text>
+          </g>
+          <g class="an" data-tip="OpenSearch Hybrid BM25 + k-NN — BM25 for exact terms (invoice numbers, employee IDs). HNSW k-NN for semantic meaning. Semantic reranker reorders top-20 candidates. Security trim by IAM role DURING query — never post-retrieval.">
+            <rect x="268" y="412" width="260" height="52" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.3"/>
+            <text x="398" y="432" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">OpenSearch · BM25 + HNSW k-NN</text>
+            <text x="398" y="448" text-anchor="middle" font-size="8" fill="#7b7669">Hybrid retrieval · Semantic reranker</text>
+            <text x="398" y="460" text-anchor="middle" font-size="7.5" fill="#6d28d9" font-weight="600">Security trim DURING query (role-scoped)</text>
+          </g>
+          <g class="an" data-tip="Amazon Bedrock Claude 3 Sonnet — Generates grounded natural-language answers with citations to source invoice ID, PO number, timesheet reference. Bedrock Guardrails screen for prompt injection and PII before and after generation.">
+            <rect x="540" y="412" width="250" height="52" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.5"/>
+            <text x="665" y="432" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Bedrock Claude 3 Sonnet</text>
+            <text x="665" y="448" text-anchor="middle" font-size="8" fill="#7b7669">Grounded answers · Invoice/PO citations</text>
+            <text x="665" y="460" text-anchor="middle" font-size="7.5" fill="#6d28d9" font-weight="600">Bedrock Guardrails · Prompt injection screen</text>
+          </g>
+          <g class="an" data-tip="Amazon QuickSight — SPICE in-memory engine. Row-level security mirrors IAM RBAC — finance managers see only their entity data. Billing pipeline, margin analysis, utilisation, and exception dashboards connected to Redshift curated layer.">
+            <rect x="802" y="412" width="150" height="52" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
+            <text x="877" y="432" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">QuickSight</text>
+            <text x="877" y="448" text-anchor="middle" font-size="8" fill="#7b7669">SPICE · Row-level security</text>
+            <text x="877" y="460" text-anchor="middle" font-size="7.5" fill="#1d4ed8" font-weight="600">IAM RBAC dashboards</text>
+          </g>
+          <rect x="24" y="484" width="936" height="54" rx="10" fill="rgba(220,38,38,.05)" stroke="#dc2626" stroke-width="1.3"/>
+          <text x="492" y="502" text-anchor="middle" font-size="10.5" font-weight="700" fill="#dc2626">Layer 7–8 — Security &amp; Governance</text>
+          <g class="an" data-tip="IAM Identity Center — Centralised SSO. JWT: user_id, role, entity scope. All service-to-service calls use IAM Roles (no stored credentials)."><rect x="36" y="510" width="140" height="24" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/><text x="106" y="526" text-anchor="middle" font-size="8.5" fill="#dc2626" font-weight="700">IAM Identity Center</text></g>
+          <g class="an" data-tip="AWS Lake Formation — Column and row-level access control on Glue Data Catalog tables. Finance managers cannot access HR PII columns even if they query the same Gold table."><rect x="186" y="510" width="150" height="24" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/><text x="261" y="526" text-anchor="middle" font-size="8.5" fill="#dc2626" font-weight="700">AWS Lake Formation</text></g>
+          <g class="an" data-tip="VPC PrivateLink — All AWS services (Bedrock, OpenSearch, Glue, Textract, S3) accessed via private endpoints. No traffic traverses public internet."><rect x="346" y="510" width="140" height="24" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/><text x="416" y="526" text-anchor="middle" font-size="8.5" fill="#dc2626" font-weight="700">VPC PrivateLink</text></g>
+          <g class="an" data-tip="KMS CMK per tenant — Each business unit has its own Customer Managed Key. Cross-tenant cryptographic isolation. Key rotation every 365 days."><rect x="496" y="510" width="150" height="24" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/><text x="571" y="526" text-anchor="middle" font-size="8.5" fill="#dc2626" font-weight="700">KMS CMK per Tenant</text></g>
+          <g class="an" data-tip="CloudTrail + CloudWatch — Full API audit trail. Every Bedrock, Glue, OpenSearch, and S3 invocation logged. CloudWatch alarms on Glue Data Quality failures and RAG relevance score drops."><rect x="656" y="510" width="160" height="24" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/><text x="736" y="526" text-anchor="middle" font-size="8.5" fill="#dc2626" font-weight="700">CloudTrail + CloudWatch</text></g>
+          <g class="an" data-tip="Secrets Manager — All credentials (RDS passwords, API keys, Bedrock endpoints) stored with 30-day auto-rotation. K8s External Secrets Operator syncs into Kubernetes Secret objects."><rect x="826" y="510" width="126" height="24" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/><text x="889" y="526" text-anchor="middle" font-size="8.5" fill="#dc2626" font-weight="700">Secrets Manager</text></g>
+          <line x1="492" y1="86" x2="492" y2="106" stroke="#b45309" stroke-width="1.8" opacity=".7" marker-end="url(#dbArrA)" class="fl"/>
+          <line x1="492" y1="196" x2="492" y2="206" stroke="#16a34a" stroke-width="1.8" opacity=".7" marker-end="url(#dbArrG)" class="fl"/>
+          <line x1="350" y1="256" x2="342" y2="256" stroke="#16a34a" stroke-width="2" opacity=".6" marker-end="url(#dbArrG)" class="fl"/>
+          <line x1="646" y1="256" x2="648" y2="256" stroke="#16a34a" stroke-width="2" opacity=".6" marker-end="url(#dbArrG)" class="fl"/>
+          <line x1="492" y1="288" x2="492" y2="296" stroke="#b45309" stroke-width="1.8" opacity=".7" marker-end="url(#dbArrA)" class="fl"/>
+          <line x1="492" y1="378" x2="492" y2="386" stroke="#6d28d9" stroke-width="1.8" opacity=".7" marker-end="url(#dbArrV)" class="fl"/>
+          <line x1="492" y1="474" x2="492" y2="484" stroke="#dc2626" stroke-width="1.5" opacity=".6" marker-end="url(#dbArr)" class="fl"/>
+        </svg>
