@@ -19,6 +19,7 @@ import ResumeSection, { ResumeSheet } from './components/ResumeViewer';
 import Blueprints from './components/Blueprints';
 import News from './components/News';
 import FieldGuide from './components/FieldGuide';
+import TechStack from './components/TechStack';
 import FinalCTA from './components/FinalCTA';
 import { EASE } from './components/fx';
 
@@ -110,6 +111,7 @@ function Series() {
     journey: <Seasons />,
     originals: <Originals onOpen={setProject} />,
     blueprints: <Blueprints active={blueprint} onSelect={setBlueprint} />,
+    stack: <TechStack />,
     picks: <TopPicks />,
     skills: <Skills />,
     moments: <Achievements />,

@@ -32,7 +32,7 @@ function MoreProductions({ onOpen }: { onOpen: (p: Project) => void }) {
         <h3 className="font-sans text-lg font-semibold text-bone sm:text-2xl">
           More Productions <span className="text-mist">· {moreProjects.length} titles</span>
         </h3>
-        <p className="text-xs text-smoke">Automotive · Edge · Cloud · Identity · Containers</p>
+        <p className="text-xs text-smoke">LangGraph · Automotive · Edge · Cloud · Containers</p>
       </div>
       <div className="group/rail relative">
         <div ref={rail} className="rail gutter flex snap-x gap-3 overflow-x-auto py-5">
@@ -77,7 +77,7 @@ function Intro() {
       </p>
       <RevealText as="h2" text="ORIGINALS" className="font-display text-[clamp(3.5rem,9vw,8rem)] leading-[0.85] text-bone" />
       <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-mist">
-        Enterprise data, agentic AI, national-scale Kubernetes, automotive simulation, edge AI and defense DevSecOps — from architecture through production. Open any title for the full story.
+        Enterprise data, agentic AI on AWS and Google Cloud, national-scale Kubernetes, automotive simulation, edge AI and defense DevSecOps — from architecture through production. Open any title for the full story.
       </p>
       <p className="mt-6 hidden text-xs tracking-[0.24em] text-smoke lg:block">SCROLL TO BROWSE →</p>
     </div>

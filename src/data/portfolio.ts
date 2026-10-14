@@ -387,6 +387,43 @@ export const projects: Project[] = [
     motif: 'shield',
   },
   {
+    id: 'gcp-doc-intel',
+    title: 'Document Intelligence Agent',
+    client: 'Google Cloud · POC',
+    genre: 'GenAI • RAG • Multi-Agent',
+    logline: 'A self-updating RAG and multi-agent system on Google Cloud — drop a scanned PDF in a bucket and it is OCR’d, embedded, indexed and answerable within minutes.',
+    stack: ['Vertex AI Gemini', 'Vertex AI Vector Search', 'Document AI', 'Cloud Functions', 'Eventarc', 'Cloud Run', 'Firestore', 'Cloud Storage', 'Python', 'Streamlit'],
+    build: [
+      'Event-driven ingestion: uploads to Cloud Storage trigger a 2nd-gen Cloud Function via Eventarc — Document AI OCR (with PDF splitting to stay within sync page limits), chunking, Gemini embeddings and streaming upserts to Vertex AI Vector Search.',
+      'Three-agent answer pipeline with Gemini function calling: a Cache Agent (Firestore-backed, persists across sessions), a Search Agent over Vector Search, and a Fallback Agent that answers from general knowledge — clearly labelled — when the documents don’t cover the question.',
+      'Two-stage answer confidence: a deterministic “no information” check plus a Gemini judge, so weak or generic retrieval falls through to the Fallback Agent instead of passing as grounded.',
+      'Observability built in — every answer reports which agent responded and a per-stage latency breakdown (cache, planner, retrieval, generation, confidence check), with temperature 0.2 for consistent, source-grounded output.',
+    ],
+    features: ['Continuous auto-ingestion', 'Scanned-PDF OCR at book scale', 'Cache → Search → Fallback agents', 'Source-cited answers', 'Two-stage confidence routing', 'Per-stage latency telemetry'],
+    metrics: [
+      { value: '1,433', label: 'scanned pages ingested from two books' },
+      { value: '548', label: 'chunks embedded & indexed' },
+      { value: '3', label: 'cooperating agents' },
+      { value: '5', label: 'latency stages tracked per answer' },
+    ],
+    featured: true,
+    palette: ocean,
+    motif: 'nodes',
+  },
+  {
+    id: 'langgraph-finops',
+    title: 'FinOps Cost Investigator',
+    client: 'LangGraph · POC',
+    genre: 'Agentic AI • FinOps',
+    logline: 'A LangGraph multi-agent proof of concept where specialised agents work together to investigate cloud-cost questions.',
+    stack: ['LangGraph', 'LangChain', 'Python', 'Multi-agent'],
+    build: ['Built a multi-agent FinOps cost-investigator proof of concept on LangGraph — specialised agents orchestrated as a graph to investigate cloud-cost questions.'],
+    features: ['Graph-orchestrated agents', 'Cloud-cost investigation'],
+    metrics: [],
+    palette: amber,
+    motif: 'mesh',
+  },
+  {
     id: 'arm-css',
     title: 'ARM CSS ADAS Simulation',
     client: 'Siemens · CES 2026',
@@ -500,6 +537,20 @@ export const projects: Project[] = [
     palette: jade,
     motif: 'flow',
   },
+];
+
+/** THE CAST — signature tech stack, drawn as layers from models down to the edge. */
+export type StackLayer = { id: string; layer: string; role: string; tools: string[]; palette: Palette };
+
+export const techStack: StackLayer[] = [
+  { id: 'models', layer: 'Models & GenAI', role: 'The reasoning layer', tools: ['Amazon Bedrock · Claude · Titan', 'Azure OpenAI', 'Vertex AI · Gemini', 'SageMaker', 'TensorFlow Lite'], palette: crimson },
+  { id: 'agents', layer: 'Agents & Orchestration', role: 'How the agents think and coordinate', tools: ['LangGraph', 'LangChain', 'Gemini function calling', 'Bedrock Agents · ReAct', 'Step Functions', 'Human-in-loop queues'], palette: violet },
+  { id: 'retrieval', layer: 'Retrieval & Knowledge', role: 'Grounding answers in real data', tools: ['OpenSearch hybrid (BM25 + k-NN)', 'Vertex AI Vector Search', 'Pinecone', 'FAISS', 'Amazon Textract', 'Document AI'], palette: ocean },
+  { id: 'data', layer: 'Data Platform', role: 'Lakehouse, streams and stores', tools: ['S3 medallion lakehouse', 'AWS Glue · PySpark', 'Airflow / MWAA', 'Kafka · Kinesis', 'Redshift · Athena', 'BigQuery', 'PostgreSQL', 'Firestore · DynamoDB'], palette: amber },
+  { id: 'cloud', layer: 'Cloud & Platform', role: 'Where it all runs', tools: ['AWS', 'Azure', 'Google Cloud', 'Kubernetes · EKS', 'Docker · Helm', 'Terraform', 'Cloud Run · Lambda', 'Nutanix HCI'], palette: jade },
+  { id: 'devsecops', layer: 'DevSecOps & Observability', role: 'Shipping safely, seeing everything', tools: ['Jenkins', 'SonarQube · Trivy', 'Gitea · Nexus', 'Keycloak · Azure AD', 'Prometheus · Grafana', 'CloudWatch · X-Ray'], palette: ember },
+  { id: 'edge', layer: 'Edge & Embedded', role: 'Intelligence at the device', tools: ['ARM · Graviton', 'AWS IoT Core · Greengrass', 'MQTT', 'CARLA · ROS2', 'Raspberry Pi · NXP i.MX'], palette: crimson },
+  { id: 'code', layer: 'Languages & UI', role: 'Hands on the keyboard', tools: ['Python', 'Streamlit', 'React', 'SQL', 'Bash'], palette: violet },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
@@ -633,7 +684,7 @@ export const skillCategories: SkillCategory[] = [
     subtitle: 'GenAI, RAG & guardrails',
     skills: [
       { name: 'Multi-Agent Orchestration', mono: 'Ma', note: 'Core' },
-      ...s('RAG Pipelines', 'AWS Bedrock', 'Azure OpenAI', 'SageMaker', 'Vector Databases', 'OpenSearch · Pinecone · FAISS', 'Prompt Engineering', 'LLM Evaluation', 'Hallucination Mitigation', 'AI Guardrails', 'Model Versioning & Drift'),
+      ...s('LangGraph', 'LangChain', 'Function Calling', 'RAG Pipelines', 'AWS Bedrock', 'Azure OpenAI', 'Vertex AI · Gemini', 'SageMaker', 'Vector Databases', 'OpenSearch · Pinecone · FAISS', 'Vertex AI Vector Search', 'Prompt Engineering', 'LLM Evaluation', 'Hallucination Mitigation', 'AI Guardrails', 'Model Versioning & Drift'),
     ],
   },
   {
@@ -648,7 +699,7 @@ export const skillCategories: SkillCategory[] = [
     subtitle: 'AWS, Kubernetes & IaC',
     skills: [
       { name: 'Kubernetes / EKS', mono: 'K8', note: 'Core' },
-      ...s('AWS (EC2, VPC, IAM)', 'Lambda · S3 · Route53', 'CloudWatch · API GW · KMS', 'Hybrid Cloud', 'Helm', 'Multi-Tenant Platforms', 'Terraform / IaC', 'Docker', 'Nutanix HCI', 'Disaster Recovery', 'Cloud Cost Optimization'),
+      ...s('AWS (EC2, VPC, IAM)', 'Google Cloud', 'Cloud Run · Cloud Functions', 'Lambda · S3 · Route53', 'CloudWatch · API GW · KMS', 'Hybrid Cloud', 'Helm', 'Multi-Tenant Platforms', 'Terraform / IaC', 'Docker', 'Nutanix HCI', 'Disaster Recovery', 'Cloud Cost Optimization'),
     ],
   },
   {
@@ -680,7 +731,13 @@ export const skillCategories: SkillCategory[] = [
 /** Where each skill shows up — revealed on hover / tap. */
 export const skillEvidence: Record<string, string[]> = {
   'Multi-Agent Orchestration': ['Agentic AI platforms on Bedrock & Azure OpenAI', 'Agents for BHP internal tools'],
-  'RAG Pipelines': ['HR Policy RAG Assistant', 'Data Bridge Platform', 'LMS AI Platform'],
+  'RAG Pipelines': ['HR Policy RAG Assistant', 'Data Bridge Platform', 'LMS AI Platform', 'Document Intelligence Agent'],
+  LangGraph: ['FinOps Cost Investigator POC'],
+  'Function Calling': ['Document Intelligence Agent — Fallback Agent'],
+  'Vertex AI · Gemini': ['Document Intelligence Agent'],
+  'Vertex AI Vector Search': ['Document Intelligence Agent'],
+  'Google Cloud': ['Document Intelligence Agent'],
+  'Cloud Run · Cloud Functions': ['Event-driven ingestion — Document Intelligence Agent'],
   'AWS Bedrock': ['HR Policy RAG Assistant', 'Data Bridge Platform', 'LMS AI Platform'],
   'AI Guardrails': ['Bedrock Guardrails — prompt injection & PII'],
   'Hallucination Mitigation': ['<5% hallucination target — HR Policy RAG'],
@@ -781,6 +838,7 @@ export const seasons: Season[] = [
     episodes: [
       { code: 'S07 E01', title: 'The Chapter Lead', description: 'Building agentic AI agents for internal tools and integrating multi-agent AI into BHP’s enterprise operating platform.', tags: ['BHP', 'Agentic AI'], runtime: 'Aug 2026 – Present', palette: crimson },
       { code: 'S07 E02', title: 'The Operating Model', description: 'Owning delivery of the Technical Centre’s demand operating model and the AI tool global demand managers use to request resources.', tags: ['Delivery', 'Product'], runtime: 'In production', palette: violet },
+      { code: 'S07 E03', title: 'The Agent Builder', description: 'Hands-on agent frameworks — a Google Cloud Document Intelligence Agent (Vertex AI, Document AI, Vector Search) and a LangGraph multi-agent FinOps POC.', tags: ['Google Cloud', 'LangGraph', 'Gemini'], runtime: '2026', palette: ocean },
     ],
   },
 ];
@@ -852,7 +910,7 @@ export const libraries = [
 // --- Viewer profiles & section metadata ---
 
 export type ProfileId = 'prashant' | 'recruiter' | 'engineer' | 'explorer';
-export type SectionId = 'about' | 'journey' | 'originals' | 'blueprints' | 'picks' | 'skills' | 'moments' | 'news' | 'guide' | 'story';
+export type SectionId = 'about' | 'journey' | 'originals' | 'blueprints' | 'picks' | 'stack' | 'skills' | 'moments' | 'news' | 'guide' | 'story';
 
 export const viewerProfiles: { id: ProfileId; name: string; blurb: string; color: string; order: SectionId[] }[] = [
   {
@@ -860,28 +918,28 @@ export const viewerProfiles: { id: ProfileId; name: string; blurb: string; color
     name: 'Prashant',
     blurb: 'The full series, in order',
     color: '#e5132b',
-    order: ['about', 'journey', 'originals', 'blueprints', 'picks', 'skills', 'moments', 'news', 'guide', 'story'],
+    order: ['about', 'journey', 'originals', 'blueprints', 'stack', 'picks', 'skills', 'moments', 'news', 'guide', 'story'],
   },
   {
     id: 'recruiter',
     name: 'Recruiter',
     blurb: 'Resume, awards & skills first',
     color: '#4cc9ff',
-    order: ['story', 'moments', 'skills', 'originals', 'about', 'journey', 'news', 'blueprints', 'picks', 'guide'],
+    order: ['story', 'moments', 'stack', 'skills', 'originals', 'about', 'journey', 'news', 'blueprints', 'picks', 'guide'],
   },
   {
     id: 'engineer',
     name: 'Engineer',
     blurb: 'Architectures & projects first',
     color: '#46e3a8',
-    order: ['blueprints', 'originals', 'skills', 'guide', 'journey', 'moments', 'about', 'picks', 'news', 'story'],
+    order: ['stack', 'blueprints', 'originals', 'skills', 'guide', 'journey', 'moments', 'about', 'picks', 'news', 'story'],
   },
   {
     id: 'explorer',
     name: 'Explorer',
     blurb: 'The story arc & highlights first',
     color: '#ffb547',
-    order: ['journey', 'picks', 'news', 'originals', 'moments', 'about', 'blueprints', 'skills', 'guide', 'story'],
+    order: ['journey', 'picks', 'news', 'originals', 'moments', 'about', 'blueprints', 'stack', 'skills', 'guide', 'story'],
   },
 ];
 
@@ -893,6 +951,7 @@ export const sectionMeta: Record<SectionId, { nav: string; card: string; meta: s
   originals: { nav: 'Originals', card: 'My Projects', meta: `${projects.length} Productions • ${featuredProjects.length} Originals`, palette: crimson },
   blueprints: { nav: 'Blueprints', card: 'Architectures', meta: `${blueprints.length} Interactive diagrams`, palette: ocean },
   picks: { nav: 'Top Picks', card: 'Top Picks', meta: 'Top 10 highlights', palette: jade },
+  stack: { nav: 'Tech Stack', card: 'The Cast', meta: `${techStack.length} Layers • ${techStack.reduce((n, l) => n + l.tools.length, 0)} Technologies`, palette: violet },
   skills: { nav: 'Skills', card: 'My Skills', meta: `${skillCategories.length} Genres`, palette: ocean },
   moments: { nav: 'Awards', card: 'Awards', meta: `${achievements.length} Awards • Speaker`, palette: crimson },
   news: { nav: 'News', card: 'In the News', meta: `${news.length} Features • Embedded World & AI Summit`, palette: amber },

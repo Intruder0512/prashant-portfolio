@@ -71,7 +71,7 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
           <nav className="hidden items-center gap-5 xl:flex 2xl:gap-6" aria-label="Sections">
             <NavLink label="Home" active={active === 'top'} onClick={() => go('top')} />
             {order.map((id) => (
-              <NavLink key={id} label={sectionMeta[id].nav} active={active === id} onClick={() => go(id)} />
+              <NavLink key={id} label={sectionMeta[id].nav} active={active === id} onClick={() => go(id)} wide={SECONDARY.includes(id)} />
             ))}
           </nav>
         </div>
@@ -80,7 +80,7 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
           <button
             type="button"
             onClick={() => go('contact')}
-            className="hidden rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-bone transition hover:border-crimson-2 hover:text-crimson-2 sm:block"
+            className="whitespace-nowrap hidden rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-bone transition hover:border-crimson-2 hover:text-crimson-2 sm:block"
           >
             LET&apos;S BUILD
           </button>
@@ -174,9 +174,16 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
   );
 }
 
-function NavLink({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+/** Shown in the top bar only on very wide screens (they stay in the mobile menu and Continue Exploring). */
+const SECONDARY: SectionId[] = ['picks', 'news', 'guide'];
+
+function NavLink({ label, active, onClick, wide = false }: { label: string; active: boolean; onClick: () => void; wide?: boolean }) {
   return (
-    <button type="button" onClick={onClick} className={`relative text-[13px] font-medium transition ${active ? 'text-bone' : 'text-mist hover:text-bone'}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative whitespace-nowrap text-[13px] font-medium transition ${wide ? 'hidden 2xl:block' : ''} ${active ? 'text-bone' : 'text-mist hover:text-bone'}`}
+    >
       {label}
       {active && <motion.span layoutId="nav-underline" className="absolute -bottom-1.5 left-0 right-0 h-[2px] rounded bg-crimson" />}
     </button>
