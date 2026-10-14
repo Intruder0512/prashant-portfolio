@@ -36,7 +36,7 @@ export default function ResumeSection({ onView }: { onView: () => void }) {
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="font-serif text-3xl italic leading-tight text-bone">Every season, on one page.</p>
           <p className="mt-3 text-sm leading-relaxed text-mist">
-            {yearsExp}+ years, {experience.length} roles, {projects.length} productions and {achievements.length} awards — view it here or take a copy with you.
+            {yearsExp}+ years, {projects.length} projects and {achievements.length} awards & speaking credits — view it here or take a copy with you.
           </p>
           <div className="mt-6 flex flex-col gap-3">
             <Magnetic className="w-full">
@@ -64,7 +64,7 @@ export default function ResumeSection({ onView }: { onView: () => void }) {
             {[
               { v: `${yearsExp}+`, k: 'Years' },
               { v: String(projects.length), k: 'Projects' },
-              { v: String(achievements.length), k: 'Awards' },
+              { v: String(achievements.length), k: 'Honours' },
             ].map((s) => (
               <div key={s.k} className="bg-ink-2 px-2 py-4">
                 <dd className="font-display text-3xl leading-none text-bone">{s.v}</dd>
@@ -141,6 +141,7 @@ export function ResumeSheet() {
                 </p>
                 <p className="text-xs text-smoke">{x.period}</p>
               </div>
+              {x.growth && <p className="mt-1 text-[11px] italic leading-relaxed text-smoke">{x.growth}</p>}
               <ul className="mt-2 space-y-1.5">
                 {x.points.map((p) => (
                   <li key={p} className="flex gap-2 text-xs leading-relaxed text-mist">
@@ -184,7 +185,7 @@ export function ResumeSheet() {
             </div>
           ))}
 
-          <H>Awards</H>
+          <H>Awards & Speaking</H>
           <ul className="space-y-2">
             {achievements.map((a) => (
               <li key={a.id} className="text-xs leading-relaxed text-mist">

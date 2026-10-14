@@ -1,6 +1,7 @@
 // Builds optimized image assets from the source photos in the project root.
 //   portrait-cutout.png  = background-removed portrait (transparent PNG)
 //   ew01.jpg, ew02.jpg   = Embedded World photos (In the News)
+//   ai-summit-*.png      = AI Summit 2026 photos (In the News)
 // Run: npm run images
 import sharp from 'sharp';
 import { existsSync, mkdirSync } from 'node:fs';
@@ -14,9 +15,10 @@ for (const w of [1100, 720, 420]) {
   await sharp(cutout).resize({ width: w }).webp({ quality: 86, alphaQuality: 90 }).toFile(`${OUT}/portrait-${w}.webp`);
 }
 
-for (const name of ['ew01', 'ew02']) {
-  if (!existsSync(`${name}.jpg`)) continue;
-  await sharp(`${name}.jpg`).resize({ width: 1200, withoutEnlargement: true }).webp({ quality: 80 }).toFile(`${OUT}/${name}.webp`);
+for (const file of ['ew01.jpg', 'ew02.jpg', 'ai-summit-minister.png', 'ai-summit-stage.png']) {
+  if (!existsSync(file)) continue;
+  const name = file.replace(/\.[a-z]+$/, '');
+  await sharp(file).resize({ width: 1200, withoutEnlargement: true }).webp({ quality: 80 }).toFile(`${OUT}/${name}.webp`);
 }
 
 // Social share image (1200x630) on a dark backdrop
@@ -34,7 +36,7 @@ await sharp({ create: { width: 1200, height: 630, channels: 4, background: '#070
       input: Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
         <text x="72" y="300" font-family="Impact, 'Arial Narrow', sans-serif" font-size="128" fill="#f4f1ec" letter-spacing="4">PRASHANT</text>
         <text x="78" y="352" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="26" fill="#ff3d5a" letter-spacing="16">THE ARCHITECT</text>
-        <text x="78" y="420" font-family="Helvetica, Arial, sans-serif" font-weight="600" font-size="18" fill="#a7a6ad" letter-spacing="5">AGENTIC AI • DATA • CLOUD • EDGE</text>
+        <text x="78" y="420" font-family="Helvetica, Arial, sans-serif" font-weight="600" font-size="18" fill="#a7a6ad" letter-spacing="5">AI DEVELOPMENT &amp; DELIVERY LEAD</text>
       </svg>`),
     },
   ])

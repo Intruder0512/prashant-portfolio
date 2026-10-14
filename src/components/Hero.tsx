@@ -122,7 +122,12 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
           {profile.seriesTag}
         </motion.p>
 
-        <motion.div variants={item} className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] font-medium text-mist">
+        <motion.p variants={item} className="mt-4 font-sans text-lg font-semibold leading-snug text-bone sm:text-2xl">
+          {profile.role}
+          <span className="mt-0.5 block text-sm font-medium text-mist sm:text-base">BHP India Technical Centre</span>
+        </motion.p>
+
+        <motion.div variants={item} className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] font-medium text-mist">
           <span className="rounded border border-white/25 px-1.5 py-px text-[10px] font-bold tracking-wider text-bone">ARCH</span>
           {meta.map((m, i) => (
             <span key={m} className="flex items-center gap-3">
