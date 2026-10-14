@@ -1,11 +1,11 @@
-# PRASHANT — THE ARCHITECT
+# PRASHANT — AGENTIC AI DELIVERY LEAD & ARCHITECT
 
-A cinematic, streaming-inspired portfolio for **Prashant Yadav**, Senior Solutions Architect.
+A cinematic, streaming-inspired portfolio for **Prashant Yadav** — Agentic AI Delivery Lead & Architect.
 Every career stage is a season, every project is an Original, and the architecture diagrams from the previous site are now interactive "Blueprints".
 
 > A personal portfolio with a fictional streaming-platform look. It is not affiliated with Netflix or any other streaming service and uses none of their logos.
 
-**Stack:** React 18, TypeScript, Vite 6, Tailwind CSS 4, Framer Motion 11, Lenis. Fonts are self-hosted (no Google Fonts calls).
+**Stack:** React 18, TypeScript, Vite 8, Tailwind CSS 4, Framer Motion 11, Lenis. Fonts are self-hosted (no Google Fonts calls).
 
 ## Deploy on Hostinger (Node.js Web App)
 
@@ -16,7 +16,7 @@ Every career stage is a season, every project is an Original, and the architectu
    - Build command / script: `build`
    - Output directory: `dist`
    - Entry file: *leave empty* (it's a static site)
-   - Node.js: 20 or 22
+   - Node.js: 22 (Vite 8 needs 20.19+)
 4. **Deploy**. Attach the site to `prashantyadav.tech`.
 
 **Plain hosting alternative:** if you'd rather use normal shared hosting, upload the *contents* of `prashant-portfolio-dist.zip` straight into `public_html` — no Node needed.

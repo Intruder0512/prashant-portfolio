@@ -1,5 +1,5 @@
 /**
- * Central portfolio data for Prashant Yadav — THE ARCHITECT.
+ * Central portfolio data for Prashant Yadav — Agentic AI Delivery Lead & Architect.
  * Source of truth: "Prashant Yadav — Solution Delivery and AI Lead" resume (Oct 2026),
  * plus details carried over from the previous prashantyadav.tech site.
  * Every component reads from this file: update it here and the whole site follows.
@@ -18,7 +18,7 @@ export const profile = {
   fullName: 'Prashant Yadav',
   displayName: 'Prashant Yadav',
   firstName: 'PRASHANT',
-  seriesTag: 'THE ARCHITECT',
+  seriesTag: 'AGENTIC AI DELIVERY LEAD & ARCHITECT',
   /** Fictional studio card shown at the very start of the opening sequence. */
   originalLabel: 'A YADAV ORIGINAL',
   role: 'Chapter Lead — AI Development & Delivery',
@@ -403,10 +403,10 @@ export const projects: Project[] = [
   },
   {
     id: 'agri-edge',
-    title: 'Edge AI Weed & Crop Detection',
+    title: 'Physical AI at the Edge',
     client: 'AI Summit 2026',
     genre: 'Edge AI • AgriTech',
-    logline: 'Autonomous weed vs crop detection on deterministic MPU + MCU edge hardware — demonstrated to the Union Minister at AI Summit 2026.',
+    logline: 'Physical AI on deterministic MPU + MCU edge hardware — presented on the AI Impact Summit stage and demonstrated to the Union Minister at AI Summit 2026.',
     stack: ['TensorFlow Lite', 'ARM', 'MPU + MCU', 'Arduino UNO Q', 'Qualcomm', 'MQTT', 'AWS IoT'],
     build: [
       'Hybrid deterministic Edge AI architecture integrating ARM platforms, TensorFlow Lite and AWS IoT for real-time distributed intelligence.',
@@ -576,6 +576,8 @@ export type NewsItem = {
   image?: string;
   /** CSS object-position for the photo, e.g. 'center 20%'. */
   imagePosition?: string;
+  /** LinkedIn embed URL — the card opens the post in an overlay. */
+  embed?: { src: string; height: number };
   palette: Palette;
 };
 
@@ -584,10 +586,11 @@ export const news: NewsItem[] = [
     id: 'ai-summit-minister',
     event: 'AI Summit 2026',
     title: 'Edge AI demo to the Union Minister',
-    detail: 'Hosted Hon’ble Union Minister Shri Ashwini Vaishnaw at the Qualcomm booth — showing how embedded intelligence powers smart agriculture with Edge AI on Arduino + Qualcomm hardware.',
-    by: 'Prashant Yadav',
-    tags: '#EdgeAI · #EmbeddedAI · #AIoT · #PrecisionAgriculture',
-    link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7432359053441454081',
+    detail: 'Hosted Hon’ble Union Minister Shri Ashwini Vaishnaw at the Qualcomm booth — showing how embedded intelligence and Edge AI on Arduino + Qualcomm hardware work in the real world.',
+    by: 'Judge India Solutions',
+    tags: '#AISummit2026 · #EdgeAI · #EmbeddedAI · #AIoT',
+    link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7430628431408627712',
+    embed: { src: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7430628431408627712?collapsed=1', height: 896 },
     image: '/assets/ai-summit-minister.webp',
     imagePosition: 'center 30%',
     palette: jade,
@@ -595,11 +598,12 @@ export const news: NewsItem[] = [
   {
     id: 'ai-summit-stage',
     event: 'AI Impact Summit 2026',
-    title: 'Autonomous weed & crop detection — on stage',
-    detail: 'Live demo of autonomous weed and crop detection on Arduino UNO Q with Qualcomm, presented on the AI Impact Summit main stage as part of the Judge India Solutions showcase.',
-    by: 'Judge India Solutions',
-    tags: '#AISummit2026 · #EdgeAI · #DeepTech',
-    link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7430628431408627712',
+    title: 'Physical AI & Edge AI — on stage',
+    detail: 'On the AI Impact Summit main stage — presenting Physical AI and Edge AI running on Arduino UNO Q with Qualcomm: intelligence that senses, decides and acts on the device itself.',
+    by: 'Prashant Yadav',
+    tags: '#PhysicalAI · #EdgeAI · #EmbeddedAI · #AIImpactSummit',
+    link: 'https://www.linkedin.com/feed/update/urn:li:ugcPost:7432359053441454081',
+    embed: { src: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7432359053441454081?collapsed=1', height: 550 },
     image: '/assets/ai-summit-stage.webp',
     imagePosition: 'center 40%',
     palette: violet,
@@ -722,7 +726,7 @@ export const skillEvidence: Record<string, string[]> = {
   Purview: ['Data Bridge Platform'],
   'Security Trimming': ['HR Policy RAG Assistant'],
   'EfficientDet-Lite': ['Visionext — 28 ms on-device inference'],
-  'TensorFlow Lite': ['Visionext Edge AI', 'Edge AI Weed & Crop Detection'],
+  'TensorFlow Lite': ['Visionext Edge AI', 'Physical AI at the Edge'],
   'Disaster Recovery': ['AWS DR Framework'],
   'Incident Readiness': ['Safelite L1 Health Check Automation'],
   FastAPI: ['MCP Tool Orchestration Hub'],
@@ -795,7 +799,7 @@ export const seasons: Season[] = [
       { code: 'S06 E02', title: 'Grounded', description: 'HR Policy RAG Assistant — 0.91 faithfulness and 85% auto-resolution.', tags: ['RAG', 'Azure OpenAI'], runtime: 'Azure', palette: violet },
       { code: 'S06 E03', title: 'The Protocol', description: 'MCP tool orchestration hub — 3-tool chains cut from 870 ms to 380 ms.', tags: ['MCP', 'FastAPI'], runtime: 'Agentic AI', palette: ember },
       { code: 'S06 E04', title: 'Governed', description: 'Led ISO 42001 AIMS certification for enterprise AI systems.', tags: ['ISO 42001'], runtime: 'AI governance', palette: jade },
-      { code: 'S06 E05', title: 'The Minister', description: 'Edge AI weed & crop detection demonstrated to the Union Minister at AI Summit 2026.', tags: ['AI Summit', 'Edge AI'], runtime: '2026', palette: crimson },
+      { code: 'S06 E05', title: 'The Minister', description: 'Physical AI and Edge AI on the AI Impact Summit stage — and a demo to the Union Minister at AI Summit 2026.', tags: ['AI Summit', 'Edge AI'], runtime: '2026', palette: crimson },
     ],
   },
   {

@@ -110,9 +110,9 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
           {profile.firstName}
         </motion.h1>
         <motion.p
-          className="font-sans text-sm font-bold text-crimson-2 [text-shadow:0_2px_20px_rgba(0,0,0,0.9)] sm:text-lg"
-          initial={{ opacity: 0, letterSpacing: '1.4em' }}
-          animate={beat >= 3 ? { opacity: 1, letterSpacing: '0.7em', y: beat >= 4 ? '-30vh' : 0 } : {}}
+          className="max-w-[92vw] font-sans text-[11px] font-bold text-crimson-2 [text-shadow:0_2px_20px_rgba(0,0,0,0.9)] sm:text-lg"
+          initial={{ opacity: 0, letterSpacing: '0.9em' }}
+          animate={beat >= 3 ? { opacity: 1, letterSpacing: '0.32em', y: beat >= 4 ? '-30vh' : 0 } : {}}
           transition={{ duration: 1.1, ease: EASE }}
         >
           {profile.seriesTag}

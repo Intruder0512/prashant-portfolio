@@ -35,8 +35,8 @@ await sharp({ create: { width: 1200, height: 630, channels: 4, background: '#070
     {
       input: Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
         <text x="72" y="300" font-family="Impact, 'Arial Narrow', sans-serif" font-size="128" fill="#f4f1ec" letter-spacing="4">PRASHANT</text>
-        <text x="78" y="352" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="26" fill="#ff3d5a" letter-spacing="16">THE ARCHITECT</text>
-        <text x="78" y="420" font-family="Helvetica, Arial, sans-serif" font-weight="600" font-size="18" fill="#a7a6ad" letter-spacing="5">AI DEVELOPMENT &amp; DELIVERY LEAD</text>
+        <text x="78" y="352" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="22" fill="#ff3d5a" letter-spacing="6">AGENTIC AI DELIVERY LEAD &amp; ARCHITECT</text>
+        <text x="78" y="420" font-family="Helvetica, Arial, sans-serif" font-weight="600" font-size="18" fill="#a7a6ad" letter-spacing="5">CHAPTER LEAD — AI DEVELOPMENT &amp; DELIVERY</text>
       </svg>`),
     },
   ])

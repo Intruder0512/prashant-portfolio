@@ -20,19 +20,19 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "4.1.4",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.6",
-    "@vitejs/plugin-react": "4.4.1",
-    "tailwindcss": "4.1.4",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
     "typescript": "5.8.3",
-    "vite": "6.3.5"
+    "vite": "^8.3.4"
   },
-  "description": "Prashant Yadav — The Architect. A cinematic, streaming-inspired portfolio.",
+  "description": "Prashant Yadav \u2014 The Architect. A cinematic, streaming-inspired portfolio.",
   "optionalDependencies": {
-    "sharp": "0.34.1"
+    "sharp": "^0.35.5"
   },
   "engines": {
-    "node": ">=18"
+    "node": "^20.19.0 || >=22.12.0"
   }
 }
