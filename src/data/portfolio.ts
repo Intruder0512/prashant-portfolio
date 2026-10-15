@@ -512,7 +512,7 @@ export const techStack: StackLayer[] = [
   { id: 'devsecops', layer: 'DevSecOps & Security', role: 'Shipping safely', tools: ['Jenkins', 'GitHub Actions', 'Azure DevOps', 'SonarQube · Trivy', 'Nexus · Gitea · Tuleap', 'Entra ID · Keycloak', 'Key Vault · KMS', 'ISO 42001 AIMS'], palette: ember },
   { id: 'observability', layer: 'Observability & SRE', role: 'Seeing everything', tools: ['Prometheus · Grafana', 'CloudWatch', 'Azure Monitor · App Insights', 'ELK / OpenSearch', 'Playwright synthetic checks', 'ServiceNow'], palette: crimson },
   { id: 'edge', layer: 'Edge & Embedded', role: 'Intelligence at the device', tools: ['ARM Cortex', 'AWS IoT Core · Greengrass', 'MQTT', 'CARLA', 'AGL · Android Automotive', 'Qt HMI'], palette: violet },
-  { id: 'code', layer: 'Code & BI', role: 'Hands on the keyboard', tools: ['Python', 'FastAPI', 'pandas · Pydantic · pytest', 'React.js', 'Power BI', 'Amazon QuickSight'], palette: ocean },
+  { id: 'code', layer: 'Code & BI', role: 'Hands on the keyboard', tools: ['Python', 'FastAPI', 'pandas · Pydantic · pytest', 'React.js', 'Power BI'], palette: ocean },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
@@ -710,8 +710,8 @@ export const skillCategories: SkillCategory[] = [
   {
     id: 'finops',
     title: 'FinOps & Code',
-    subtitle: 'Cost, Python & BI',
-    skills: s('Cloud Cost Optimisation', 'Rightsizing', 'Cost Attribution per Tenant', 'Quota Management', 'Python', 'FastAPI', 'React.js', 'Power BI', 'QuickSight'),
+    subtitle: 'Cost, Python & Power BI',
+    skills: s('Cloud Cost Optimisation', 'Rightsizing', 'Cost Attribution per Tenant', 'Quota Management', 'Python', 'FastAPI', 'React.js', 'Power BI'),
   },
 ];
 
