@@ -26,9 +26,9 @@
     "@vitejs/plugin-react": "^6.1.2",
     "tailwindcss": "^4.3.3",
     "typescript": "5.8.3",
-    "vite": "^6.4.3"
+    "vite": "^8.3.4"
   },
-  "description": "Prashant Yadav — The Architect. A cinematic, streaming-inspired portfolio.",
+  "description": "Prashant Yadav — Agentic AI Delivery Lead & Architect. A cinematic, streaming-inspired portfolio.",
   "optionalDependencies": {
     "sharp": "^0.35.5"
   },
