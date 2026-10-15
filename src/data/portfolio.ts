@@ -168,7 +168,7 @@ export const projects: Project[] = [
     client: 'Azure · Enterprise Data Fusion',
     genre: 'Data Lakehouse • GenAI • RAG',
     logline: 'Fragmented finance, staffing, HR, payroll and contract data unified into one governed Azure intelligence layer — and made answerable in plain language.',
-    stack: ['Azure Data Factory', 'ADLS Gen2', 'Document Intelligence', 'Azure Synapse', 'Microsoft Fabric', 'Azure AI Search', 'Azure OpenAI', 'Purview', 'Power BI', 'Entra ID', 'Key Vault', 'Azure Monitor'],
+    stack: ['Azure Data Factory', 'ADLS Gen2', 'Document Intelligence', 'Azure Synapse', 'Microsoft Fabric', 'Azure AI Search', 'Azure OpenAI', 'Purview', 'Power BI', 'Entra ID', 'Key Vault', 'Azure Monitor', 'Azure DevOps'],
     build: [
       'Unified finance, staffing, HR, payroll, timesheets, CRM, invoices, purchase orders and contracts into a governed layer on ADLS Gen2 with Raw, Processed and Curated zones.',
       'Multi-source ingestion with Azure Data Factory — parameterised pipelines, watermark and CDC incremental loads and event-driven triggers; Azure Document Intelligence (pre-built and custom-trained models) for invoice, PO and contract OCR.',
@@ -194,7 +194,7 @@ export const projects: Project[] = [
     client: 'Azure GenAI',
     genre: 'GenAI • Enterprise RAG',
     logline: 'Employees ask about policies, leave, benefits and SOPs in plain language — and get cited, role-aware, hallucination-guarded answers.',
-    stack: ['Azure OpenAI', 'Azure AI Search', 'Document Intelligence', 'Azure Functions', 'Blob Storage', 'Entra ID', 'Application Insights'],
+    stack: ['Azure OpenAI', 'Azure AI Search', 'Document Intelligence', 'Azure Functions', 'Blob Storage', 'Entra ID', 'Application Insights', 'Azure DevOps'],
     build: [
       'Two-pipeline architecture: ingestion (Blob Storage event triggers → Azure Functions → Document Intelligence OCR) and query (Entra ID auth → normalisation → embedding → hybrid retrieval → security trimming → grounded generation).',
       'Structure-aware chunking (300–500 tokens, 50–80 token overlap) on section boundaries, enriched with policy category, section, effective date, department and access classification; embeddings indexed in Azure AI Search with HNSW.',
@@ -312,10 +312,11 @@ export const projects: Project[] = [
     client: 'Visionext',
     genre: 'Edge AI • IoT • Computer Vision',
     logline: '28 ms on-device inference on ARM — with MQTT streaming to AWS and Greengrass managing a distributed camera fleet.',
-    stack: ['ARM Cortex', 'TensorFlow Lite', 'EfficientDet-Lite', 'AWS IoT Core', 'IoT Greengrass', 'Lambda', 'SageMaker', 'MQTT'],
+    stack: ['ARM Cortex', 'TensorFlow Lite', 'EfficientDet-Lite', 'AWS IoT Core', 'IoT Greengrass', 'Lambda', 'SageMaker', 'MQTT', 'GitHub Actions'],
     build: [
       'Edge AI pipeline achieving 28 ms on-device inference on ARM Cortex with EfficientDet-Lite.',
       'MQTT event streaming to AWS IoT Core with SageMaker real-time analytics, and Greengrass fleet management for distributed camera-node updates.',
+      'GitHub Actions CI/CD to build and deploy the platform.',
       'Recognised with the Star Performer of the Year and Cloud Architecture Leadership awards (2024).',
     ],
     features: ['On-device inference', 'Edge-to-cloud MQTT', 'Greengrass fleet updates', 'Real-time analytics'],
@@ -745,6 +746,8 @@ export const skillEvidence: Record<string, string[]> = {
   'Disaster Recovery': ['AWS DR Framework'],
   'Incident Readiness': ['Safelite L1 Health Check Automation'],
   FastAPI: ['MCP Tool Orchestration Hub'],
+  'GitHub Actions': ['Visionext Edge AI — build & deployment'],
+  'Azure DevOps': ['Data Bridge & HR Policy RAG — Azure Document Intelligence deployments'],
 };
 
 export type Episode = { code: string; title: string; description: string; tags: string[]; runtime: string; palette: Palette };
