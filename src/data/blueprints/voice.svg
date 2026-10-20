@@ -1,0 +1,107 @@
+<svg class="bp-svg" viewBox="0 0 980 560" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+<defs><marker id="voxblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="voxcyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0891b2"/></marker><marker id="voxgreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="voxamber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b45309"/></marker><marker id="voxviolet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6d28d9"/></marker><marker id="voxred" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="voxgrey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b7669"/></marker><marker id="voxslate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<text x="30" y="30" text-anchor="start" font-size="11" font-weight="700" fill="#6d28d9">SELF-HOSTED SPEECH-TO-SPEECH TRANSLATION · 21 INDIC LANGUAGES · ONE GPU</text>
+<g class="an" data-tip="Input — mp4, mkv, wav, mp3, webm or a microphone recording, from the Gradio UI or the API.">
+<rect x="30" y="56" width="146" height="74" rx="8" fill="rgba(71,85,105,.07)" stroke="#475569" stroke-width="1.4"/>
+<text x="103.0" y="90.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#475569">Input</text>
+<text x="103.0" y="102.7" text-anchor="middle" font-size="7.6" font-weight="600" fill="#475569">Video · audio · mic</text>
+</g>
+<path d="M176,93 L188,93" fill="none" stroke="#475569" stroke-width="1.6" opacity=".75" marker-end="url(#voxslate)" class="fl"/>
+<g class="an" data-tip="ffmpeg extracts the audio track and downsamples it to 16 kHz mono WAV for Whisper.">
+<rect x="188" y="56" width="146" height="74" rx="8" fill="rgba(8,145,178,.07)" stroke="#0891b2" stroke-width="1.4"/>
+<text x="261.0" y="90.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0891b2">Audio prep</text>
+<text x="261.0" y="102.7" text-anchor="middle" font-size="7.6" font-weight="600" fill="#0891b2">ffmpeg → 16 kHz mono</text>
+</g>
+<path d="M334,93 L346,93" fill="none" stroke="#0891b2" stroke-width="1.6" opacity=".75" marker-end="url(#voxcyan)" class="fl"/>
+<g class="an" data-tip="Whisper small transcribes English in 30-second windows; condition_on_previous_text is disabled to stop later chunks being skipped.">
+<rect x="346" y="56" width="146" height="74" rx="8" fill="rgba(29,78,216,.07)" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="419.0" y="84.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">ASR · Whisper small</text>
+<text x="419.0" y="96.5" text-anchor="middle" font-size="8.2" fill="#7b7669">30 s windows</text>
+<text x="419.0" y="108.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#1d4ed8">no cross-chunk conditioning</text>
+</g>
+<path d="M492,93 L504,93" fill="none" stroke="#1d4ed8" stroke-width="1.6" opacity=".75" marker-end="url(#voxblue)" class="fl"/>
+<g class="an" data-tip="IndicTrans2 (distilled 200M) translates English into each target language in batched chunks of up to 700 characters.">
+<rect x="504" y="56" width="146" height="74" rx="8" fill="rgba(22,163,74,.07)" stroke="#16a34a" stroke-width="1.4"/>
+<text x="577.0" y="84.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">NMT · IndicTrans2</text>
+<text x="577.0" y="96.5" text-anchor="middle" font-size="8.2" fill="#7b7669">200M distilled</text>
+<text x="577.0" y="108.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#16a34a">≤ 700-char batches</text>
+</g>
+<path d="M650,93 L662,93" fill="none" stroke="#16a34a" stroke-width="1.6" opacity=".75" marker-end="url(#voxgreen)" class="fl"/>
+<g class="an" data-tip="Indic Parler-TTS synthesises speech in chunks of up to 220 characters (it degrades on longer input), compiled with torch.compile for throughput; chunks are concatenated with ffmpeg.">
+<rect x="662" y="56" width="146" height="74" rx="8" fill="rgba(180,83,9,.07)" stroke="#b45309" stroke-width="1.4"/>
+<text x="735.0" y="84.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">TTS · Indic Parler-TTS</text>
+<text x="735.0" y="96.5" text-anchor="middle" font-size="8.2" fill="#7b7669">≤ 220-char chunks</text>
+<text x="735.0" y="108.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#b45309">torch.compile</text>
+</g>
+<path d="M808,93 L820,93" fill="none" stroke="#b45309" stroke-width="1.6" opacity=".75" marker-end="url(#voxamber)" class="fl"/>
+<g class="an" data-tip="For video, ffprobe compares durations: within 2% the audio is copied, shorter speech is padded with silence, longer speech is time-stretched with chained ffmpeg atempo filters.">
+<rect x="820" y="56" width="146" height="74" rx="8" fill="rgba(220,38,38,.07)" stroke="#dc2626" stroke-width="1.4"/>
+<text x="893.0" y="90.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#dc2626">A/V sync</text>
+<text x="893.0" y="102.7" text-anchor="middle" font-size="7.6" font-weight="600" fill="#dc2626">pad · atempo · copy</text>
+</g>
+<g class="an" data-tip="Output — transcript, translations, dubbed audio and a dubbed video per language; up to four target languages in one pass, switchable from a dropdown.">
+<rect x="770" y="160" width="180" height="56" rx="8" fill="rgba(109,40,217,.07)" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="860.0" y="179.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">Dubbed output</text>
+<text x="860.0" y="191.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Up to 4 languages per run</text>
+<text x="860.0" y="203.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#6d28d9">Switch versions without re-processing</text>
+</g>
+<path d="M863,130 L863,160" fill="none" stroke="#dc2626" stroke-width="1.6" opacity=".75" marker-end="url(#voxred)" class="fl"/>
+<rect x="30" y="240" width="920" height="118" rx="12" fill="rgba(29,78,216,.07)" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="44" y="257" text-anchor="start" font-size="11" font-weight="700" fill="#1d4ed8">Interfaces</text>
+<g class="an" data-tip="Gradio UI for people — upload or record, watch progress, preview waveforms and switch between language versions.">
+<rect x="50" y="268" width="280" height="76" rx="8" fill="rgba(29,78,216,.07)" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="190.0" y="297.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">Gradio UI (app.py)</text>
+<text x="190.0" y="309.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Waveform previews · tabbed output</text>
+<text x="190.0" y="321.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#1d4ed8">Progress bar · language dropdown</text>
+</g>
+<g class="an" data-tip="FastAPI REST API for machines — async job queue with bearer-token auth and download endpoints; a single GPU lock serialises inference so concurrent requests cannot run out of memory; background TTL sweeps remove old outputs.">
+<rect x="350" y="268" width="300" height="76" rx="8" fill="rgba(109,40,217,.07)" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="500.0" y="290.9" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">FastAPI server (api_server.py)</text>
+<text x="500.0" y="303.3" text-anchor="middle" font-size="8.2" fill="#7b7669">Async job queue · bearer-token auth</text>
+<text x="500.0" y="315.7" text-anchor="middle" font-size="8.2" fill="#7b7669">One GPU lock serialises inference</text>
+<text x="500.0" y="328.1" text-anchor="middle" font-size="7.6" font-weight="600" fill="#6d28d9">TTL sweeps clean old outputs</text>
+</g>
+<g class="an" data-tip="All three models load once at startup and stay resident — about 9 GB of VRAM including the torch.compile workspace.">
+<rect x="670" y="268" width="260" height="76" rx="8" fill="rgba(180,83,9,.07)" stroke="#b45309" stroke-width="1.4"/>
+<text x="800.0" y="297.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">Models stay warm</text>
+<text x="800.0" y="309.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Loaded once at startup</text>
+<text x="800.0" y="321.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#b45309">~9 GB VRAM steady state</text>
+</g>
+<rect x="30" y="372" width="920" height="96" rx="12" fill="rgba(22,163,74,.07)" stroke="#16a34a" stroke-width="1.5"/>
+<text x="44" y="389" text-anchor="start" font-size="11" font-weight="700" fill="#16a34a">Delivery</text>
+<g class="an" data-tip="Dockerfile on a CUDA 12.1 runtime image; run with --gpus all.">
+<rect x="50" y="398" width="210" height="56" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+<text x="155.0" y="423.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">Docker</text>
+<text x="155.0" y="435.7" text-anchor="middle" font-size="8.2" fill="#7b7669">CUDA 12.1 runtime image</text>
+</g>
+<g class="an" data-tip="systemd units for the Gradio app and the API server, with auto-restart.">
+<rect x="274" y="398" width="210" height="56" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+<text x="379.0" y="423.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">systemd</text>
+<text x="379.0" y="435.7" text-anchor="middle" font-size="8.2" fill="#7b7669">Auto-restart units</text>
+</g>
+<g class="an" data-tip="GitHub Actions CI: ruff lint, Python syntax checks, a repo-structure check and a Docker build on pushes to main.">
+<rect x="498" y="398" width="210" height="56" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+<text x="603.0" y="423.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">GitHub Actions</text>
+<text x="603.0" y="435.7" text-anchor="middle" font-size="8.2" fill="#7b7669">Lint · syntax · Docker build</text>
+</g>
+<g class="an" data-tip="requirements.lock.txt pins the full dependency set; setup.sh creates the environment in one step.">
+<rect x="722" y="398" width="210" height="56" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+<text x="827.0" y="423.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">Pinned lock file</text>
+<text x="827.0" y="435.7" text-anchor="middle" font-size="8.2" fill="#7b7669">Reproducible installs</text>
+</g>
+<rect x="30" y="488" width="176" height="42" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1"/>
+<text x="118.0" y="506" text-anchor="middle" font-size="11" font-weight="700" fill="#6d28d9">21</text>
+<text x="118.0" y="520" text-anchor="middle" font-size="8" fill="#7b7669">Indic languages</text>
+<rect x="216" y="488" width="176" height="42" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1"/>
+<text x="304.0" y="506" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">0.42×</text>
+<text x="304.0" y="520" text-anchor="middle" font-size="8" fill="#7b7669">real-time factor per language (A10)</text>
+<rect x="402" y="488" width="176" height="42" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1"/>
+<text x="490.0" y="506" text-anchor="middle" font-size="11" font-weight="700" fill="#b45309">~25 s</text>
+<text x="490.0" y="520" text-anchor="middle" font-size="8" fill="#7b7669">per 1-min clip, one language</text>
+<rect x="588" y="488" width="176" height="42" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+<text x="676.0" y="506" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">3 models</text>
+<text x="676.0" y="520" text-anchor="middle" font-size="8" fill="#7b7669">Whisper · IndicTrans2 · Parler</text>
+<rect x="774" y="488" width="176" height="42" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+<text x="862.0" y="506" text-anchor="middle" font-size="11" font-weight="700" fill="#16a34a">MIT</text>
+<text x="862.0" y="520" text-anchor="middle" font-size="8" fill="#7b7669">open-source licence</text>
+</svg>

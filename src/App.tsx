@@ -101,7 +101,7 @@ function Series() {
     (id: string) => {
       setBlueprint(id);
       setProject(null);
-      window.setTimeout(() => scrollTo('#blueprints', { offset: -64 }), 350);
+      scrollTo('#blueprints', { offset: -64 }); // queued until the project overlay releases the scroll lock
     },
     [scrollTo],
   );

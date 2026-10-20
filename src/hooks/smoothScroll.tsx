@@ -14,6 +14,8 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const reduced = useReducedMotionPref();
   const lenisRef = useRef<Lenis | null>(null);
   const locks = useRef(0);
+  /** A scroll requested while an overlay holds the lock runs as soon as the lock is released. */
+  const pending = useRef<null | (() => void)>(null);
 
   useEffect(() => {
     if (reduced) return;
@@ -33,6 +35,10 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   }, [reduced]);
 
   const scrollTo = useCallback<ScrollApi['scrollTo']>((target, opts = {}) => {
+    if (locks.current > 0) {
+      pending.current = () => scrollTo(target, opts);
+      return;
+    }
     const offset = opts.offset ?? -72;
     const el = typeof target === 'string' ? document.querySelector<HTMLElement>(target) : target;
     if (el === null) return;
@@ -55,6 +61,9 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     if (locks.current === 0) {
       lenisRef.current?.start();
       document.documentElement.style.overflow = '';
+      const run = pending.current;
+      pending.current = null;
+      if (run) requestAnimationFrame(() => run());
     }
   }, []);
 

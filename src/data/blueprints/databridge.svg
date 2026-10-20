@@ -83,7 +83,7 @@
             <text x="487" y="250" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Silver · Processed Layer</text>
             <text x="487" y="265" text-anchor="middle" font-size="8" fill="#7b7669">Cleaned Parquet · Deduped · Schema-conformed · Athena-queryable</text>
           </g>
-          <g class="an" data-tip="Gold Layer (Curated) — Business entities: Invoice, Project, Employee, PO, Timesheet. Calculated KPIs: billing margin, approval lag, PO balance. Delta Lake format. Served to RAG + QuickSight.">
+          <g class="an" data-tip="Gold Layer (Curated) — Business entities: Invoice, Project, Employee, PO, Timesheet. Calculated KPIs: billing margin, approval lag, PO balance. Delta Lake format. Served to RAG + Power BI.">
             <rect x="648" y="232" width="300" height="46" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
             <text x="798" y="250" text-anchor="middle" font-size="10" font-weight="700" fill="#16a34a">Gold · Curated Layer</text>
             <text x="798" y="265" text-anchor="middle" font-size="8" fill="#7b7669">Invoice · Project · Employee · PO · Timesheet KPIs · Delta Lake</text>
@@ -105,7 +105,7 @@
             <text x="610" y="340" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">KPI Calculation</text>
             <text x="610" y="356" text-anchor="middle" font-size="8" fill="#7b7669">Billing margin · Approval lag · PO balance</text>
           </g>
-          <g class="an" data-tip="Amazon Redshift — Curated layer feeds star schema in Redshift for SQL reporting. Redshift Spectrum queries S3 Gold directly for ad-hoc analysis without loading. SPICE feeds QuickSight dashboards.">
+          <g class="an" data-tip="Amazon Redshift — Curated layer feeds star schema in Redshift for SQL reporting. Redshift Spectrum queries S3 Gold directly for ad-hoc analysis without loading. Also feeds the Power BI dashboards.">
             <rect x="732" y="320" width="216" height="48" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
             <text x="840" y="340" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">Amazon Redshift</text>
             <text x="840" y="356" text-anchor="middle" font-size="8" fill="#7b7669">Star schema · Spectrum · SPICE feeds</text>
@@ -130,11 +130,11 @@
             <text x="665" y="448" text-anchor="middle" font-size="8" fill="#7b7669">Grounded answers · Invoice/PO citations</text>
             <text x="665" y="460" text-anchor="middle" font-size="7.5" fill="#6d28d9" font-weight="600">Bedrock Guardrails · Prompt injection screen</text>
           </g>
-          <g class="an" data-tip="Amazon QuickSight — SPICE in-memory engine. Row-level security mirrors IAM RBAC — finance managers see only their entity data. Billing pipeline, margin analysis, utilisation, and exception dashboards connected to Redshift curated layer.">
+          <g class="an" data-tip="Power BI — finance dashboards connected to the Redshift curated layer. Row-level security limits finance managers to their own entity data. Billing pipeline, margin analysis, utilisation and exception views.">
             <rect x="802" y="412" width="150" height="52" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.3"/>
-            <text x="877" y="432" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">QuickSight</text>
-            <text x="877" y="448" text-anchor="middle" font-size="8" fill="#7b7669">SPICE · Row-level security</text>
-            <text x="877" y="460" text-anchor="middle" font-size="7.5" fill="#1d4ed8" font-weight="600">IAM RBAC dashboards</text>
+            <text x="877" y="432" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">Power BI</text>
+            <text x="877" y="448" text-anchor="middle" font-size="8" fill="#7b7669">Redshift connector · RLS</text>
+            <text x="877" y="460" text-anchor="middle" font-size="7.5" fill="#1d4ed8" font-weight="600">Role-scoped dashboards</text>
           </g>
           <rect x="24" y="484" width="936" height="54" rx="10" fill="rgba(220,38,38,.05)" stroke="#dc2626" stroke-width="1.3"/>
           <text x="492" y="502" text-anchor="middle" font-size="10.5" font-weight="700" fill="#dc2626">Layer 7–8 — Security &amp; Governance</text>

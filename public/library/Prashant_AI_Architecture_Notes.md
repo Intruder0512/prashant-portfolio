@@ -1,23 +1,19 @@
-# Enterprise Architecture Interview Question Library
+# Enterprise & AI Architecture Notes
 
-**Prashant Yadav | Senior Solutions Architect**
+**Prashant Yadav | Agentic AI Delivery Lead & Architect**
 
-This library consolidates recurring questions found across Prashant Yadav's interview transcripts, project discussions, and AWS preparation material. Duplicate, conversational, administrative, and role-specific questions have been normalized into canonical questions. Answers are written in a natural interview style and grounded in the candidate's demonstrated projects: ICAR/UKSC LMS, Visionext edge AI, Siemens CARLA simulation, DRDO DevSecOps, Data Bridge, and HR Policy RAG.
-
-## Publishing note
-
-Use these answers as reference material, not as claims to recite word-for-word. On the public website, distinguish clearly between **implemented**, **led**, **designed**, and **proposed** work. AWS is the strongest hands-on cloud; Azure answers should be positioned as architecture capability unless direct implementation evidence exists.
+Recurring architecture questions across AWS, Azure, AI infrastructure, platform engineering and delivery leadership, and how I approach them, drawing on projects such as the ICAR/UKSC LMS, Visionext edge AI, Siemens CARLA simulation, DRDO DevSecOps, Data Bridge and HR Policy RAG.
 
 ## Category index
 
 1. [AWS Architecture](#aws-architecture) — 12 questions
-2. [Azure Architecture](#azure-architecture) — 12 questions
+2. [Azure Architecture](#azure-architecture) — 11 questions
 3. [Team Handling and Delivery Leadership](#team-handling-and-delivery-leadership) — 12 questions
 4. [GPU and AI Infrastructure Architecture](#gpu-and-ai-infrastructure-architecture) — 12 questions
 5. [Cloud Architecture and Platform Engineering](#cloud-architecture-and-platform-engineering) — 12 questions
 6. [Solution and Enterprise Architecture](#solution-and-enterprise-architecture) — 12 questions
 7. [Advanced AI Architecture on AWS](#advanced-ai-architecture-on-aws) — 20 questions
-8. [Advanced AI Architecture on Azure](#advanced-ai-architecture-on-azure) — 20 questions
+8. [Advanced AI Architecture on Azure](#advanced-ai-architecture-on-azure) — 19 questions
 9. [Cross-Cloud AI Architecture Questions](#cross-cloud-ai-architecture-questions) — 5 questions
 
 
@@ -121,11 +117,6 @@ I enforce tagging and subscription ownership, use Cost Management budgets and al
 ### 11. How do AWS and Azure identity models differ architecturally?
 
 AWS IAM centers on accounts, roles, policies, and federation through IAM Identity Center. Azure centers on an Entra tenant, identities, groups, managed identities, subscriptions, and RBAC scopes. The common principle is short-lived identity, least privilege, separation of duties, centralized federation, and auditable access. I map controls by capability instead of assuming service names are exact equivalents.
-
-### 12. How do you present multi-cloud experience honestly?
-
-I state that AWS is my deepest implementation platform and describe my Azure experience in identity, infrastructure, and architecture patterns without claiming equal hands-on depth. I then show that the core decisions—identity, networking, data, resilience, observability, security, governance, and cost—transfer across hyperscalers. This is more credible than listing every Azure service as production experience.
-
 
 ## Team Handling and Delivery Leadership
 
@@ -339,13 +330,6 @@ I clarify scope, volumes, NFRs, compliance, integration, migration, support, and
 A strong example is the ICAR national multi-tenant LMS: a Kubernetes-based platform supporting 76 universities and a very large learner population, integrated with identity, storage, video, CI/CD, monitoring, security controls, and disaster-recovery planning. The achievement was not a single technology choice; it was coordinating architecture, client data-center constraints, security remediation, release governance, and operational transition across many stakeholders.
 
 
-## Claims and wording to verify before publication
-
-- Do not state that an AML model was implemented; say that AML was not a direct project and explain the transferable data/ML architecture approach.
-- Do not claim production multi-agent deployment unless it can be evidenced. Position Bedrock Agents or multi-agent patterns as designed/evaluated where applicable.
-- Avoid precise model dimensions, regional-language coverage, user counts, cost savings, or service-region statements unless confirmed against project records and current vendor documentation.
-- Do not describe every Azure service as hands-on production experience.
-- Replace customer-confidential names, URLs, account IDs, endpoints, and internal cost figures before publishing.
 ## Advanced AI Architecture on AWS
 
 These questions focus on designing production-grade generative AI, machine learning, RAG, agentic AI, and GPU-based platforms on AWS.
@@ -588,13 +572,6 @@ Power Platform is a good fit for departmental workflows, approvals, and rapid in
 I would separate portable application capabilities from cloud-specific managed services. The domain API, prompt templates, evaluation datasets, chunking rules, authorization model, and business logic should remain independent. Adapters would map Bedrock to Azure OpenAI or Foundry, OpenSearch to Azure AI Search, SageMaker endpoints to Azure ML endpoints, CloudWatch to Azure Monitor, and IAM roles to Entra managed identities and RBAC.
 
 I would not force identical architecture where the services behave differently. The goal is consistent security, quality, and operations, not superficial name-to-name mapping. Data gravity, compliance, existing contracts, team expertise, latency, and managed-service maturity should determine whether true multi-cloud operation is justified.
-
-### 20. How would you answer Azure AI questions honestly based on your experience?
-
-I would say that my strongest implementation depth is AWS, Kubernetes, cloud infrastructure, edge AI, data platforms, and enterprise integration. I understand Azure AI architecture and can design the equivalent platform using Microsoft Foundry, Azure OpenAI, Azure AI Search, Azure Machine Learning, Document Intelligence, Entra ID, API Management, Private Link, Key Vault, and Azure Monitor.
-
-I would then map this to work I have actually performed: RAG architecture, document ingestion, vector retrieval, model endpoints, GPU workloads, Kubernetes, identity, data security, observability, CI/CD, and multi-tenant platforms. I would not claim direct production implementation of every Azure service. That transparency is stronger than exaggeration because the architectural principles transfer, while service-level gaps can be learned quickly.
-
 
 ## Cross-Cloud AI Architecture Questions
 

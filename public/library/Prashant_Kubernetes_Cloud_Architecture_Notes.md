@@ -1,11 +1,9 @@
-# Kubernetes, Cloud and Solution Architecture Interview Library
+# Kubernetes, Cloud & Solution Architecture Notes
 
-**Prashant Yadav | Senior Solutions Architect**  
-**Website-ready question-and-answer reference**
+**Prashant Yadav | Agentic AI Delivery Lead & Architect**
 
-This document contains fresh, detailed interview questions covering Kubernetes, Kubernetes high availability, ingress and load balancing, cloud architecture, and solution architecture. The answers are written in a natural interview style and use practical examples from enterprise LMS, cloud migration, DevSecOps, edge AI, data platforms, and customer-facing architecture engagements.
+Questions on Kubernetes, high availability, ingress and load balancing, cloud architecture and solution architecture, and how I approach them, with practical examples from enterprise LMS, cloud migration, DevSecOps, edge AI, data platforms and customer-facing architecture engagements.
 
-> **Publishing guidance:** Present work accurately as **implemented**, **led**, **designed**, **evaluated**, or **proposed**. Avoid claiming production experience where the work was architectural or proof-of-concept only.
 
 ## Category Index
 

@@ -51,9 +51,9 @@ npm run preview    # serve the build
 
 Years of experience are calculated from February 2009, so "17+" updates itself.
 
-**Blueprints (architecture diagrams)** are the SVGs in `src/data/blueprints/`. Each clickable component carries its commentary in a `data-tip="…"` attribute. Labels, badges and legends are in `src/data/legacy.json`, which also holds the Field Guide Q&A and the two "how it works" flows.
+**Blueprints (architecture diagrams)** are the SVGs in `src/data/blueprints/`. Each clickable component carries its commentary in a `data-tip="…"` attribute. Labels, badges and legends are in `src/data/legacy.json`, which also holds the Architecture Notes Q&A and the two "how it works" flows.
 
-**Interview libraries** (downloadable): `public/library/*.md`.
+**Architecture notes** (downloadable): `public/library/*.md`.
 
 **Resume:** "Save as PDF" prints the on-page resume. To offer your own PDF instead, put it in `public/assets/` and set `profile.resumePdf` (e.g. `'/assets/Prashant_Yadav_Resume.pdf'`).
 

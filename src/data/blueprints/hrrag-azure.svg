@@ -1,0 +1,91 @@
+<svg class="bp-svg" viewBox="0 0 980 600" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="11">
+<defs><marker id="hrzblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4ed8"/></marker><marker id="hrzcyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0891b2"/></marker><marker id="hrzgreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/></marker><marker id="hrzamber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b45309"/></marker><marker id="hrzviolet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6d28d9"/></marker><marker id="hrzred" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker><marker id="hrzgrey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b7669"/></marker><marker id="hrzslate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
+<line x1="490" y1="20" x2="490" y2="510" stroke="#e2dfd7" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="245" y="36" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">INGESTION PIPELINE</text>
+<text x="735" y="36" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6d28d9">QUERY PIPELINE</text>
+<g class="an" data-tip="Azure Blob Storage — HR policies, leave rules, benefits, SOPs and onboarding guides land here; each upload raises an event, and earlier versions are retained so historical policy stays auditable.">
+<rect x="30" y="50" width="420" height="62" rx="8" fill="rgba(180,83,9,.07)" stroke="#b45309" stroke-width="1.4"/>
+<text x="240.0" y="72.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b45309">① Policy upload · Azure Blob Storage</text>
+<text x="240.0" y="84.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Event trigger on every new or changed document</text>
+<text x="240.0" y="96.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#b45309">Versions retained for historical auditability</text>
+</g>
+<path d="M240,112 L240,142" fill="none" stroke="#b45309" stroke-width="1.6" opacity=".75" marker-end="url(#hrzamber)" class="fl"/>
+<g class="an" data-tip="Azure Functions handle the event and call Azure Document Intelligence to extract text, tables and section headings from native and scanned documents.">
+<rect x="30" y="142" width="420" height="62" rx="8" fill="rgba(8,145,178,.07)" stroke="#0891b2" stroke-width="1.4"/>
+<text x="240.0" y="164.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0891b2">② Azure Functions → Document Intelligence</text>
+<text x="240.0" y="176.5" text-anchor="middle" font-size="8.2" fill="#7b7669">OCR extraction of text, tables and headings</text>
+<text x="240.0" y="188.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#0891b2">Native PDFs and scanned documents</text>
+</g>
+<path d="M240,204 L240,234" fill="none" stroke="#0891b2" stroke-width="1.6" opacity=".75" marker-end="url(#hrzcyan)" class="fl"/>
+<g class="an" data-tip="Chunks are split on section boundaries (300–500 tokens with 50–80 token overlap), so a rule is never separated from its exception.">
+<rect x="30" y="234" width="420" height="62" rx="8" fill="rgba(22,163,74,.07)" stroke="#16a34a" stroke-width="1.4"/>
+<text x="240.0" y="256.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">③ Structure-aware chunking</text>
+<text x="240.0" y="268.5" text-anchor="middle" font-size="8.2" fill="#7b7669">300–500 tokens · 50–80 token overlap</text>
+<text x="240.0" y="280.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#16a34a">Split on section boundaries</text>
+</g>
+<path d="M240,296 L240,326" fill="none" stroke="#16a34a" stroke-width="1.6" opacity=".75" marker-end="url(#hrzgreen)" class="fl"/>
+<g class="an" data-tip="Each chunk carries policy category, section, effective date, department and access classification — the classification drives security trimming at query time.">
+<rect x="30" y="326" width="420" height="62" rx="8" fill="rgba(22,163,74,.07)" stroke="#16a34a" stroke-width="1.4"/>
+<text x="240.0" y="348.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">④ Metadata enrichment</text>
+<text x="240.0" y="360.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Category · Section · Effective date</text>
+<text x="240.0" y="372.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#16a34a">Department · Access classification</text>
+</g>
+<path d="M240,388 L240,418" fill="none" stroke="#16a34a" stroke-width="1.6" opacity=".75" marker-end="url(#hrzgreen)" class="fl"/>
+<g class="an" data-tip="Embeddings from Azure OpenAI text-embedding-ada-002 are indexed in Azure AI Search with HNSW vector search, alongside keyword fields for hybrid retrieval.">
+<rect x="30" y="418" width="420" height="62" rx="8" fill="rgba(109,40,217,.07)" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="240.0" y="440.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">⑤ Embed + index</text>
+<text x="240.0" y="452.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Azure OpenAI text-embedding-ada-002</text>
+<text x="240.0" y="464.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#6d28d9">Azure AI Search · HNSW vector index</text>
+</g>
+<g class="an" data-tip="Microsoft Entra ID authenticates the employee; their department and access level travel with the query.">
+<rect x="530" y="50" width="420" height="62" rx="8" fill="rgba(29,78,216,.07)" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="740.0" y="72.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1d4ed8">① Authenticate · Entra ID</text>
+<text x="740.0" y="84.5" text-anchor="middle" font-size="8.2" fill="#7b7669">User identity, department and access level</text>
+<text x="740.0" y="96.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#1d4ed8">Role-aware from the first step</text>
+</g>
+<path d="M740,112 L740,142" fill="none" stroke="#1d4ed8" stroke-width="1.6" opacity=".75" marker-end="url(#hrzblue)" class="fl"/>
+<g class="an" data-tip="The question is normalised, then embedded with the same model used at ingestion so both live in one semantic space.">
+<rect x="530" y="142" width="420" height="62" rx="8" fill="rgba(71,85,105,.07)" stroke="#475569" stroke-width="1.4"/>
+<text x="740.0" y="164.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#475569">② Normalise + embed query</text>
+<text x="740.0" y="176.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Query normalisation</text>
+<text x="740.0" y="188.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#475569">Same embedding model as ingestion</text>
+</g>
+<path d="M740,204 L740,234" fill="none" stroke="#475569" stroke-width="1.6" opacity=".75" marker-end="url(#hrzslate)" class="fl"/>
+<g class="an" data-tip="Azure AI Search runs BM25 keyword, vector and semantic ranking together — exact policy terms and intent both count.">
+<rect x="530" y="234" width="420" height="62" rx="8" fill="rgba(22,163,74,.07)" stroke="#16a34a" stroke-width="1.4"/>
+<text x="740.0" y="256.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#16a34a">③ Hybrid retrieval · Azure AI Search</text>
+<text x="740.0" y="268.5" text-anchor="middle" font-size="8.2" fill="#7b7669">BM25 + vector + semantic ranking</text>
+<text x="740.0" y="280.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#16a34a">Exact policy terms and meaning together</text>
+</g>
+<path d="M740,296 L740,326" fill="none" stroke="#16a34a" stroke-width="1.6" opacity=".75" marker-end="url(#hrzgreen)" class="fl"/>
+<g class="an" data-tip="Results are filtered by access classification during retrieval, so content the user may not see never enters the model’s context.">
+<rect x="530" y="326" width="420" height="62" rx="8" fill="rgba(220,38,38,.07)" stroke="#dc2626" stroke-width="1.4"/>
+<text x="740.0" y="348.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#dc2626">④ Security trimming</text>
+<text x="740.0" y="360.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Applied during retrieval, not after</text>
+<text x="740.0" y="372.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#dc2626">Unauthorised chunks never reach the model</text>
+</g>
+<path d="M740,388 L740,418" fill="none" stroke="#dc2626" stroke-width="1.6" opacity=".75" marker-end="url(#hrzred)" class="fl"/>
+<g class="an" data-tip="Azure OpenAI answers at low temperature with citations; a 0.80 faithfulness gate and a fallback response stop answers that the evidence does not support. Prompt-injection mitigation is applied to inputs.">
+<rect x="530" y="418" width="420" height="62" rx="8" fill="rgba(109,40,217,.07)" stroke="#6d28d9" stroke-width="1.4"/>
+<text x="740.0" y="440.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6d28d9">⑤ Grounded generation · Azure OpenAI</text>
+<text x="740.0" y="452.5" text-anchor="middle" font-size="8.2" fill="#7b7669">Temperature 0.1–0.2 · citation per answer</text>
+<text x="740.0" y="464.9" text-anchor="middle" font-size="7.6" font-weight="600" fill="#6d28d9">Faithfulness gate 0.80 · fallback if evidence is thin</text>
+</g>
+<path d="M450,449 L490,449 L490,265 L530,265" fill="none" stroke="#6d28d9" stroke-width="1.6" opacity=".75" marker-end="url(#hrzviolet)" class="fl"/>
+<text x="510" y="258" text-anchor="middle" font-size="8" font-weight="600" fill="#6d28d9">shared index</text>
+<rect x="30" y="534" width="176" height="42" rx="8" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1"/>
+<text x="118.0" y="552" text-anchor="middle" font-size="11" font-weight="700" fill="#6d28d9">0.91</text>
+<text x="118.0" y="566" text-anchor="middle" font-size="8" fill="#7b7669">Faithfulness score</text>
+<rect x="216" y="534" width="176" height="42" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+<text x="304.0" y="552" text-anchor="middle" font-size="11" font-weight="700" fill="#16a34a">85%</text>
+<text x="304.0" y="566" text-anchor="middle" font-size="8" fill="#7b7669">Auto-resolution rate</text>
+<rect x="402" y="534" width="176" height="42" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+<text x="490.0" y="552" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">0.80</text>
+<text x="490.0" y="566" text-anchor="middle" font-size="8" fill="#7b7669">Faithfulness gate</text>
+<rect x="588" y="534" width="176" height="42" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1"/>
+<text x="676.0" y="552" text-anchor="middle" font-size="11" font-weight="700" fill="#0891b2">App Insights</text>
+<text x="676.0" y="566" text-anchor="middle" font-size="8" fill="#7b7669">Telemetry</text>
+<rect x="774" y="534" width="176" height="42" rx="8" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1"/>
+<text x="862.0" y="552" text-anchor="middle" font-size="11" font-weight="700" fill="#1d4ed8">Azure DevOps</text>
+<text x="862.0" y="566" text-anchor="middle" font-size="8" fill="#7b7669">CI/CD deployment</text>
+</svg>

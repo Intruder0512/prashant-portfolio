@@ -6,16 +6,16 @@ import { EASE, SectionHeading } from './fx';
 const FLOW_HUES = ['#4cc9ff', '#b98bff'];
 
 /**
- * FIELD GUIDE — the bonus features: how modern data and agentic-AI platforms work,
- * plus categorised architecture interview Q&A and the full downloadable libraries.
+ * ARCHITECTURE NOTES — how modern data and agentic-AI platforms work, plus categorised
+ * design questions and trade-offs, and the full downloadable notes.
  */
 export default function FieldGuide() {
   return (
     <>
       <SectionHeading
-        kicker="Bonus features"
-        title="The Field Guide"
-        aside={<p className="max-w-xs text-sm text-mist">Behind the scenes of modern data and agentic AI platforms — and the questions architects get asked about them.</p>}
+        kicker="How I think about systems"
+        title="Architecture Notes"
+        aside={<p className="max-w-xs text-sm text-mist">How modern data and agentic AI platforms work, and the design trade-offs I would defend.</p>}
       />
       <HowItWorks />
       <Interview />
@@ -93,7 +93,7 @@ function Interview() {
     <div>
       <div className="gutter mb-4 flex flex-wrap items-end justify-between gap-2">
         <h3 className="font-sans text-lg font-semibold text-bone sm:text-2xl">
-          Interview Field Guide <span className="text-mist">· {interviewGuide.length} sets · {total} questions</span>
+          Design Questions &amp; Trade-offs <span className="text-mist">· {interviewGuide.length} topics · {total} questions</span>
         </h3>
       </div>
 
@@ -153,7 +153,7 @@ function Interview() {
           </AnimatePresence>
 
           <div className="mt-8">
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.28em] text-smoke">Full libraries — complete Q&amp;A with detailed answers</p>
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.28em] text-smoke">Full notes — detailed questions and answers</p>
             <div className="grid gap-3 sm:grid-cols-2">
               {libraries.map((l) => (
                 <a

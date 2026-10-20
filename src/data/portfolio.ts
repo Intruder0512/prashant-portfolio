@@ -30,11 +30,11 @@ export const profile = {
   quote:
     'Modern enterprise platforms aren’t built in silos — application architecture, data architecture and AI orchestration only deliver real value when they’re connected and governed as one system.',
   location: 'Noida, India',
-  email: 'prashuyadav@outlook.com',
+  email: 'connect@prashantyadav.tech',
   languages: 'English · Hindi',
   links: {
     linkedin: 'https://www.linkedin.com/in/prashant-yadav-a6120115/',
-    github: '' as string,
+    github: 'https://github.com/Intruder0512' as string,
   },
   /** Resume PDF served from public/assets/. Leave empty to fall back to "Save as PDF" of the on-page resume. */
   resumePdf: '/assets/Prashant_Yadav_Resume.pdf' as string,
@@ -184,7 +184,7 @@ export const projects: Project[] = [
       { value: 'Hybrid', label: 'BM25 + vector + semantic ranking' },
     ],
     featured: true,
-    blueprint: 'databridge',
+    blueprint: 'databridge-azure',
     palette: ocean,
     motif: 'layers',
   },
@@ -208,7 +208,7 @@ export const projects: Project[] = [
       { value: '300–500', label: 'token structure-aware chunks' },
     ],
     featured: true,
-    blueprint: 'hrrag',
+    blueprint: 'hrrag-azure',
     palette: violet,
     motif: 'nodes',
   },
@@ -412,8 +412,35 @@ export const projects: Project[] = [
       { value: '1', label: 'human approval gate before any script' },
     ],
     featured: true,
+    blueprint: 'finops',
     palette: amber,
     motif: 'mesh',
+  },
+  {
+    id: 'indic-voice',
+    title: 'Indic Voice Translator & Dubber',
+    client: 'Open source · POC',
+    genre: 'Speech AI • Self-hosted • Open Source',
+    logline: 'Self-hosted speech-to-speech translation and video dubbing for 21 Indic languages — Whisper, IndicTrans2 and Parler-TTS on a single GPU, with no cloud APIs.',
+    stack: ['Whisper', 'IndicTrans2', 'Indic Parler-TTS', 'PyTorch', 'FastAPI', 'Gradio', 'ffmpeg', 'Docker', 'GitHub Actions'],
+    build: [
+      'Three-model pipeline: Whisper small transcribes English in 30-second windows, IndicTrans2 (distilled 200M) translates in batched 700-character chunks, and Indic Parler-TTS speaks each target language in 220-character chunks.',
+      'Video dubbing with sync correction: ffprobe compares durations, then the dub is copied, padded with silence or time-stretched with chained ffmpeg atempo filters to match the original video.',
+      'Two interfaces — a Gradio UI for people and a FastAPI server for machines with an async job queue, bearer-token auth, a single GPU lock that serialises inference, and TTL sweeps for old outputs.',
+      'Shipped as a reproducible package: pinned lock file, one-step setup script, CUDA 12.1 Docker image, systemd units, and GitHub Actions CI for lint, syntax and Docker builds.',
+    ],
+    features: ['21 Indic languages', 'Up to 4 targets in one pass', 'Dubbed video re-synced to length', 'Models stay warm on one GPU', 'REST API with job queue', 'MIT licensed'],
+    metrics: [
+      { value: '21', label: 'Indic languages supported' },
+      { value: '0.42×', label: 'real-time factor per language on an A10' },
+      { value: '~25 s', label: 'to dub a 1-minute clip into one language' },
+      { value: '~9 GB', label: 'VRAM with all three models resident' },
+    ],
+    featured: true,
+    blueprint: 'voice',
+    github: 'https://github.com/Intruder0512/voice-translation-poc',
+    palette: violet,
+    motif: 'flow',
   },
   {
     id: 'agri-edge',
@@ -747,7 +774,7 @@ export const skillEvidence: Record<string, string[]> = {
   'TensorFlow Lite': ['Visionext Edge AI', 'Physical AI at the Edge'],
   'Disaster Recovery': ['AWS DR Framework'],
   'Incident Readiness': ['Safelite L1 Health Check Automation'],
-  FastAPI: ['MCP Tool Orchestration Hub'],
+  FastAPI: ['MCP Tool Orchestration Hub', 'Indic Voice Translator — async job API'],
   'GitHub Actions': ['Visionext Edge AI — build & deployment'],
   'Azure DevOps': ['Data Bridge & HR Policy RAG — Azure Document Intelligence deployments'],
 };
@@ -882,9 +909,35 @@ const BLUEPRINT_OVERRIDES: Record<string, Partial<Blueprint>> = {
   databridge: { label: 'Data Fusion + RAG · AWS', group: 'Reference' },
   hrrag: { label: 'Policy RAG · Amazon Bedrock', group: 'Reference' },
 };
-export const blueprints = (legacy.blueprints as Blueprint[])
-  .map((b) => ({ ...b, ...BLUEPRINT_OVERRIDES[b.id] }))
-  .sort((a, b) => (a.group === b.group ? 0 : a.group === 'Real-world' ? -1 : 1));
+const NEW_BLUEPRINTS: Blueprint[] = [
+  {
+    id: 'databridge-azure', label: 'Data Bridge · Azure Data Fusion', group: 'Real-world',
+    badges: ['Data Bridge Platform · Real-World', 'ADF · ADLS Gen2 · Synapse · Fabric · AI Search · Azure OpenAI · Power BI', '9 data domains · 5 curated datasets · Purview lineage'],
+    legend: [{ color: '#475569', label: 'Source systems' }, { color: '#1d4ed8', label: 'Ingestion' }, { color: '#b45309', label: 'Governed lake · Power BI' }, { color: '#16a34a', label: 'ELT · Curated datasets' }, { color: '#6d28d9', label: 'AI Search · Azure OpenAI' }, { color: '#dc2626', label: 'Security · Governance · Delivery' }],
+    tips: 25,
+  },
+  {
+    id: 'hrrag-azure', label: 'HR Policy RAG · Azure OpenAI', group: 'Real-world',
+    badges: ['HR Policy RAG Assistant · Real-World', 'Document Intelligence · Azure AI Search · Azure OpenAI · Entra ID', '0.91 faithfulness · 85% auto-resolution'],
+    legend: [{ color: '#b45309', label: 'Ingestion' }, { color: '#0891b2', label: 'Document Intelligence' }, { color: '#16a34a', label: 'Chunking · Retrieval' }, { color: '#6d28d9', label: 'Embeddings · Generation' }, { color: '#1d4ed8', label: 'Identity' }, { color: '#dc2626', label: 'Security trimming' }],
+    tips: 10,
+  },
+  {
+    id: 'finops', label: 'FinOps Investigator · LangGraph', group: 'POC & Code',
+    badges: ['FinOps Cost Investigator · Proof of Concept', 'LangGraph · LangChain Core · Gemini 2.5 Flash · pandas · Pydantic', 'Supervisor · ToolNode · interrupt() approval · 13 offline tests'],
+    legend: [{ color: '#6d28d9', label: 'Supervisor · State' }, { color: '#1d4ed8', label: 'Analyst agent' }, { color: '#0891b2', label: 'Tools' }, { color: '#16a34a', label: 'Deterministic rules · Script' }, { color: '#b45309', label: 'Recommender' }, { color: '#dc2626', label: 'Human approval' }],
+    tips: 17,
+  },
+  {
+    id: 'voice', label: 'Indic Voice Dubbing · Open Source', group: 'POC & Code',
+    badges: ['Indic Voice Translator & Dubber · Open Source', 'Whisper · IndicTrans2 · Parler-TTS · FastAPI · Gradio', '21 languages · 0.42× real-time per language · one GPU'],
+    legend: [{ color: '#1d4ed8', label: 'Speech recognition' }, { color: '#16a34a', label: 'Translation · Delivery' }, { color: '#b45309', label: 'Speech synthesis' }, { color: '#dc2626', label: 'A/V sync' }, { color: '#6d28d9', label: 'Interfaces · Output' }],
+    tips: 14,
+  },
+];
+const GROUP_ORDER = ['Real-world', 'POC & Code', 'Reference'];
+export const blueprints = [...NEW_BLUEPRINTS, ...(legacy.blueprints as Blueprint[]).map((b) => ({ ...b, ...BLUEPRINT_OVERRIDES[b.id] }))]
+  .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group));
 
 export type QA = { q: string; a: string };
 export type GuideCategory = { category: string; title: string; items: QA[] };
@@ -899,14 +952,14 @@ export const flows = legacy.flows as Flow[];
 
 export const libraries = [
   {
-    title: 'AI & GenAI Architecture Library',
-    meta: 'Data Fusion · RAG · Agentic AI · Bedrock · Guardrails · 50+ Q&A',
-    href: '/library/Prashant_Enterprise_AI_Architecture_Interview_Library.md',
+    title: 'Enterprise & AI Architecture Notes',
+    meta: 'AWS · Azure · AI infrastructure · Platform · Delivery leadership · 115 questions',
+    href: '/library/Prashant_AI_Architecture_Notes.md',
   },
   {
-    title: 'Kubernetes & Cloud Architecture Library',
-    meta: 'K8s HA · Ingress · Cloud · Solution Architecture · Scenarios · 100+ Q&A',
-    href: '/library/Prashant_Kubernetes_Cloud_Solution_Architecture_Interview_Library.md',
+    title: 'Kubernetes, Cloud & Solution Architecture Notes',
+    meta: 'K8s HA · Ingress · Cloud · Solution architecture · Scenarios · 100+ questions',
+    href: '/library/Prashant_Kubernetes_Cloud_Architecture_Notes.md',
   },
 ];
 
@@ -958,6 +1011,6 @@ export const sectionMeta: Record<SectionId, { nav: string; card: string; meta: s
   skills: { nav: 'Skills', card: 'My Skills', meta: `${skillCategories.length} Genres`, palette: ocean },
   moments: { nav: 'Awards', card: 'Awards', meta: `${achievements.length} Awards • Speaker`, palette: crimson },
   news: { nav: 'News', card: 'In the News', meta: `${news.length} Features • Embedded World & AI Summit`, palette: amber },
-  guide: { nav: 'Field Guide', card: 'Field Guide', meta: `${interviewGuide.length} Q&A sets • 2 libraries`, palette: violet },
+  guide: { nav: 'Arch Notes', card: 'Architecture Notes', meta: `${interviewGuide.length} topics • 2 downloadable notes`, palette: violet },
   story: { nav: 'Resume', card: 'The Full Story', meta: 'Resume • View & download', palette: violet },
 };

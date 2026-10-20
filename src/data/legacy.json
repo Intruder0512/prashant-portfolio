@@ -66,7 +66,7 @@
     },
     {
      "color": "#1d4ed8",
-     "label": "Redshift / QuickSight"
+     "label": "Redshift / Power BI"
     },
     {
      "color": "#dc2626",
@@ -696,8 +696,8 @@
     },
     {
      "title": "Serve to humans & models",
-     "desc": "The same Curated layer feeds Redshift dashboards, Athena ad-hoc queries, embedded BI, and ML / AI workloads — one governed source of truth for both analytics and AI.",
-     "tech": "Redshift · Athena · QuickSight · SageMaker · Bedrock"
+     "desc": "The same Curated layer feeds Redshift and Power BI dashboards, Athena ad-hoc queries, and ML / AI workloads — one governed source of truth for both analytics and AI.",
+     "tech": "Redshift · Athena · Power BI · SageMaker · Bedrock"
     }
    ],
    "takeaway": "Separating Raw → Silver → Gold lets the business move fast on the curated layer while data engineers still have the raw history to backfill and re-process. Governance — IAM, lineage, PII masking, and audit — is enforced across all three layers from a single Glue Data Catalog, so analytics and AI share the same trust model."

@@ -131,7 +131,7 @@ export default function ProjectModal({
                 )}
               </motion.div>
             )}
-            {bp && <p className="mt-2 text-xs text-smoke">{bp.label} · {bp.group === 'Real-world' ? 'as delivered' : 'reference design'}</p>}
+            {bp && <p className="mt-2 text-xs text-smoke">{bp.label} · {bp.group === 'Real-world' ? 'as delivered' : bp.group === 'Reference' ? 'reference design' : 'proof of concept'}</p>}
 
             {/* impact */}
             {project.metrics.length > 0 && (
