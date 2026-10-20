@@ -21,7 +21,16 @@ for (const file of ['ew01.jpg', 'ew02.jpg', 'ai-summit-minister.png', 'ai-summit
   await sharp(file).resize({ width: 1200, withoutEnlargement: true }).webp({ quality: 80 }).toFile(`${OUT}/${name}.webp`);
 }
 
+// Studio headshot (square + portrait) — used for search results (structured data) and the share card
+if (existsSync('headshot-studio.png')) {
+  await sharp('headshot-studio.png').resize({ width: 800 }).jpeg({ quality: 86, mozjpeg: true }).toFile(`${OUT}/headshot.jpg`);
+  await sharp('headshot-studio.png').extract({ left: 160, top: 60, width: 800, height: 800 }).resize(600).jpeg({ quality: 86, mozjpeg: true }).toFile(`${OUT}/headshot-square.jpg`);
+}
+
 // Social share image (1200x630) on a dark backdrop
+const shareSrc = existsSync('headshot-office.png')
+  ? await sharp('headshot-office.png').resize({ height: 630 }).extract({ left: 0, top: 0, width: 504, height: 630 }).png().toBuffer()
+  : null;
 const portrait = await sharp(cutout).resize({ height: 600 }).png().toBuffer();
 await sharp({ create: { width: 1200, height: 630, channels: 4, background: '#07070a' } })
   .composite([
@@ -31,7 +40,17 @@ await sharp({ create: { width: 1200, height: 630, channels: 4, background: '#070
         <rect width="1200" height="630" fill="url(#g)"/>
       </svg>`),
     },
-    { input: portrait, left: 730, top: 30 },
+    ...(shareSrc
+      ? [
+          { input: shareSrc, left: 696, top: 0 },
+          {
+            input: Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="f" x1="0" x2="1"><stop offset="0" stop-color="#07070a"/><stop offset="1" stop-color="#07070a" stop-opacity="0"/></linearGradient></defs>
+              <rect x="696" width="160" height="630" fill="url(#f)"/>
+            </svg>`),
+          },
+        ]
+      : [{ input: portrait, left: 730, top: 30 }]),
     {
       input: Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
         <text x="72" y="300" font-family="Impact, 'Arial Narrow', sans-serif" font-size="128" fill="#f4f1ec" letter-spacing="4">PRASHANT</text>

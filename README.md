@@ -73,3 +73,10 @@ This rebuilds the responsive WebP portraits, the event photos and the social sha
 - **Blueprints:** Tab to a component, Enter to show its commentary.
 
 `prefers-reduced-motion` is respected throughout.
+
+## Sharing, search and analytics
+
+- **Direct links:** `prashantyadav.tech/?for=recruiter` (also `engineer`, `explorer`, `prashant`) skips the opening and the profile picker and opens that view straight away. Put the recruiter link in job applications.
+- **Search:** `public/robots.txt`, `public/sitemap.xml` and the structured data (`application/ld+json`) plus the plain-text summary in `index.html`. Update the summary there when your role changes.
+- **Analytics:** paste a Cloudflare Web Analytics token into `profile.analytics.cloudflareToken` in `src/data/portfolio.ts`.
+- **Headshots:** `headshot-studio.png` and `headshot-office.png` feed `headshot*.jpg` (search results) and `og-image.jpg` (share card) via `npm run images`.

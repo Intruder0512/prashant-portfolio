@@ -32,6 +32,16 @@ type Stage = 'opening' | 'profiles' | 'home';
 
 const STORAGE_KEY = 'prashant-series-profile';
 
+/** A shareable link like prashantyadav.tech/?for=recruiter skips the opening and profile picker. */
+function readUrlProfile(): ProfileId | null {
+  try {
+    const v = new URLSearchParams(window.location.search).get('for');
+    return viewerProfiles.some((p) => p.id === v) ? (v as ProfileId) : null;
+  } catch {
+    return null;
+  }
+}
+
 function readStoredProfile(): ProfileId | null {
   try {
     const v = sessionStorage.getItem(STORAGE_KEY);
@@ -50,7 +60,7 @@ export default function App() {
 }
 
 function Series() {
-  const stored = readStoredProfile();
+  const stored = readUrlProfile() ?? readStoredProfile();
   const [stage, setStage] = useState<Stage>(stored ? 'home' : 'opening');
   const [profileId, setProfileId] = useState<ProfileId>(stored ?? 'prashant');
   const [playing, setPlaying] = useState(false);

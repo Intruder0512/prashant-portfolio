@@ -9,12 +9,12 @@ import { EASE, Magnetic } from './fx';
  * black → studio card → SUSHMITA → THE SERIES → portrait reveal → role → ▶ PLAY
  */
 const TIMELINE = [
-  { at: 300, beat: 1 }, // studio card
-  { at: 1900, beat: 2 }, // name
-  { at: 2700, beat: 3 }, // THE SERIES
-  { at: 3400, beat: 4 }, // portrait
-  { at: 4300, beat: 5 }, // role
-  { at: 5000, beat: 6 }, // play button
+  { at: 150, beat: 1 }, // studio card
+  { at: 1000, beat: 2 }, // name
+  { at: 1500, beat: 3 }, // THE SERIES
+  { at: 2000, beat: 4 }, // portrait
+  { at: 2500, beat: 5 }, // role
+  { at: 2900, beat: 6 }, // play button
 ];
 
 export default function OpeningSequence({ onDone }: { onDone: () => void }) {
@@ -147,9 +147,10 @@ export default function OpeningSequence({ onDone }: { onDone: () => void }) {
       <button
         type="button"
         onClick={onDone}
-        className="absolute right-4 top-[calc(7vh+12px)] z-40 rounded-full border border-white/20 px-4 py-2 font-sans text-[11px] font-semibold tracking-[0.2em] text-mist transition hover:border-white/60 hover:text-bone"
+        data-cursor="link"
+        className="absolute right-4 top-[calc(7vh+12px)] z-40 flex items-center gap-2 rounded-full border border-white/50 bg-black/40 px-5 py-2.5 font-sans text-xs font-bold tracking-[0.2em] text-bone backdrop-blur transition hover:border-bone hover:bg-bone hover:text-ink"
       >
-        SKIP INTRO
+        SKIP INTRO <span aria-hidden>⏭</span>
       </button>
     </motion.div>
   );

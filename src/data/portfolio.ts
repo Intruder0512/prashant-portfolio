@@ -44,6 +44,12 @@ export const profile = {
     srcSet: '/assets/portrait-420.webp 420w, /assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w',
     alt: 'Portrait of Prashant Yadav',
   },
+  /**
+   * Cloudflare Web Analytics (free, cookie-free, no consent banner needed).
+   * Paste the token from dash.cloudflare.com → Analytics & Logs → Web Analytics → Add a site
+   * (choose "manual JS snippet" and copy the value of "token"). Leave empty to disable.
+   */
+  analytics: { cloudflareToken: '' as string },
   focus: ['Agentic AI & MCP', 'AI Architecture', 'Delivery Leadership', 'Platform Engineering', 'Multi-Cloud (AWS · Azure · GCP)', 'Edge AI'],
 };
 
