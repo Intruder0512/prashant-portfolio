@@ -75,7 +75,7 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
       </div>
 
       {showVideo ? (
-        <HeroVideo y={imgY} opacity={fade} />
+        <HeroVideo y={imgY} opacity={fade} chipX={chipX} chipY={chipY} />
       ) : (
         <>
           {/* portrait */}
@@ -201,13 +201,21 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
   );
 }
 
+/** Chip positions are relative to the video frame (Prashant stands at ~52% across), clear of his face and the robot. */
+const VIDEO_CHIPS = [
+  { text: 'Embedded World', sub: 'Speaker · Nuremberg', pos: 'left-[23%] top-[18%]', depth: -1 },
+  { text: '1M+ Users', sub: 'Kubernetes LMS', pos: 'left-[25%] top-[66%]', depth: 1 },
+  { text: 'Bedrock · K8s · Edge', sub: 'Signature stack', pos: 'left-[56%] top-[72%]', depth: 0.6 },
+];
+
 /**
  * Desktop hero: Prashant walks in and gestures with an open palm; the AI Recruiter robot
  * pops up where the palm points and opens the chat when clicked. Plays once, then holds.
  */
-function HeroVideo({ y, opacity }: { y: MV | ReturnType<typeof useTransform<number, string>>; opacity: MV }) {
+function HeroVideo({ y, opacity, chipX, chipY }: { y: MV | ReturnType<typeof useTransform<number, string>>; opacity: MV; chipX: MV; chipY: MV }) {
   const v = profile.heroVideo;
   const [bot, setBot] = useState(false);
+  const [ended, setEnded] = useState(false);
   const available = useRecruiter((s) => s.available);
   const chatOpen = useRecruiter((s) => s.open);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -263,8 +271,14 @@ function HeroVideo({ y, opacity }: { y: MV | ReturnType<typeof useTransform<numb
         poster={v.poster}
         aria-label="Prashant Yadav walks forward and gestures toward his AI Recruiter assistant"
         onTimeUpdate={(e) => e.currentTarget.currentTime >= v.gestureAt && !bot && setBot(true)}
-        onEnded={() => setBot(true)}
-        onError={() => setBot(true)}
+        onEnded={() => {
+          setBot(true);
+          setEnded(true);
+        }}
+        onError={() => {
+          setBot(true);
+          setEnded(true);
+        }}
       >
         <source src={v.webm} type="video/webm" />
         <source src={v.mp4} type="video/mp4" />
@@ -275,6 +289,8 @@ function HeroVideo({ y, opacity }: { y: MV | ReturnType<typeof useTransform<numb
 
     {/* Robot layer: same geometry as the video, but above the copy so it can be clicked */}
     <motion.div className="pointer-events-none absolute bottom-0 z-[6] aspect-video h-[86vh]" style={{ left: 'calc(80vw - 79.5vh)', y, opacity }}>
+      {/* the highlight chips float in once the clip has finished */}
+      {ended && VIDEO_CHIPS.map((f, i) => <FloatChip key={f.text} {...f} index={i} mx={chipX} my={chipY} />)}
       <AnimatePresence>
         {showBot && !chatOpen && (
           <motion.div
