@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node scripts/build-knowledge.mjs && tsc -b && vite build",
     "preview": "vite preview",
-    "images": "node scripts/build-images.mjs"
+    "images": "node scripts/build-images.mjs",
+    "knowledge": "node scripts/build-knowledge.mjs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",
@@ -28,7 +29,7 @@
     "typescript": "5.8.3",
     "vite": "^8.3.4"
   },
-  "description": "Prashant Yadav — Agentic AI Delivery Lead & Architect. A cinematic, streaming-inspired portfolio.",
+  "description": "Prashant Yadav \u2014 Agentic AI Delivery Lead & Architect. A cinematic, streaming-inspired portfolio.",
   "optionalDependencies": {
     "sharp": "^0.35.5"
   },

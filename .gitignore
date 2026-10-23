@@ -3,3 +3,8 @@ dist
 .DS_Store
 *.local
 /.claude
+# Worker secrets (local)
+.dev.vars
+worker/.dev.vars
+worker/node_modules
+worker/.wrangler

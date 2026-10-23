@@ -80,3 +80,13 @@ This rebuilds the responsive WebP portraits, the event photos and the social sha
 - **Search:** `public/robots.txt`, `public/sitemap.xml` and the structured data (`application/ld+json`) plus the plain-text summary in `index.html`. Update the summary there when your role changes.
 - **Analytics:** paste a Cloudflare Web Analytics token into `profile.analytics.cloudflareToken` in `src/data/portfolio.ts`.
 - **Headshots:** `headshot-studio.png` and `headshot-office.png` feed `headshot*.jpg` (search results) and `og-image.jpg` (share card) via `npm run images`.
+
+## AI Recruiter (chat assistant)
+
+A chat assistant that answers recruiters' questions from the portfolio data, using Claude Haiku.
+
+- **Frontend:** `src/components/AIRecruiter.tsx`. The "Ask my AI Recruiter" button only appears once the backend reports it is configured.
+- **Backend:** a Cloudflare Worker in `worker/`, routed at `prashantyadav.tech/api/*`. It holds the API key, checks the origin, validates input, rate-limits each visitor to 10 questions a minute and streams answers.
+- **Knowledge:** `worker/src/knowledge.js` is generated from `src/data/portfolio.ts` by `npm run knowledge`, which also runs on every `npm run build`. Commit the regenerated file so the Worker picks it up.
+- **Secret:** `ANTHROPIC_API_KEY` is set only in Cloudflare (Worker → Settings → Variables and Secrets). Never commit it.
+- **Local test:** put `ANTHROPIC_API_KEY=...` in `worker/.dev.vars` (ignored by Git), run `cd worker && npm install && npm run dev`, then `npm run dev` at the root.

@@ -4,6 +4,7 @@ import { blueprints, viewerProfiles, type ProfileId, type Project, type SectionI
 import { SmoothScrollProvider, useSmoothScroll } from './hooks/smoothScroll';
 import CustomCursor from './components/CustomCursor';
 import OpeningSequence from './components/OpeningSequence';
+import AIRecruiter from './components/AIRecruiter';
 import ProfileSelector from './components/ProfileSelector';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -155,6 +156,7 @@ function Series() {
           </main>
         </motion.div>
       )}
+      {stage === 'home' && <AIRecruiter />}
 
       <Suspense fallback={null}>
         <AnimatePresence>{playing && <PlayIntro key="intro" onClose={closeIntro} />}</AnimatePresence>
