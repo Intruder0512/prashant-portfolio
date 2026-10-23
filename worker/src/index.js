@@ -89,7 +89,6 @@ export default {
         body: JSON.stringify({
           model: env.MODEL || 'claude-haiku-5-5',
           max_tokens: LIMITS.maxTokens,
-          temperature: 0.3,
           stream: true,
           system: SYSTEM,
           messages: [...checked.history, { role: 'user', content: checked.message }],
@@ -106,12 +105,15 @@ export default {
       const detail = await upstream.text().catch(() => '');
       console.error('upstream error', upstream.status, detail.slice(0, 300)); // full detail in Worker logs only
       let type = 'unknown';
+      let reason = '';
       try {
-        type = JSON.parse(detail)?.error?.type || type;
+        const err = JSON.parse(detail)?.error;
+        type = err?.type || type;
+        reason = String(err?.message || '').slice(0, 200); // Anthropic's own explanation — never contains the key
       } catch {}
       const status = upstream.status === 429 || upstream.status === 529 ? 503 : 502;
       // A short reason code (e.g. 401_authentication_error) helps diagnose setup issues; it never contains the key.
-      return json({ error: 'upstream_error', code: `${upstream.status}_${type}`, message: 'The assistant is temporarily unavailable.' }, status, cors);
+      return json({ error: 'upstream_error', code: `${upstream.status}_${type}`, reason, message: 'The assistant is temporarily unavailable.' }, status, cors);
     }
 
     // Convert Anthropic's SSE stream into a plain text stream of answer text.
