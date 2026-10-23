@@ -83,7 +83,7 @@ export default {
         signal: controller.signal,
         headers: {
           'content-type': 'application/json',
-          'x-api-key': env.ANTHROPIC_API_KEY,
+          'x-api-key': String(env.ANTHROPIC_API_KEY).trim(),
           'anthropic-version': '2023-06-01',
         },
         body: JSON.stringify({
@@ -97,16 +97,21 @@ export default {
       });
     } catch (e) {
       clearTimeout(timer);
-      console.error('upstream fetch failed', e?.name);
-      return json({ error: 'upstream_unavailable', message: 'The assistant is temporarily unavailable.' }, 502, cors);
+      console.error('upstream fetch failed', e?.name, e?.message);
+      return json({ error: 'upstream_unavailable', code: `fetch_${e?.name || 'error'}`, message: 'The assistant is temporarily unavailable.' }, 502, cors);
     }
 
     if (!upstream.ok || !upstream.body) {
       clearTimeout(timer);
       const detail = await upstream.text().catch(() => '');
-      console.error('upstream error', upstream.status, detail.slice(0, 300)); // visible in Worker logs only
+      console.error('upstream error', upstream.status, detail.slice(0, 300)); // full detail in Worker logs only
+      let type = 'unknown';
+      try {
+        type = JSON.parse(detail)?.error?.type || type;
+      } catch {}
       const status = upstream.status === 429 || upstream.status === 529 ? 503 : 502;
-      return json({ error: 'upstream_error', message: 'The assistant is temporarily unavailable.' }, status, cors);
+      // A short reason code (e.g. 401_authentication_error) helps diagnose setup issues; it never contains the key.
+      return json({ error: 'upstream_error', code: `${upstream.status}_${type}`, message: 'The assistant is temporarily unavailable.' }, status, cors);
     }
 
     // Convert Anthropic's SSE stream into a plain text stream of answer text.
