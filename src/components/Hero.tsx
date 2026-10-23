@@ -280,7 +280,6 @@ function HeroVideo({ y, opacity, chipX, chipY }: { y: MV | ReturnType<typeof use
           setEnded(true);
         }}
       >
-        <source src={v.webm} type="video/webm" />
         <source src={v.mp4} type="video/mp4" />
       </video>
       {/* soft crimson rim to tie the clip into the page */}

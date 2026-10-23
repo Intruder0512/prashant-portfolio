@@ -41,7 +41,6 @@ export const profile = {
   resumeFileName: 'Prashant_Yadav_Resume.pdf',
   /** Desktop hero video (AI-generated from the studio headshot). Phones and reduced-motion visitors see the portrait. */
   heroVideo: {
-    webm: '/assets/hero-walk.webm',
     mp4: '/assets/hero-walk.mp4',
     poster: '/assets/hero-walk-poster.webp',
     /** Seconds into the clip when the open-palm gesture starts — the robot appears here. */

@@ -185,7 +185,7 @@
             <rect x="34" y="648" width="222" height="110" rx="10" fill="#eff4ff" stroke="#1d4ed8" stroke-width="1.4"/>
             <rect x="34" y="648" width="222" height="4" rx="2" fill="#1d4ed8"/>
             <text x="48" y="670" font-size="9.5" font-weight="700" fill="#1d4ed8">NORTH</text>
-            <text x="245" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#1d4ed8" font-family="Fraunces,Georgia,serif">20</text>
+            <text x="245" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#1d4ed8" font-family="Instrument Serif,Georgia,serif">20</text>
             <text x="48" y="686" font-size="8" fill="#7b7669">Universities</text>
             <text x="48" y="705" font-size="8" fill="#3a3830">Delhi · Punjab · Haryana</text>
             <text x="48" y="717" font-size="8" fill="#3a3830">UP · Uttarakhand · HP · J&amp;K</text>
@@ -196,7 +196,7 @@
             <rect x="266" y="648" width="222" height="110" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="1.4"/>
             <rect x="266" y="648" width="222" height="4" rx="2" fill="#0891b2"/>
             <text x="280" y="670" font-size="9.5" font-weight="700" fill="#0891b2">EAST</text>
-            <text x="477" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#0891b2" font-family="Fraunces,Georgia,serif">18</text>
+            <text x="477" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#0891b2" font-family="Instrument Serif,Georgia,serif">18</text>
             <text x="280" y="686" font-size="8" fill="#7b7669">Universities</text>
             <text x="280" y="705" font-size="8" fill="#3a3830">West Bengal · Bihar</text>
             <text x="280" y="717" font-size="8" fill="#3a3830">Jharkhand · Odisha · Assam · NE</text>
@@ -207,7 +207,7 @@
             <rect x="498" y="648" width="222" height="110" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/>
             <rect x="498" y="648" width="222" height="4" rx="2" fill="#b45309"/>
             <text x="512" y="670" font-size="9.5" font-weight="700" fill="#b45309">WEST</text>
-            <text x="709" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#b45309" font-family="Fraunces,Georgia,serif">19</text>
+            <text x="709" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#b45309" font-family="Instrument Serif,Georgia,serif">19</text>
             <text x="512" y="686" font-size="8" fill="#7b7669">Universities</text>
             <text x="512" y="705" font-size="8" fill="#3a3830">Maharashtra · Gujarat</text>
             <text x="512" y="717" font-size="8" fill="#3a3830">Rajasthan · MP · Goa</text>
@@ -218,7 +218,7 @@
             <rect x="730" y="648" width="216" height="110" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
             <rect x="730" y="648" width="216" height="4" rx="2" fill="#16a34a"/>
             <text x="744" y="670" font-size="9.5" font-weight="700" fill="#16a34a">SOUTH</text>
-            <text x="935" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#16a34a" font-family="Fraunces,Georgia,serif">19</text>
+            <text x="935" y="670" text-anchor="end" font-size="20" font-weight="700" fill="#16a34a" font-family="Instrument Serif,Georgia,serif">19</text>
             <text x="744" y="686" font-size="8" fill="#7b7669">Universities</text>
             <text x="744" y="705" font-size="8" fill="#3a3830">Karnataka · Tamil Nadu</text>
             <text x="744" y="717" font-size="8" fill="#3a3830">Kerala · Andhra · Telangana</text>
