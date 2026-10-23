@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { profile } from '../data/portfolio';
 import { EASE } from './fx';
+import Robot from './Robot';
 
 /**
  * AI RECRUITER — a chat assistant that answers questions about Prashant from the portfolio's own data.
@@ -39,30 +40,67 @@ export default function AIRecruiter() {
 
   return createPortal(
     <>
-      <AnimatePresence>
-        {!open && (
-          <motion.button
-            key="launcher"
-            type="button"
-            onClick={() => setOpen(true)}
-            data-cursor="link"
-            aria-label="Open the AI Recruiter chat"
-            className="group fixed bottom-5 right-5 z-[90] flex items-center gap-2.5 rounded-full bg-gradient-to-br from-[#8a0f22] to-[#3a0710] py-3 pl-3.5 pr-5 text-sm font-semibold text-bone shadow-[0_10px_40px_rgba(229,19,43,0.45)] ring-1 ring-crimson-2/50 transition hover:ring-crimson-2 sm:bottom-7 sm:right-7"
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ duration: 0.5, ease: EASE, delay: 0.6 }}
-          >
-            <Spark className="h-5 w-5 transition-transform duration-500 group-hover:rotate-90" />
-            <span>
-              Ask my <span className="text-crimson-2">AI Recruiter</span>
-            </span>
-          </motion.button>
-        )}
-      </AnimatePresence>
+      <AnimatePresence>{!open && <Launcher key="launcher" onOpen={() => setOpen(true)} />}</AnimatePresence>
       <AnimatePresence>{open && <ChatPanel key="panel" onClose={() => setOpen(false)} />}</AnimatePresence>
     </>,
     document.body,
+  );
+}
+
+/** The waving robot. A greeting bubble pops up once shortly after arrival, and again on hover. */
+function Launcher({ onOpen }: { onOpen: () => void }) {
+  const [greet, setGreet] = useState(false);
+  const [hover, setHover] = useState(false);
+  useEffect(() => {
+    const show = window.setTimeout(() => setGreet(true), 2200);
+    const hide = window.setTimeout(() => setGreet(false), 9500);
+    return () => {
+      clearTimeout(show);
+      clearTimeout(hide);
+    };
+  }, []);
+  const bubble = greet || hover;
+
+  return (
+    <motion.div
+      className="fixed bottom-3 right-2 z-[90] sm:bottom-5 sm:right-5"
+      initial={{ opacity: 0, y: 40, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 30, scale: 0.8 }}
+      transition={{ duration: 0.6, ease: EASE, delay: 0.5 }}
+    >
+      <AnimatePresence>
+        {bubble && (
+          <motion.button
+            type="button"
+            onClick={onOpen}
+            tabIndex={-1}
+            className="absolute bottom-[64%] right-[86%] w-[180px] rounded-2xl rounded-br-sm bg-bone px-3.5 py-2.5 text-left text-[13px] font-semibold leading-snug text-ink shadow-[0_10px_30px_rgba(0,0,0,0.5)] sm:w-[220px] sm:text-sm"
+            initial={{ opacity: 0, x: 12, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 8, scale: 0.95 }}
+            transition={{ duration: 0.35, ease: EASE }}
+          >
+            Hi! 👋 I’m Prashant’s <span className="text-crimson">AI Recruiter</span>. Ask me anything about his work.
+          </motion.button>
+        )}
+      </AnimatePresence>
+      <motion.button
+        type="button"
+        onClick={onOpen}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onFocus={() => setHover(true)}
+        onBlur={() => setHover(false)}
+        data-cursor="link"
+        aria-label="Open the AI Recruiter chat"
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.94 }}
+        className="relative w-[78px] drop-shadow-[0_12px_28px_rgba(229,19,43,0.45)] sm:w-[112px]"
+      >
+        <Robot className="h-auto w-full" />
+      </motion.button>
+    </motion.div>
   );
 }
 
@@ -153,8 +191,8 @@ function ChatPanel({ onClose }: { onClose: () => void }) {
     >
       {/* header */}
       <div className="relative flex shrink-0 items-center gap-3 border-b border-white/10 bg-gradient-to-r from-[#3a0710] via-[#1a070b] to-[#0b0608] px-4 pb-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-crimson to-[#4a0812] text-bone shadow-[0_0_24px_rgba(229,19,43,0.5)]">
-          <Spark className="h-5 w-5" />
+        <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br from-[#5a0a16] to-[#1a0508] ring-1 ring-crimson-2/40">
+          <Robot className="mt-2 h-12 w-12" wave={false} float={false} />
         </span>
         <div className="min-w-0 flex-1">
           <p className="font-display text-xl leading-none tracking-wide text-bone">AI RECRUITER</p>
@@ -316,13 +354,4 @@ function linkify(s: string): ReactNode[] {
     }
     return p;
   });
-}
-
-function Spark({ className = '' }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
-      <path d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9L12 2z" />
-      <path d="M19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9L19 14z" opacity=".7" />
-    </svg>
-  );
 }
