@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "echo \"No build step \u2014 knowledge.js is generated at the repo root (npm run knowledge)\"",
     "dev": "wrangler dev",
     "deploy": "wrangler deploy"
   },
