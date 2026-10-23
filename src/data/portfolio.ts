@@ -39,6 +39,14 @@ export const profile = {
   /** Resume PDF served from public/assets/. Leave empty to fall back to "Save as PDF" of the on-page resume. */
   resumePdf: '/assets/Prashant_Yadav_Resume.pdf' as string,
   resumeFileName: 'Prashant_Yadav_Resume.pdf',
+  /** Desktop hero video (AI-generated from the studio headshot). Phones and reduced-motion visitors see the portrait. */
+  heroVideo: {
+    webm: '/assets/hero-walk.webm',
+    mp4: '/assets/hero-walk.mp4',
+    poster: '/assets/hero-walk-poster.webp',
+    /** Seconds into the clip when the open-palm gesture starts — the robot appears here. */
+    gestureAt: 4.5,
+  },
   portrait: {
     src: '/assets/portrait-720.webp',
     srcSet: '/assets/portrait-420.webp 420w, /assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w',

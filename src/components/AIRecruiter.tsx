@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { profile } from '../data/portfolio';
 import { EASE } from './fx';
 import Robot from './Robot';
+import { markGreeted, recruiter, sessionGreeted, useRecruiter } from '../hooks/recruiterBus';
 
 /**
  * AI RECRUITER — a chat assistant that answers questions about Prashant from the portfolio's own data.
@@ -22,14 +23,16 @@ const SUGGESTED = [
 type Msg = { role: 'user' | 'assistant'; content: string; error?: boolean };
 
 export default function AIRecruiter() {
-  const [available, setAvailable] = useState(false);
-  const [open, setOpen] = useState(false);
+  const available = useRecruiter((s) => s.available);
+  const open = useRecruiter((s) => s.open);
+  const heroBot = useRecruiter((s) => s.heroBotVisible);
+  const setOpen = (v: boolean) => recruiter.set({ open: v });
 
   useEffect(() => {
     let alive = true;
     fetch(`${API}/health`, { cache: 'no-store' })
       .then((r) => (r.ok ? r.json() : null))
-      .then((d) => alive && setAvailable(Boolean(d?.configured)))
+      .then((d) => alive && recruiter.set({ available: Boolean(d?.configured) }))
       .catch(() => {});
     return () => {
       alive = false;
@@ -37,10 +40,11 @@ export default function AIRecruiter() {
   }, []);
 
   if (!available) return null;
+  const greetedByHero = sessionGreeted();
 
   return createPortal(
     <>
-      <AnimatePresence>{!open && <Launcher key="launcher" onOpen={() => setOpen(true)} />}</AnimatePresence>
+      <AnimatePresence>{!open && !heroBot && <Launcher key="launcher" onOpen={() => setOpen(true)} greetFirst={!greetedByHero} />}</AnimatePresence>
       <AnimatePresence>{open && <ChatPanel key="panel" onClose={() => setOpen(false)} />}</AnimatePresence>
     </>,
     document.body,
@@ -48,17 +52,21 @@ export default function AIRecruiter() {
 }
 
 /** The waving robot. A greeting bubble pops up once shortly after arrival, and again on hover. */
-function Launcher({ onOpen }: { onOpen: () => void }) {
+function Launcher({ onOpen, greetFirst = true }: { onOpen: () => void; greetFirst?: boolean }) {
   const [greet, setGreet] = useState(false);
   const [hover, setHover] = useState(false);
   useEffect(() => {
-    const show = window.setTimeout(() => setGreet(true), 2200);
+    if (!greetFirst) return;
+    const show = window.setTimeout(() => {
+      setGreet(true);
+      markGreeted();
+    }, 2200);
     const hide = window.setTimeout(() => setGreet(false), 9500);
     return () => {
       clearTimeout(show);
       clearTimeout(hide);
     };
-  }, []);
+  }, [greetFirst]);
   const bubble = greet || hover;
 
   return (

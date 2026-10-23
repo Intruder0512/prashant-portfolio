@@ -1,7 +1,9 @@
-import { useRef } from 'react';
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import { blueprints, profile, projects, yearsExp, type ProfileId } from '../data/portfolio';
-import { useFinePointer } from '../hooks/useMedia';
+import { useDesktop, useFinePointer, useMedia, useReducedMotionPref } from '../hooks/useMedia';
+import { markGreeted, recruiter, useRecruiter } from '../hooks/recruiterBus';
+import Robot from './Robot';
 import { useSmoothScroll } from '../hooks/smoothScroll';
 import { EASE, Magnetic, Particles } from './fx';
 import { SeriesMark } from './Poster';
@@ -36,6 +38,11 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
   const chipY = useTransform(py, [-1, 1], [12, -12]);
   const glowX = useTransform(px, [-1, 1], ['-6%', '6%']);
 
+  const desktop = useDesktop();
+  const reduced = useReducedMotionPref();
+  const lowData = useMedia('(prefers-reduced-data: reduce)');
+  const showVideo = desktop && !reduced && !lowData && Boolean(profile.heroVideo);
+
   const meta = ['2009 – Present', `${yearsExp}+ Years`, `${projects.length} Productions`, `${blueprints.length} Blueprints`];
 
   const floating = [
@@ -67,37 +74,44 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
         <span className="light-streak left-[55%] top-[44%] w-[30vw]" style={{ animationDelay: '5.2s' }} />
       </div>
 
-      {/* portrait */}
-      <motion.div
-        className="absolute inset-x-0 top-12 z-[2] flex h-[64svh] items-end justify-center sm:h-[70svh] lg:bottom-0 lg:left-auto lg:right-[3vw] lg:top-20 lg:h-auto lg:w-[54vw] xl:right-[6vw] xl:w-[48vw]"
-        style={{ y: imgY, scale: imgScale, opacity: fade }}
-      >
-        <motion.div
-          className="relative h-full w-full lg:h-[86vh]"
-          style={{ rotateY: imgRotY, rotateX: imgRotX, x: imgShiftX, transformPerspective: 1200 }}
-          initial={{ clipPath: 'inset(100% -30% -10% -30%)', opacity: 0 }}
-          animate={{ clipPath: 'inset(-30% -30% -10% -30%)', opacity: 1 }}
-          transition={{ duration: 1.6, ease: EASE, delay: 0.1 }}
-        >
-          {/* rim light ring */}
-          <div aria-hidden className="absolute bottom-[8%] left-1/2 h-[78%] w-[78%] -translate-x-1/2 rounded-full border border-crimson-2/20 shadow-[0_0_120px_rgba(229,19,43,0.35),inset_0_0_80px_rgba(229,19,43,0.18)]" />
-          <img
-            src={profile.portrait.src}
-            srcSet={profile.portrait.srcSet}
-            sizes="(max-width: 1024px) 100vw, 54vw"
-            alt={profile.portrait.alt}
+      {showVideo ? (
+        <HeroVideo y={imgY} opacity={fade} />
+      ) : (
+        <>
+          {/* portrait */}
+          <motion.div
+            className="absolute inset-x-0 top-12 z-[2] flex h-[64svh] items-end justify-center sm:h-[70svh] lg:bottom-0 lg:left-auto lg:right-[3vw] lg:top-20 lg:h-auto lg:w-[54vw] xl:right-[6vw] xl:w-[48vw]"
+            style={{ y: imgY, scale: imgScale, opacity: fade }}
+          >
+            <motion.div
+              className="relative h-full w-full lg:h-[86vh]"
+              style={{ rotateY: imgRotY, rotateX: imgRotX, x: imgShiftX, transformPerspective: 1200 }}
+              initial={{ clipPath: 'inset(100% -30% -10% -30%)', opacity: 0 }}
+              animate={{ clipPath: 'inset(-30% -30% -10% -30%)', opacity: 1 }}
+              transition={{ duration: 1.6, ease: EASE, delay: 0.1 }}
+            >
+              {/* rim light ring */}
+              <div aria-hidden className="absolute bottom-[8%] left-1/2 h-[78%] w-[78%] -translate-x-1/2 rounded-full border border-crimson-2/20 shadow-[0_0_120px_rgba(229,19,43,0.35),inset_0_0_80px_rgba(229,19,43,0.18)]" />
+              <img
+                src={profile.portrait.src}
+                srcSet={profile.portrait.srcSet}
+                sizes="(max-width: 1024px) 100vw, 54vw"
+                alt={profile.portrait.alt}
 
-            className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] [mask-image:linear-gradient(to_bottom,black_62%,transparent_97%)]"
-          />
-          {/* crimson rim light on the image edge */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_80%_30%,rgba(255,61,90,0.16),transparent_70%)] mix-blend-screen" />
+                className="absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)] [mask-image:linear-gradient(to_bottom,black_62%,transparent_97%)]"
+              />
+              {/* crimson rim light on the image edge */}
+              <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_80%_30%,rgba(255,61,90,0.16),transparent_70%)] mix-blend-screen" />
 
-          {/* floating UI chips */}
-          {floating.map((f, i) => (
-            <FloatChip key={f.text} {...f} index={i} mx={chipX} my={chipY} />
-          ))}
-        </motion.div>
-      </motion.div>
+              {/* floating UI chips */}
+              {floating.map((f, i) => (
+                <FloatChip key={f.text} {...f} index={i} mx={chipX} my={chipY} />
+              ))}
+            </motion.div>
+          </motion.div>
+
+        </>
+      )}
 
       {/* readability gradients */}
       <div aria-hidden className="absolute inset-x-0 top-[40svh] z-[3] h-[36svh] bg-gradient-to-b from-transparent via-ink/70 to-ink lg:hidden" />
@@ -184,6 +198,125 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
 
       <motion.div aria-hidden className="pointer-events-none absolute inset-0 z-[5] bg-ink" style={{ opacity: blackout }} />
     </section>
+  );
+}
+
+/**
+ * Desktop hero: Prashant walks in and gestures with an open palm; the AI Recruiter robot
+ * pops up where the palm points and opens the chat when clicked. Plays once, then holds.
+ */
+function HeroVideo({ y, opacity }: { y: MV | ReturnType<typeof useTransform<number, string>>; opacity: MV }) {
+  const v = profile.heroVideo;
+  const [bot, setBot] = useState(false);
+  const available = useRecruiter((s) => s.available);
+  const chatOpen = useRecruiter((s) => s.open);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [greet, setGreet] = useState(false);
+  const [hover, setHover] = useState(false);
+  const showBot = available && bot;
+
+  // While the hero video is on screen, its robot is the only one — the corner launcher steps aside.
+  useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => recruiter.set({ heroBotVisible: e.intersectionRatio > 0.45 }), { threshold: [0, 0.45, 1] });
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      recruiter.set({ heroBotVisible: false });
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!showBot) return;
+    const on = window.setTimeout(() => {
+      setGreet(true);
+      markGreeted();
+    }, 500);
+    const off = window.setTimeout(() => setGreet(false), 7500);
+    return () => {
+      clearTimeout(on);
+      clearTimeout(off);
+    };
+  }, [showBot]);
+
+  const fadeMask =
+    'linear-gradient(to right, transparent 0%, black 24%, black 84%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 14%, black 70%, transparent 97%)';
+
+  return (
+    <>
+    <motion.div
+      ref={boxRef}
+      className="absolute bottom-0 z-[2] aspect-video h-[86vh]"
+      style={{ left: 'calc(80vw - 79.5vh)', y, opacity }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: EASE }}
+    >
+      <video
+        className="h-full w-full object-cover"
+        style={{ maskImage: fadeMask, WebkitMaskImage: fadeMask, maskComposite: 'intersect', WebkitMaskComposite: 'source-in' }}
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        poster={v.poster}
+        aria-label="Prashant Yadav walks forward and gestures toward his AI Recruiter assistant"
+        onTimeUpdate={(e) => e.currentTarget.currentTime >= v.gestureAt && !bot && setBot(true)}
+        onEnded={() => setBot(true)}
+        onError={() => setBot(true)}
+      >
+        <source src={v.webm} type="video/webm" />
+        <source src={v.mp4} type="video/mp4" />
+      </video>
+      {/* soft crimson rim to tie the clip into the page */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(40%_55%_at_52%_45%,rgba(229,19,43,0.10),transparent_70%)] mix-blend-screen" />
+    </motion.div>
+
+    {/* Robot layer: same geometry as the video, but above the copy so it can be clicked */}
+    <motion.div className="pointer-events-none absolute bottom-0 z-[6] aspect-video h-[86vh]" style={{ left: 'calc(80vw - 79.5vh)', y, opacity }}>
+      <AnimatePresence>
+        {showBot && !chatOpen && (
+          <motion.div
+            key="hero-bot"
+            className="pointer-events-auto absolute left-[17%] top-[44%] w-[7.5%] -translate-x-1/2 -translate-y-1/2"
+            initial={{ opacity: 0, scale: 0.3, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.6 }}
+            transition={{ type: 'spring', stiffness: 220, damping: 16 }}
+          >
+            <button
+              type="button"
+              onClick={() => recruiter.set({ open: true })}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              data-cursor="link"
+              aria-label="Open the AI Recruiter chat"
+              className="block w-full drop-shadow-[0_14px_30px_rgba(229,19,43,0.5)] transition-transform hover:scale-105"
+            >
+              <Robot className="h-auto w-full" />
+            </button>
+            <AnimatePresence>
+              {(greet || hover) && (
+                <motion.button
+                  type="button"
+                  tabIndex={-1}
+                  onClick={() => recruiter.set({ open: true })}
+                  className="absolute bottom-[62%] left-[88%] w-[220px] rounded-2xl rounded-bl-sm bg-bone px-3.5 py-2.5 text-left text-sm font-semibold leading-snug text-ink shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                  initial={{ opacity: 0, x: -10, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -6, scale: 0.95 }}
+                  transition={{ duration: 0.35, ease: EASE }}
+                >
+                  Hi! 👋 I’m Prashant’s <span className="text-crimson">AI Recruiter</span>. Ask me anything about his work.
+                </motion.button>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+    </>
   );
 }
 
