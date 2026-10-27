@@ -90,3 +90,9 @@ A chat assistant that answers recruiters' questions from the portfolio data, usi
 - **Knowledge:** `worker/src/knowledge.js` is generated from `src/data/portfolio.ts` by `npm run knowledge`, which also runs on every `npm run build`. Commit the regenerated file so the Worker picks it up.
 - **Secret:** `ANTHROPIC_API_KEY` is set only in Cloudflare (Worker → Settings → Variables and Secrets). Never commit it.
 - **Local test:** put `ANTHROPIC_API_KEY=...` in `worker/.dev.vars` (ignored by Git), run `cd worker && npm install && npm run dev`, then `npm run dev` at the root.
+
+## Show or hide the BHP role
+
+`src/data/visibility.json` → `"showBHP": false` hides the current BHP India Technical Centre role everywhere: hero, About, experience, leadership, season 7, Top Picks, Play Intro, the search summary and the AI Recruiter's facts. The hidden text is left out of the published files, not just hidden. The uploaded resume PDF, which lists the role, is also left out; "Save as PDF" prints the on-page resume instead.
+
+Set it to `true` and push to show the role again. Both the site and the AI Recruiter update on the next deploy.

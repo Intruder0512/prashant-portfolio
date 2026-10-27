@@ -6,10 +6,13 @@ import { rolldown } from 'rolldown';
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
+import { readFileSync } from 'node:fs';
+
+const { showBHP } = JSON.parse(readFileSync('src/data/visibility.json', 'utf8'));
 
 const tmp = path.resolve('node_modules/.cache/knowledge');
 mkdirSync(tmp, { recursive: true });
-const bundle = await rolldown({ input: 'src/data/portfolio.ts', logLevel: 'silent' });
+const bundle = await rolldown({ input: 'src/data/portfolio.ts', logLevel: 'silent', transform: { define: { __SHOW_BHP__: JSON.stringify(showBHP) } } });
 await bundle.write({ dir: tmp, format: 'esm', entryFileNames: 'portfolio.mjs' });
 const d = await import(pathToFileURL(path.join(tmp, 'portfolio.mjs')).href + `?t=${Date.now()}`);
 rmSync(tmp, { recursive: true, force: true });
@@ -25,7 +28,7 @@ L.push(`Source: prashantyadav.tech (generated ${new Date().toISOString().slice(0
 h('Profile');
 li(`Name: ${profile.fullName}`);
 li(`Headline: ${profile.seriesTag.toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase()).replace('Ai', 'AI')}`);
-li(`Current role: ${profile.role}`);
+li(`${d.SHOW_BHP ? 'Current role' : 'Professional title'}: ${profile.role}`);
 li(`Total experience: ${yearsExp}+ years (career started February 2009)`);
 li(`Location: ${profile.location}`);
 li(`Languages: ${profile.languages}`);

@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { education, experience, orgCount, profile, seasons, yearsExp } from '../data/portfolio';
+import { education, orgCount, profile, seasons, yearsExp } from '../data/portfolio';
 import { EASE, SectionHeading, Tilt } from './fx';
 
 export default function About() {
   const facts = [
-    { k: 'Now', v: profile.role, s: `${experience[0].company} · ${experience[0].place}` },
+    { k: 'Now', v: profile.role, s: profile.orgDetail },
     { k: 'Experience', v: `${yearsExp}+ years`, s: `Since Feb 2009 · ${orgCount} organizations · 10 years as Employee #002 at Judge India` },
     { k: 'Education', v: education[0].short, s: `${education[0].school} · ${education[1].short}` },
     { k: 'Based in', v: profile.location, s: profile.languages },

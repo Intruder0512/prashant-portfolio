@@ -138,7 +138,7 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
 
         <motion.p variants={item} className="mt-4 font-sans text-lg font-semibold leading-snug text-bone sm:text-2xl">
           {profile.role}
-          <span className="mt-0.5 block text-sm font-medium text-mist sm:text-base">BHP India Technical Centre</span>
+          <span className="mt-0.5 block text-sm font-medium text-mist sm:text-base">{profile.org}</span>
         </motion.p>
 
         <motion.div variants={item} className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] font-medium text-mist">

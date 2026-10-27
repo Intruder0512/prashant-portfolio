@@ -8,6 +8,13 @@ import legacy from './legacy.json';
 
 export type Palette = { from: string; via: string; to: string; accent: string };
 
+/**
+ * Show the current BHP India Technical Centre role across the site (hero, About, experience, leadership,
+ * season 7, Top Picks, Play Intro, resume PDF and the AI Recruiter's facts).
+ * Controlled by src/data/visibility.json → "showBHP": false = hidden (default), true = shown.
+ */
+export const SHOW_BHP: boolean = __SHOW_BHP__; // replaced at build time, so hidden text never ships
+
 /** Career start — experience years are calculated from this, so they never go stale. */
 const CAREER_START = new Date(2009, 1, 1);
 const now = new Date();
@@ -21,10 +28,17 @@ export const profile = {
   seriesTag: 'AGENTIC AI DELIVERY LEAD & ARCHITECT',
   /** Fictional studio card shown at the very start of the opening sequence. */
   originalLabel: 'A YADAV ORIGINAL',
-  role: 'Chapter Lead — AI Development & Delivery',
-  shortRole: 'AI Development & Delivery Lead',
+  role: SHOW_BHP ? 'Chapter Lead — AI Development & Delivery' : 'Senior Solutions Architect — Agentic AI & Platform Engineering',
+  shortRole: SHOW_BHP ? 'AI Development & Delivery Lead' : 'Senior Solutions Architect',
+  /** Line under the role in the hero, and the About "Now" card. */
+  org: SHOW_BHP ? 'BHP India Technical Centre' : 'Enterprise AI · Cloud · Platform Engineering',
+  orgDetail: SHOW_BHP ? 'BHP India Technical Centre (via TCS) · Gurugram' : 'Noida, India · open to AI architecture & delivery leadership roles',
   tagline: ['AI Architecture', 'Agentic AI', 'Platform Engineering · DevSecOps · Multi-Cloud'],
-  intro: `Senior technology leader with ${yearsExp} years across cloud infrastructure, platform engineering, DevSecOps, AI architecture and delivery — now building BHP India’s AI engineering chapter and owning delivery continuity for its key operating-model initiatives.`,
+  intro: `Senior technology leader with ${yearsExp} years across cloud infrastructure, platform engineering, DevSecOps, AI architecture and delivery — ${
+    SHOW_BHP
+      ? 'now building BHP India’s AI engineering chapter and owning delivery continuity for its key operating-model initiatives.'
+      : 'designing agentic AI, RAG and data platforms for enterprise clients across cloud, edge and regulated environments.'
+  }`,
   longIntro:
     'Expertise in multi-cloud AI architecture (AWS, Azure and Google Cloud), agentic AI and RAG systems, MCP tool orchestration, Kubernetes platform engineering, DevSecOps and stakeholder management across global enterprise environments. International conference speaker, ISO 42001 certified, MBA in Business Analytics.',
   quote:
@@ -37,7 +51,8 @@ export const profile = {
     github: 'https://github.com/Intruder0512' as string,
   },
   /** Resume PDF served from public/assets/. Leave empty to fall back to "Save as PDF" of the on-page resume. */
-  resumePdf: '/assets/Prashant_Yadav_Resume.pdf' as string,
+  /** The uploaded PDF includes the BHP role, so it is offered only when that role is shown; otherwise "Save as PDF" prints the on-page resume. */
+  resumePdf: (SHOW_BHP ? '/assets/Prashant_Yadav_Resume.pdf' : '') as string,
   resumeFileName: 'Prashant_Yadav_Resume.pdf',
   /** Desktop hero video (AI-generated from the studio headshot). Phones and reduced-motion visitors see the portrait. */
   heroVideo: {
@@ -80,6 +95,7 @@ export const education = [
 export type Role = { company: string; role: string; place: string; period: string; growth?: string; points: string[] };
 
 export const experience: Role[] = [
+  ...(SHOW_BHP ? [
   {
     company: 'BHP India Technical Centre (via TCS)',
     role: 'Chapter Lead — AI Development & Acting Delivery Lead',
@@ -96,6 +112,7 @@ export const experience: Role[] = [
       'myBOS Coach: leading integration of the multi-agent AI system into myBOS Coach (BHP Operating System) — AI coaching, workflow automation and natural-language interfaces to drive BOS adoption across global operations.',
     ],
   },
+  ] as Role[] : []),
   {
     company: 'Judge India Solutions Pvt. Ltd. (The Judge Group)',
     role: 'Senior Solutions Architect · Employee #002',
@@ -142,7 +159,7 @@ export const experience: Role[] = [
   },
 ];
 
-export const orgCount = 6;
+export const orgCount = SHOW_BHP ? 6 : 5;
 
 export type Metric = { value: string; label: string };
 export type Motif = 'layers' | 'nodes' | 'tenants' | 'road' | 'chip' | 'shield' | 'edge' | 'mesh' | 'cloud' | 'flow';
@@ -614,8 +631,10 @@ export const achievements: Achievement[] = [
 ];
 
 export const leadership = [
-  'Building BHP India’s AI engineering chapter — hiring, mentoring, standards and capability roadmaps.',
-  'Acting Delivery Lead — single point of contact for delivery accountability across BTC’s key programmes.',
+  ...(SHOW_BHP ? [
+    'Building BHP India’s AI engineering chapter — hiring, mentoring, standards and capability roadmaps.',
+    'Acting Delivery Lead — single point of contact for delivery accountability across BTC’s key programmes.',
+  ] : []),
   'Speaker & demonstrator at AI Summit 2026 India and Embedded World 2025, Nuremberg.',
   'Edge AI demo to Hon’ble Union Minister Shri Ashwini Vaishnaw at the Qualcomm booth, AI Summit 2026.',
   'Architecture design authority across POCs, RFPs and enterprise implementations.',
@@ -717,7 +736,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'leadership',
     title: 'Leadership & Delivery',
     subtitle: 'Chapters, delivery & stakeholders',
-    skills: s('Chapter Leadership', 'Delivery Management', 'Stakeholder Engagement', 'People Development', 'Architecture Governance', 'RFP Leadership', 'Vendor Evaluation', 'Executive Communication'),
+    skills: s(...(SHOW_BHP ? ['Chapter Leadership'] : []), 'Delivery Management', 'Stakeholder Engagement', 'People Development', 'Architecture Governance', 'RFP Leadership', 'Vendor Evaluation', 'Executive Communication'),
   },
   {
     id: 'devsecops',
@@ -759,7 +778,7 @@ export const skillCategories: SkillCategory[] = [
 
 /** Where each skill shows up — revealed on hover / tap. */
 export const skillEvidence: Record<string, string[]> = {
-  'Agentic AI': ['Agents for BHP internal tooling', 'myBOS Coach integration', 'LMS AI Platform'],
+  'Agentic AI': [...(SHOW_BHP ? ['Agents for BHP internal tooling', 'myBOS Coach integration'] : []), 'LMS AI Platform', 'Document Intelligence Agent', 'FinOps Cost Investigator'],
   'Model Context Protocol': ['MCP Tool Orchestration Hub — 870 → 380 ms'],
   'RAG Pipelines': ['HR Policy RAG Assistant', 'Data Bridge Platform', 'Document Intelligence Agent'],
   'Multi-Agent Orchestration': ['Document Intelligence Agent', 'MCP Tool Orchestration Hub'],
@@ -775,9 +794,9 @@ export const skillEvidence: Record<string, string[]> = {
   Terraform: ['Siemens digital twin — 70% faster provisioning'],
   'Terraform / IaC': ['Siemens digital twin — 70% faster provisioning'],
   'Google Cloud': ['Document Intelligence Agent'],
-  'Chapter Leadership': ['BHP India AI engineering chapter'],
-  'Delivery Management': ['Acting Delivery Lead — BHP Technical Centre'],
-  'Stakeholder Engagement': ['Vespa operating model', 'Turmeric Tool Connect'],
+  ...(SHOW_BHP ? { 'Chapter Leadership': ['BHP India AI engineering chapter'] } : {}),
+  'Delivery Management': SHOW_BHP ? ['Acting Delivery Lead — BHP Technical Centre'] : ['Architecture design authority across POCs, RFPs and enterprise implementations'],
+  'Stakeholder Engagement': SHOW_BHP ? ['Vespa operating model', 'Turmeric Tool Connect'] : ['ICAR national LMS — 76 universities', 'Siemens CES digital twin'],
   'Air-gapped DevSecOps': ['DRDO Air-Gapped DevSecOps'],
   'Azure Data Factory': ['Data Bridge Platform'],
   'Microsoft Fabric': ['Data Bridge Platform'],
@@ -868,12 +887,16 @@ export const seasons: Season[] = [
     number: 7,
     title: 'Now Streaming',
     period: '2026 –',
-    synopsis: 'Chapter Lead for AI Development and Acting Delivery Lead at BHP’s India Technical Centre.',
+    synopsis: SHOW_BHP
+      ? 'Chapter Lead for AI Development and Acting Delivery Lead at BHP’s India Technical Centre.'
+      : 'Hands-on agent frameworks and open-source proofs of concept.',
     episodes: [
-      { code: 'S07 E01', title: 'The Chapter Lead', description: 'Building BHP India’s AI engineering chapter from the ground up — hiring, mentoring, standards and roadmaps.', tags: ['BHP', 'Leadership'], runtime: 'Aug 2026 – Present', palette: crimson },
-      { code: 'S07 E02', title: 'The Delivery Lead', description: 'Stepped up to own delivery continuity — Vespa operating model and Turmeric Tool Connect.', tags: ['Delivery', 'Stakeholders'], runtime: 'Acting', palette: violet },
-      { code: 'S07 E03', title: 'The Coach', description: 'Integrating the multi-agent AI system into myBOS Coach, BHP’s enterprise operating platform.', tags: ['Agentic AI', 'myBOS'], runtime: 'In production', palette: jade },
-      { code: 'S07 E04', title: 'The Agent Builder', description: 'Hands-on agent frameworks — a Google Cloud Document Intelligence Agent and a LangGraph multi-agent FinOps POC with a human approval gate.', tags: ['Google Cloud', 'LangGraph'], runtime: '2026', palette: ocean },
+      ...(SHOW_BHP ? [
+        { code: 'S07 E01', title: 'The Chapter Lead', description: 'Building BHP India’s AI engineering chapter from the ground up — hiring, mentoring, standards and roadmaps.', tags: ['BHP', 'Leadership'], runtime: 'Aug 2026 – Present', palette: crimson },
+        { code: 'S07 E02', title: 'The Delivery Lead', description: 'Stepped up to own delivery continuity — Vespa operating model and Turmeric Tool Connect.', tags: ['Delivery', 'Stakeholders'], runtime: 'Acting', palette: violet },
+        { code: 'S07 E03', title: 'The Coach', description: 'Integrating the multi-agent AI system into myBOS Coach, BHP’s enterprise operating platform.', tags: ['Agentic AI', 'myBOS'], runtime: 'In production', palette: jade },
+      ] : []),
+      { code: SHOW_BHP ? 'S07 E04' : 'S07 E01', title: 'The Agent Builder', description: 'Hands-on agent frameworks — a Google Cloud Document Intelligence Agent and a LangGraph multi-agent FinOps POC with a human approval gate.', tags: ['Google Cloud', 'LangGraph'], runtime: '2026', palette: ocean },
     ],
   },
 ];
@@ -881,7 +904,9 @@ export const seasons: Season[] = [
 export type TopPick = { label: string; title: string; detail: string; palette: Palette };
 
 export const topPicks: TopPick[] = [
-  { label: 'Now playing', title: 'Chapter Lead', detail: 'AI Development & Delivery · BHP', palette: crimson },
+  SHOW_BHP
+    ? { label: 'Now playing', title: 'Chapter Lead', detail: 'AI Development & Delivery · BHP', palette: crimson }
+    : { label: 'Now playing', title: 'Agentic AI', detail: 'LangGraph · MCP · RAG', palette: crimson },
   { label: 'Learners served', title: '1M+', detail: 'Kubernetes LMS · 76 universities', palette: jade },
   { label: 'In the industry', title: `${yearsExp}+ Years`, detail: 'Since February 2009', palette: amber },
   { label: 'MCP tool chains', title: '870→380 ms', detail: 'Parallel execution & caching', palette: ember },
@@ -897,13 +922,13 @@ export const topPicks: TopPick[] = [
 export type IntroSlide = { kicker: string; title: string; lines: string[]; chips?: string[] };
 
 export const introSlides: IntroSlide[] = [
-  { kicker: 'The pilot', title: `${yearsExp}+ years`, lines: ['From enterprise support in 2009 to AI Development & Delivery Lead', 'Employee #002 at Judge India — ten years, sysadmin to Senior Solutions Architect'] },
+  { kicker: 'The pilot', title: `${yearsExp}+ years`, lines: [SHOW_BHP ? 'From enterprise support in 2009 to AI Development & Delivery Lead' : 'From enterprise support in 2009 to Senior Solutions Architect', 'Employee #002 at Judge India — ten years, sysadmin to Senior Solutions Architect'] },
   { kicker: 'Scale', title: 'One million learners', lines: ['Multi-tenant Kubernetes on Nutanix HCI', '76 universities · per-tenant domains · AI content layer'], chips: ['Kubernetes', 'Nutanix', 'Bedrock'] },
   { kicker: 'Data & AI', title: 'Grounded answers', lines: ['Azure data fusion across finance, staffing & payroll', 'HR Policy RAG — 0.91 faithfulness, 85% auto-resolved'], chips: ['Azure OpenAI', 'AI Search', 'Fabric', 'Synapse'] },
   { kicker: 'Agents', title: 'The protocol', lines: ['MCP tool orchestration hub — 870 → 380 ms chains', 'Google Cloud multi-agent RAG · LangGraph FinOps POC'], chips: ['MCP', 'LangGraph', 'Vertex AI', 'Gemini'] },
   { kicker: 'On stage', title: 'Nuremberg → New Delhi', lines: ['Speaker · Embedded World 2025', 'Edge AI demo to the Union Minister · AI Summit 2026'] },
   { kicker: 'Governance', title: 'ISO 42001', lines: ['Led AIMS certification for enterprise AI systems', 'Kubernetes Excellence · Cloud Architecture Leadership · Star Performer'] },
-  { kicker: 'Now streaming', title: 'Chapter Lead', lines: ['AI Development & Acting Delivery Lead', 'BHP India Technical Centre'] },
+  ...(SHOW_BHP ? [{ kicker: 'Now streaming', title: 'Chapter Lead', lines: ['AI Development & Acting Delivery Lead', 'BHP India Technical Centre'] }] as IntroSlide[] : []),
 ];
 
 // --- Blueprints (architecture diagrams), interview field guide and "how it works" flows ---
