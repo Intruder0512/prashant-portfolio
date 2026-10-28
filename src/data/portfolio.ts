@@ -28,10 +28,10 @@ export const profile = {
   seriesTag: 'AGENTIC AI DELIVERY LEAD & ARCHITECT',
   /** Fictional studio card shown at the very start of the opening sequence. */
   originalLabel: 'A YADAV ORIGINAL',
-  role: SHOW_BHP ? 'Chapter Lead — AI Development & Delivery' : 'Senior Solutions Architect — Agentic AI & Platform Engineering',
-  shortRole: SHOW_BHP ? 'AI Development & Delivery Lead' : 'Senior Solutions Architect',
+  role: SHOW_BHP ? 'Chapter Lead — AI Development & Delivery' : 'Senior Manager – Solutions Architecture',
+  shortRole: SHOW_BHP ? 'AI Development & Delivery Lead' : 'Senior Manager – Solutions Architecture',
   /** Line under the role in the hero, and the About "Now" card. */
-  org: SHOW_BHP ? 'BHP India Technical Centre' : 'Enterprise AI · Cloud · Platform Engineering',
+  org: SHOW_BHP ? 'BHP India Technical Centre' : 'Agentic AI · Cloud · Platform Engineering',
   orgDetail: SHOW_BHP ? 'BHP India Technical Centre (via TCS) · Gurugram' : 'Noida, India · open to AI architecture & delivery leadership roles',
   tagline: ['AI Architecture', 'Agentic AI', 'Platform Engineering · DevSecOps · Multi-Cloud'],
   intro: `Senior technology leader with ${yearsExp} years across cloud infrastructure, platform engineering, DevSecOps, AI architecture and delivery — ${
@@ -115,10 +115,10 @@ export const experience: Role[] = [
   ] as Role[] : []),
   {
     company: 'Judge India Solutions Pvt. Ltd. (The Judge Group)',
-    role: 'Senior Solutions Architect · Employee #002',
+    role: 'Senior Manager – Solutions Architecture · Employee #002',
     place: 'Noida',
     period: 'Aug 2016 – Aug 2026',
-    growth: 'System Administrator (2016–17) → Cloud Support Engineer (2017–18) → Solutions Architect (2018–20) → Senior Solutions Architect (2020–26)',
+    growth: 'System Administrator (2016–17) → Cloud Support Engineer (2017–18) → Solutions Architect (2018–20) → Senior Solutions Architect → Senior Manager – Solutions Architecture (2020–26)',
     points: [
       'Architected enterprise data fusion platforms on Azure (ADF, ADLS Gen2, Synapse, Document Intelligence, AI Search, OpenAI) unifying finance, staffing, payroll, timesheet and document data into governed intelligence layers.',
       'Designed agentic AI and RAG solutions on AWS Bedrock, Azure OpenAI and vector databases (Pinecone, FAISS); built multi-agent orchestration with ReAct reasoning loops, HITL gates, Step Functions governance and immutable audit trails.',
@@ -861,7 +861,7 @@ export const seasons: Season[] = [
     number: 5,
     title: 'Senior Architect',
     period: '2020 – 2025',
-    synopsis: 'Senior Solutions Architect — national-scale Kubernetes, defense DevSecOps, edge AI and international stages.',
+    synopsis: 'Senior Manager – Solutions Architecture: national-scale Kubernetes, defense DevSecOps, edge AI and international stages.',
     episodes: [
       { code: 'S05 E01', title: 'One Million Learners', description: 'Multi-tenant Kubernetes on Nutanix HCI for ICAR — 76 universities, 1M+ learners — and the Kubernetes Infrastructure Excellence award.', tags: ['Kubernetes', 'ICAR'], runtime: '2023', palette: jade },
       { code: 'S05 E02', title: 'Air-Gapped', description: 'DevSecOps transformation at DRDO — a fully air-gapped software factory with ARM cross-compilation.', tags: ['DRDO', 'DevSecOps'], runtime: 'Defense', palette: crimson },
@@ -922,7 +922,7 @@ export const topPicks: TopPick[] = [
 export type IntroSlide = { kicker: string; title: string; lines: string[]; chips?: string[] };
 
 export const introSlides: IntroSlide[] = [
-  { kicker: 'The pilot', title: `${yearsExp}+ years`, lines: [SHOW_BHP ? 'From enterprise support in 2009 to AI Development & Delivery Lead' : 'From enterprise support in 2009 to Senior Solutions Architect', 'Employee #002 at Judge India — ten years, sysadmin to Senior Solutions Architect'] },
+  { kicker: 'The pilot', title: `${yearsExp}+ years`, lines: [SHOW_BHP ? 'From enterprise support in 2009 to AI Development & Delivery Lead' : 'From enterprise support in 2009 to Senior Manager – Solutions Architecture', 'Employee #002 at Judge India — ten years, sysadmin to Senior Manager'] },
   { kicker: 'Scale', title: 'One million learners', lines: ['Multi-tenant Kubernetes on Nutanix HCI', '76 universities · per-tenant domains · AI content layer'], chips: ['Kubernetes', 'Nutanix', 'Bedrock'] },
   { kicker: 'Data & AI', title: 'Grounded answers', lines: ['Azure data fusion across finance, staffing & payroll', 'HR Policy RAG — 0.91 faithfulness, 85% auto-resolved'], chips: ['Azure OpenAI', 'AI Search', 'Fabric', 'Synapse'] },
   { kicker: 'Agents', title: 'The protocol', lines: ['MCP tool orchestration hub — 870 → 380 ms chains', 'Google Cloud multi-agent RAG · LangGraph FinOps POC'], chips: ['MCP', 'LangGraph', 'Vertex AI', 'Gemini'] },
