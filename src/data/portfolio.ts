@@ -118,7 +118,7 @@ export const experience: Role[] = [
     role: 'Senior Manager – Solutions Architecture · Employee #002',
     place: 'Noida',
     period: 'Aug 2016 – Aug 2026',
-    growth: 'System Administrator (2016–17) → Cloud Support Engineer (2017–18) → Solutions Architect (2018–20) → Senior Solutions Architect → Senior Manager – Solutions Architecture (2020–26)',
+    growth: 'System Administrator (2016–17) → Cloud Support Engineer (2017–18) → Solutions Architect (2018–20) → Senior Solutions Architect (2020–23) → Senior Manager – Solutions Architecture (2023–26)',
     points: [
       'Architected enterprise data fusion platforms on Azure (ADF, ADLS Gen2, Synapse, Document Intelligence, AI Search, OpenAI) unifying finance, staffing, payroll, timesheet and document data into governed intelligence layers.',
       'Designed agentic AI and RAG solutions on AWS Bedrock, Azure OpenAI and vector databases (Pinecone, FAISS); built multi-agent orchestration with ReAct reasoning loops, HITL gates, Step Functions governance and immutable audit trails.',
@@ -861,7 +861,7 @@ export const seasons: Season[] = [
     number: 5,
     title: 'Senior Architect',
     period: '2020 – 2025',
-    synopsis: 'Senior Manager – Solutions Architecture: national-scale Kubernetes, defense DevSecOps, edge AI and international stages.',
+    synopsis: 'Senior Solutions Architect, then Senior Manager – Solutions Architecture from 2023: national-scale Kubernetes, defense DevSecOps, edge AI and international stages.',
     episodes: [
       { code: 'S05 E01', title: 'One Million Learners', description: 'Multi-tenant Kubernetes on Nutanix HCI for ICAR — 76 universities, 1M+ learners — and the Kubernetes Infrastructure Excellence award.', tags: ['Kubernetes', 'ICAR'], runtime: '2023', palette: jade },
       { code: 'S05 E02', title: 'Air-Gapped', description: 'DevSecOps transformation at DRDO — a fully air-gapped software factory with ARM cross-compilation.', tags: ['DRDO', 'DevSecOps'], runtime: 'Defense', palette: crimson },
